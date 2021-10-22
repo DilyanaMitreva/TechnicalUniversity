@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jwoperZ28DOy1DA3zTUhm05ns6fqVG/2nb34tf1kPFZ/MrwfgqgHsEMfWoMCDU2hHmgF4JEKt+o6yd/9kGXrOQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 2\\HeuristicAlgorithms\\HeuristicAlgorithms.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\k.krachmarov\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.11\\microsoft.netcore.app.host.win-x64.3.1.11.nupkg.sha512"
+  ],
+  "logs": []
+}

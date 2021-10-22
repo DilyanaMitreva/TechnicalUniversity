@@ -1,0 +1,26 @@
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\bin\Debug\netcoreapp3.1\Homework.exe
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\bin\Debug\netcoreapp3.1\Homework.deps.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\bin\Debug\netcoreapp3.1\Homework.runtimeconfig.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\bin\Debug\netcoreapp3.1\Homework.runtimeconfig.dev.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\bin\Debug\netcoreapp3.1\Homework.dll
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\bin\Debug\netcoreapp3.1\Homework.pdb
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\obj\Debug\netcoreapp3.1\Homework.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\obj\Debug\netcoreapp3.1\Homework.AssemblyInfoInputs.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\obj\Debug\netcoreapp3.1\Homework.AssemblyInfo.cs
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\obj\Debug\netcoreapp3.1\Homework.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\obj\Debug\netcoreapp3.1\Homework.dll
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\obj\Debug\netcoreapp3.1\Homework.pdb
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Homework\obj\Debug\netcoreapp3.1\Homework.genruntimeconfig.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\obj\Debug\netcoreapp3.1\Homework.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\obj\Debug\netcoreapp3.1\Homework.AssemblyInfoInputs.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\obj\Debug\netcoreapp3.1\Homework.AssemblyInfo.cs
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\obj\Debug\netcoreapp3.1\Homework.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\obj\Debug\netcoreapp3.1\Homework.dll
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\obj\Debug\netcoreapp3.1\Homework.pdb
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\bin\Debug\netcoreapp3.1\Homework.exe
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\bin\Debug\netcoreapp3.1\Homework.deps.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\bin\Debug\netcoreapp3.1\Homework.runtimeconfig.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\bin\Debug\netcoreapp3.1\Homework.runtimeconfig.dev.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\bin\Debug\netcoreapp3.1\Homework.dll
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\bin\Debug\netcoreapp3.1\Homework.pdb
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Homework\obj\Debug\netcoreapp3.1\Homework.genruntimeconfig.cache

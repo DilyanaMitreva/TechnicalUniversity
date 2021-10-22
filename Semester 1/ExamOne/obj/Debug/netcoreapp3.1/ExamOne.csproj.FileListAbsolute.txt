@@ -1,0 +1,26 @@
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.exe
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.deps.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.runtimeconfig.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.runtimeconfig.dev.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.dll
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.pdb
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.AssemblyInfoInputs.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.AssemblyInfo.cs
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.dll
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.pdb
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.genruntimeconfig.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.AssemblyInfoInputs.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.AssemblyInfo.cs
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.dll
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.pdb
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.exe
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.deps.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.runtimeconfig.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.runtimeconfig.dev.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.dll
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\bin\Debug\netcoreapp3.1\ExamOne.pdb
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\ExamOne\obj\Debug\netcoreapp3.1\ExamOne.genruntimeconfig.cache

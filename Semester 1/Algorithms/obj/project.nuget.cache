@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "n9gTEBX03b+DwcZbr/HBJrg5DcL33kPt7IBUThNaEPzU7UydZ+ZffpUyrsAbzUk06flhrXp8w25LtOO9LLvagA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 1\\Algorithms\\Algorithms.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\k.krachmarov\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.11\\microsoft.netcore.app.host.win-x64.3.1.11.nupkg.sha512"
+  ],
+  "logs": []
+}

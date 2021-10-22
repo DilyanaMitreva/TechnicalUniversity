@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "IlCDN+hrHVNV1ntHbS3Zwe0pV85SGuxmcvbPAlW6QofNT9K3smmcYxwpob4LRtgupjlBaoOGZqehnMlYL+5/rw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 1\\ExamOne\\ExamOne.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\k.krachmarov\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.11\\microsoft.netcore.app.host.win-x64.3.1.11.nupkg.sha512"
+  ],
+  "logs": []
+}

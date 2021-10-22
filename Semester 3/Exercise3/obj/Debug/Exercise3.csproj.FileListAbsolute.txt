@@ -1,0 +1,22 @@
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\obj\Debug\Exercise3.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\obj\Debug\Exercise3.Properties.Resources.resources
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\obj\Debug\Exercise3.csproj.GenerateResource.cache
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\obj\Debug\Exercise3.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\bin\Debug\Exercise3.exe.config
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\bin\Debug\Exercise3.exe
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\bin\Debug\Exercise3.pdb
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\obj\Debug\Exercise3.FormMain.resources
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\obj\Debug\Exercise3.exe
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\obj\Debug\Exercise3.pdb
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise3\obj\Debug\Exercise3.FormPerson.resources
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\bin\Debug\Exercise3.exe.config
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\bin\Debug\Exercise3.exe
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\bin\Debug\Exercise3.pdb
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\obj\Debug\Exercise3.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\obj\Debug\Exercise3.FormMain.resources
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\obj\Debug\Exercise3.FormPerson.resources
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\obj\Debug\Exercise3.Properties.Resources.resources
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\obj\Debug\Exercise3.csproj.GenerateResource.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\obj\Debug\Exercise3.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\obj\Debug\Exercise3.exe
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise3\obj\Debug\Exercise3.pdb

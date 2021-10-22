@@ -1,0 +1,26 @@
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.exe
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.deps.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.runtimeconfig.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.runtimeconfig.dev.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.dll
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.pdb
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.AssemblyInfoInputs.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.AssemblyInfo.cs
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.dll
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.pdb
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.genruntimeconfig.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.AssemblyInfoInputs.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.AssemblyInfo.cs
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.dll
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.pdb
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.exe
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.deps.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.runtimeconfig.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.runtimeconfig.dev.json
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.dll
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\bin\Debug\netcoreapp3.1\Algorithms.pdb
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 1\Algorithms\obj\Debug\netcoreapp3.1\Algorithms.genruntimeconfig.cache

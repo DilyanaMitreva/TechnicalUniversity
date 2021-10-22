@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "M7w1bWGHTGB4SVtK86EQwRHsYf3Ok8m8vCoDzR9GWPpDp+y/Vle5SJ+Pq3w0FyGhfGsiaE+K67hnpFKfzixRaA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 2\\DataAproximation\\DataAproximation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\k.krachmarov\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.11\\microsoft.netcore.app.host.win-x64.3.1.11.nupkg.sha512"
+  ],
+  "logs": []
+}

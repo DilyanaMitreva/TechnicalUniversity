@@ -1,0 +1,13 @@
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\bin\Debug\netcoreapp3.1\Exam.exe
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\bin\Debug\netcoreapp3.1\Exam.deps.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\bin\Debug\netcoreapp3.1\Exam.runtimeconfig.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\bin\Debug\netcoreapp3.1\Exam.runtimeconfig.dev.json
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\bin\Debug\netcoreapp3.1\Exam.dll
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\bin\Debug\netcoreapp3.1\Exam.pdb
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\obj\Debug\netcoreapp3.1\Exam.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\obj\Debug\netcoreapp3.1\Exam.AssemblyInfoInputs.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\obj\Debug\netcoreapp3.1\Exam.AssemblyInfo.cs
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\obj\Debug\netcoreapp3.1\Exam.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\obj\Debug\netcoreapp3.1\Exam.dll
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\obj\Debug\netcoreapp3.1\Exam.pdb
+C:\Users\k.krachmarov\source\repos\Git\TechnicalUniversity-Semester1\TechnicalUniversity\Exam\obj\Debug\netcoreapp3.1\Exam.genruntimeconfig.cache

@@ -1,0 +1,20 @@
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\bin\Debug\Exercise2.exe.config
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\bin\Debug\Exercise2.exe
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\bin\Debug\Exercise2.pdb
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\obj\Debug\Exercise2.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\obj\Debug\Exercise2.Properties.Resources.resources
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\obj\Debug\Exercise2.csproj.GenerateResource.cache
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\obj\Debug\Exercise2.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\obj\Debug\Exercise2.exe
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\obj\Debug\Exercise2.pdb
+C:\Users\k.krachmarov\RiderProjects\OOP\Exercise2\obj\Debug\Exercise2.Form1.resources
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\bin\Debug\Exercise2.exe.config
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\bin\Debug\Exercise2.exe
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\bin\Debug\Exercise2.pdb
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\obj\Debug\Exercise2.csprojAssemblyReference.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\obj\Debug\Exercise2.Form1.resources
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\obj\Debug\Exercise2.Properties.Resources.resources
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\obj\Debug\Exercise2.csproj.GenerateResource.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\obj\Debug\Exercise2.csproj.CoreCompileInputs.cache
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\obj\Debug\Exercise2.exe
+C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\Exercise2\obj\Debug\Exercise2.pdb

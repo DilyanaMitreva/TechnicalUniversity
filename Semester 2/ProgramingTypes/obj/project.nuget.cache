@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "u8DoR290plMHwdE+X5nt3doI8HRgbdJGfYmHcEFmh64nBzJ3NIBn4F/xmzvCCMDoh5F16gM+oTNkXC1li1CRYw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 2\\ProgramingTypes\\ProgramingTypes.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\k.krachmarov\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.11\\microsoft.netcore.app.host.win-x64.3.1.11.nupkg.sha512"
+  ],
+  "logs": []
+}
