@@ -32,9 +32,8 @@ namespace Exercise3
             {
                 return;
             }
-
-
             _phoneBook.Delete((Person)listBoxPeople.SelectedItem);
+            textBoxSearch_TextChanged(null, null);
             
         }
 
