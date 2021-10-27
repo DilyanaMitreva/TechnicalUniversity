@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -8,6 +9,16 @@ namespace CourseWorkEntities.Shapes
         public double Side { get; set; }
 
         public Triangle(int xCoordinate, int yCoordinate, double side) : base(xCoordinate, yCoordinate)
+        {
+            this.ShapeType = ShapeType.Triangle;
+            this.Side = side;
+            
+            this.OutlineColor = Color.Black;
+            this.FillColor = Color.White;
+        }
+
+        public Triangle(int xCoordinate, int yCoordinate, double side,Color outlineColor, Color fillColor) : 
+            base(xCoordinate, yCoordinate, outlineColor, fillColor)
         {
             this.ShapeType = ShapeType.Triangle;
             this.Side = side;

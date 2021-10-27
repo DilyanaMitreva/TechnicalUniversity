@@ -31,18 +31,328 @@ namespace CourseWorkVisualInterface
         /// </summary>
         private void InitializeComponent()
         {
+            this.addShape = new System.Windows.Forms.Button();
+            this.checkBoxCircle = new System.Windows.Forms.CheckBox();
+            this.checkBoxRectangle = new System.Windows.Forms.CheckBox();
+            this.checkBoxTriangle = new System.Windows.Forms.CheckBox();
+            this.textBoxRadius = new System.Windows.Forms.TextBox();
+            this.labelRadius = new System.Windows.Forms.Label();
+            this.labelSide = new System.Windows.Forms.Label();
+            this.textBoxSide = new System.Windows.Forms.TextBox();
+            this.labelHeight = new System.Windows.Forms.Label();
+            this.textBoxHeight = new System.Windows.Forms.TextBox();
+            this.labelLenght = new System.Windows.Forms.Label();
+            this.textBoxLenght = new System.Windows.Forms.TextBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.textBoxXCoordinate = new System.Windows.Forms.TextBox();
+            this.textBoxYCoordinate = new System.Windows.Forms.TextBox();
+            this.labelXCoordinate = new System.Windows.Forms.Label();
+            this.labelYCoordinate = new System.Windows.Forms.Label();
+            this.labelShapeType = new System.Windows.Forms.Label();
+            this.labelCoordinates = new System.Windows.Forms.Label();
+            this.labelParameters = new System.Windows.Forms.Label();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.buttonOutlineColor = new System.Windows.Forms.Button();
+            this.buttonFillColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // addShape
+            // 
+            this.addShape.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.addShape.Location = new System.Drawing.Point(245, 500);
+            this.addShape.Name = "addShape";
+            this.addShape.Size = new System.Drawing.Size(159, 49);
+            this.addShape.TabIndex = 0;
+            this.addShape.Text = "Add Shape";
+            this.addShape.UseVisualStyleBackColor = true;
+            this.addShape.Click += new System.EventHandler(this.addShape_Click);
+            // 
+            // checkBoxCircle
+            // 
+            this.checkBoxCircle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxCircle.Location = new System.Drawing.Point(8, 39);
+            this.checkBoxCircle.Name = "checkBoxCircle";
+            this.checkBoxCircle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxCircle.Size = new System.Drawing.Size(56, 49);
+            this.checkBoxCircle.TabIndex = 1;
+            this.checkBoxCircle.Text = "Circle";
+            this.checkBoxCircle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.checkBoxCircle.UseVisualStyleBackColor = true;
+            this.checkBoxCircle.Click += new System.EventHandler(this.checkBoxCircle_Click);
+            // 
+            // checkBoxRectangle
+            // 
+            this.checkBoxRectangle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxRectangle.Location = new System.Drawing.Point(155, 39);
+            this.checkBoxRectangle.Name = "checkBoxRectangle";
+            this.checkBoxRectangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxRectangle.Size = new System.Drawing.Size(82, 49);
+            this.checkBoxRectangle.TabIndex = 2;
+            this.checkBoxRectangle.Text = "Rectangle";
+            this.checkBoxRectangle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.checkBoxRectangle.UseVisualStyleBackColor = true;
+            this.checkBoxRectangle.Click += new System.EventHandler(this.checkBoxRectangle_Click);
+            // 
+            // checkBoxTriangle
+            // 
+            this.checkBoxTriangle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxTriangle.Location = new System.Drawing.Point(324, 39);
+            this.checkBoxTriangle.Name = "checkBoxTriangle";
+            this.checkBoxTriangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxTriangle.Size = new System.Drawing.Size(76, 49);
+            this.checkBoxTriangle.TabIndex = 3;
+            this.checkBoxTriangle.Text = "Triangle";
+            this.checkBoxTriangle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.checkBoxTriangle.UseVisualStyleBackColor = true;
+            this.checkBoxTriangle.CheckedChanged += new System.EventHandler(this.checkBoxTriangle_CheckedChanged);
+            // 
+            // textBoxRadius
+            // 
+            this.textBoxRadius.Location = new System.Drawing.Point(7, 285);
+            this.textBoxRadius.Name = "textBoxRadius";
+            this.textBoxRadius.Size = new System.Drawing.Size(392, 22);
+            this.textBoxRadius.TabIndex = 4;
+            this.textBoxRadius.Visible = false;
+            // 
+            // labelRadius
+            // 
+            this.labelRadius.Location = new System.Drawing.Point(7, 262);
+            this.labelRadius.Name = "labelRadius";
+            this.labelRadius.Size = new System.Drawing.Size(56, 20);
+            this.labelRadius.TabIndex = 5;
+            this.labelRadius.Text = "Radius";
+            this.labelRadius.Visible = false;
+            // 
+            // labelSide
+            // 
+            this.labelSide.Location = new System.Drawing.Point(7, 262);
+            this.labelSide.Name = "labelSide";
+            this.labelSide.Size = new System.Drawing.Size(56, 20);
+            this.labelSide.TabIndex = 9;
+            this.labelSide.Text = "Side";
+            this.labelSide.Visible = false;
+            // 
+            // textBoxSide
+            // 
+            this.textBoxSide.Location = new System.Drawing.Point(8, 285);
+            this.textBoxSide.Name = "textBoxSide";
+            this.textBoxSide.Size = new System.Drawing.Size(391, 22);
+            this.textBoxSide.TabIndex = 8;
+            this.textBoxSide.Visible = false;
+            // 
+            // labelHeight
+            // 
+            this.labelHeight.Location = new System.Drawing.Point(7, 262);
+            this.labelHeight.Name = "labelHeight";
+            this.labelHeight.Size = new System.Drawing.Size(56, 20);
+            this.labelHeight.TabIndex = 11;
+            this.labelHeight.Text = "Height";
+            this.labelHeight.Visible = false;
+            // 
+            // textBoxHeight
+            // 
+            this.textBoxHeight.Location = new System.Drawing.Point(8, 285);
+            this.textBoxHeight.Name = "textBoxHeight";
+            this.textBoxHeight.Size = new System.Drawing.Size(391, 22);
+            this.textBoxHeight.TabIndex = 10;
+            this.textBoxHeight.Visible = false;
+            // 
+            // labelLenght
+            // 
+            this.labelLenght.Location = new System.Drawing.Point(8, 326);
+            this.labelLenght.Name = "labelLenght";
+            this.labelLenght.Size = new System.Drawing.Size(56, 20);
+            this.labelLenght.TabIndex = 13;
+            this.labelLenght.Text = "Lenght";
+            this.labelLenght.Visible = false;
+            // 
+            // textBoxLenght
+            // 
+            this.textBoxLenght.Location = new System.Drawing.Point(8, 349);
+            this.textBoxLenght.Name = "textBoxLenght";
+            this.textBoxLenght.Size = new System.Drawing.Size(392, 22);
+            this.textBoxLenght.TabIndex = 12;
+            this.textBoxLenght.Visible = false;
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonCancel.Location = new System.Drawing.Point(12, 500);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(159, 49);
+            this.buttonCancel.TabIndex = 14;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // textBoxXCoordinate
+            // 
+            this.textBoxXCoordinate.Location = new System.Drawing.Point(8, 186);
+            this.textBoxXCoordinate.Name = "textBoxXCoordinate";
+            this.textBoxXCoordinate.Size = new System.Drawing.Size(133, 22);
+            this.textBoxXCoordinate.TabIndex = 15;
+            this.textBoxXCoordinate.Visible = false;
+            // 
+            // textBoxYCoordinate
+            // 
+            this.textBoxYCoordinate.Location = new System.Drawing.Point(271, 186);
+            this.textBoxYCoordinate.Name = "textBoxYCoordinate";
+            this.textBoxYCoordinate.Size = new System.Drawing.Size(133, 22);
+            this.textBoxYCoordinate.TabIndex = 16;
+            this.textBoxYCoordinate.Visible = false;
+            // 
+            // labelXCoordinate
+            // 
+            this.labelXCoordinate.Location = new System.Drawing.Point(6, 163);
+            this.labelXCoordinate.Name = "labelXCoordinate";
+            this.labelXCoordinate.Size = new System.Drawing.Size(134, 20);
+            this.labelXCoordinate.TabIndex = 17;
+            this.labelXCoordinate.Text = "X coordinate";
+            this.labelXCoordinate.Visible = false;
+            // 
+            // labelYCoordinate
+            // 
+            this.labelYCoordinate.Location = new System.Drawing.Point(271, 163);
+            this.labelYCoordinate.Name = "labelYCoordinate";
+            this.labelYCoordinate.Size = new System.Drawing.Size(134, 20);
+            this.labelYCoordinate.TabIndex = 18;
+            this.labelYCoordinate.Text = "Y coordinate";
+            this.labelYCoordinate.Visible = false;
+            // 
+            // labelShapeType
+            // 
+            this.labelShapeType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelShapeType.Location = new System.Drawing.Point(8, 9);
+            this.labelShapeType.Name = "labelShapeType";
+            this.labelShapeType.Size = new System.Drawing.Size(396, 27);
+            this.labelShapeType.TabIndex = 19;
+            this.labelShapeType.Text = "Select a shape type";
+            // 
+            // labelCoordinates
+            // 
+            this.labelCoordinates.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCoordinates.Location = new System.Drawing.Point(11, 101);
+            this.labelCoordinates.Name = "labelCoordinates";
+            this.labelCoordinates.Size = new System.Drawing.Size(397, 62);
+            this.labelCoordinates.TabIndex = 20;
+            this.labelCoordinates.Text = "Enter the start coordinate \r\n(point (0,0) is in the top left corner)";
+            this.labelCoordinates.Visible = false;
+            // 
+            // labelParameters
+            // 
+            this.labelParameters.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelParameters.Location = new System.Drawing.Point(6, 224);
+            this.labelParameters.Name = "labelParameters";
+            this.labelParameters.Size = new System.Drawing.Size(392, 30);
+            this.labelParameters.TabIndex = 21;
+            this.labelParameters.Text = "Enter the required parameters for the shape\r\n";
+            this.labelParameters.Visible = false;
+            // 
+            // buttonOutlineColor
+            // 
+            this.buttonOutlineColor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonOutlineColor.Location = new System.Drawing.Point(12, 406);
+            this.buttonOutlineColor.Name = "buttonOutlineColor";
+            this.buttonOutlineColor.Size = new System.Drawing.Size(159, 49);
+            this.buttonOutlineColor.TabIndex = 22;
+            this.buttonOutlineColor.Text = "Select Outline Color";
+            this.buttonOutlineColor.UseVisualStyleBackColor = true;
+            this.buttonOutlineColor.Visible = false;
+            this.buttonOutlineColor.Click += new System.EventHandler(this.buttonOutlineColor_Click);
+            // 
+            // buttonFillColor
+            // 
+            this.buttonFillColor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonFillColor.Location = new System.Drawing.Point(245, 406);
+            this.buttonFillColor.Name = "buttonFillColor";
+            this.buttonFillColor.Size = new System.Drawing.Size(159, 49);
+            this.buttonFillColor.TabIndex = 23;
+            this.buttonFillColor.Text = "Select Fill Color";
+            this.buttonFillColor.UseVisualStyleBackColor = true;
+            this.buttonFillColor.Visible = false;
+            this.buttonFillColor.Click += new System.EventHandler(this.buttonFillColor_Click);
             // 
             // FormAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 578);
+            this.ClientSize = new System.Drawing.Size(416, 561);
+            this.Controls.Add(this.buttonFillColor);
+            this.Controls.Add(this.buttonOutlineColor);
+            this.Controls.Add(this.labelParameters);
+            this.Controls.Add(this.labelCoordinates);
+            this.Controls.Add(this.labelShapeType);
+            this.Controls.Add(this.labelYCoordinate);
+            this.Controls.Add(this.labelXCoordinate);
+            this.Controls.Add(this.textBoxYCoordinate);
+            this.Controls.Add(this.textBoxXCoordinate);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.labelLenght);
+            this.Controls.Add(this.textBoxLenght);
+            this.Controls.Add(this.labelHeight);
+            this.Controls.Add(this.textBoxHeight);
+            this.Controls.Add(this.labelSide);
+            this.Controls.Add(this.textBoxSide);
+            this.Controls.Add(this.labelRadius);
+            this.Controls.Add(this.textBoxRadius);
+            this.Controls.Add(this.checkBoxTriangle);
+            this.Controls.Add(this.checkBoxRectangle);
+            this.Controls.Add(this.checkBoxCircle);
+            this.Controls.Add(this.addShape);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FormAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Shape";
             this.ResumeLayout(false);
+            this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button buttonFillColor;
+        private System.Windows.Forms.Button buttonOutlineColor;
+
+        private System.Windows.Forms.ColorDialog colorDialog;
+
+
+        private System.Windows.Forms.Label labelParameters;
+
+        private System.Windows.Forms.Label labelCoordinates;
+
+        private System.Windows.Forms.Label labelYCoordinate;
+
+        private System.Windows.Forms.TextBox textBoxXCoordinate;
+        private System.Windows.Forms.TextBox textBoxYCoordinate;
+        private System.Windows.Forms.Label labelXCoordinate;
+        private System.Windows.Forms.Label labelShapeType;
+
+        private System.Windows.Forms.Button buttonCancel;
+
+        private System.Windows.Forms.TextBox textBoxHeight;
+        private System.Windows.Forms.Label labelLenght;
+        private System.Windows.Forms.TextBox textBoxLenght;
+
+        private System.Windows.Forms.TextBox textBoxSide;
+        
+        private System.Windows.Forms.Label labelHeight;
+
+
+        private System.Windows.Forms.Label labelSide;
+   
+
+        private System.Windows.Forms.Label labelRadius;
+
+        private System.Windows.Forms.TextBox textBoxRadius;
+        
+
+        private System.Windows.Forms.CheckBox checkBoxRectangle;
+        private System.Windows.Forms.CheckBox checkBoxTriangle;
+        private System.Windows.Forms.CheckBox checkBoxCircle;
+
+       
+
+
+        private System.Windows.Forms.Button addShape;
 
         #endregion
     }

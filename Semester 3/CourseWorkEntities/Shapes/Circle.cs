@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -11,6 +12,12 @@ namespace CourseWorkEntities.Shapes
         {
             this.ShapeType = ShapeType.Circle;
             this.Radius = radius;
+        }
+
+        public Circle(int xCoordinate, int yCoordinate, Color outlineColor, Color fillColor, double radius) : base(xCoordinate, yCoordinate, outlineColor, fillColor)
+        {
+            this.ShapeType = ShapeType.Circle;
+            Radius = radius;
         }
 
         public override double GetArea()

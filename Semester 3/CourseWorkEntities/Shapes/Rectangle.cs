@@ -1,4 +1,5 @@
-﻿using CourseWorkEntities.Utilities;
+﻿using System.Drawing;
+using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
 {
@@ -13,6 +14,17 @@ namespace CourseWorkEntities.Shapes
             this.ShapeType = ShapeType.Rectangle;
             this.Lenght = lenght;
             this.Height = height;
+
+            this.OutlineColor = Color.Black;
+            this.FillColor = Color.White;
+        }
+
+        public Rectangle(int xCoordinate, int yCoordinate, Color outlineColor, Color fillColor, double lenght, double height)
+            : base(xCoordinate, yCoordinate, outlineColor, fillColor)
+        {
+            this.ShapeType = ShapeType.Rectangle;
+            Lenght = lenght;
+            Height = height;
         }
 
         public override double GetArea()
