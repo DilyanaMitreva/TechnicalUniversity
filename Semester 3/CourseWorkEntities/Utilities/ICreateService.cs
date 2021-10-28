@@ -1,13 +1,21 @@
-﻿using CourseWorkEntities.Shapes;
+﻿using System.Drawing;
+using CourseWorkEntities.Shapes;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace CourseWorkEntities.Utilities
 {
     public interface ICreateService
     { 
-        Shape createRectangle(int xPosition, int yPosition, double height, double lenght);
+        Shape CreateRectangle(int xPosition, int yPosition, double height, double lenght, Color outlineColor, Color fillColor);
 
-        Shape createCircle(int xPosition, int yPosition, double radius);
+        Shape CreateCircle(int xPosition, int yPosition, double radius, Color outlineColor, Color fillColor);
 
-        Shape createTriangle(int xPosition, int yPosition, double side);
+        Shape CreateTriangle(int xPosition, int yPosition, double side, Color outlineColor, Color fillColor);
+
+        void DrawRectangle(Rectangle rectangle);
+
+        void DrawCircle(Circle circle);
+
+        void DrawTriangle(Triangle triangle);
     }
 }

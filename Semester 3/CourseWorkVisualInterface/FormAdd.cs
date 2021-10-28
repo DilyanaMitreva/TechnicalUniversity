@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
@@ -10,16 +8,28 @@ namespace CourseWorkVisualInterface
 {
     public partial class FormAdd : Form
     {
-        private Shape shape;
+        private Shape _shape;
 
-        private Color outlineColor;
+        private Color _outlineColor = Color.Black;
 
-        private Color fillColor;
+        private Color _fillColor = Color.Transparent;
+
+        private int _shapeXCoordinate;
+        private int _shapeYCoordinate;
 
         public FormAdd()
         {
             InitializeComponent();
         }
+
+        public FormAdd(int x, int y)
+        {
+            InitializeComponent();
+            this._shapeXCoordinate = x;
+            this._shapeYCoordinate = y;
+        }
+
+        public Shape getShape() => _shape;
 
         private void checkBoxCircle_Click(object sender, EventArgs e)
         {
@@ -30,41 +40,30 @@ namespace CourseWorkVisualInterface
 
                 checkBoxTriangle.Checked = false;
                 checkBoxRectangle.Checked = false;
-                
+
                 labelHeight.Visible = false;
                 textBoxHeight.Visible = false;
-                
+
+                labelParameters.Visible = true;
+
                 labelLenght.Visible = false;
                 textBoxLenght.Visible = false;
-                
+
                 labelSide.Visible = false;
                 textBoxSide.Visible = false;
 
-                labelCoordinates.Visible = true;
-                labelXCoordinate.Visible = true;
-                labelYCoordinate.Visible = true;
-
-                textBoxXCoordinate.Visible = true;
-                textBoxYCoordinate.Visible = true;
-
                 buttonFillColor.Visible = true;
                 buttonOutlineColor.Visible = true;
-
             }
             else
             {
                 labelRadius.Visible = false;
                 textBoxRadius.Visible = false;
-                
-                labelCoordinates.Visible = false;
-                labelXCoordinate.Visible = false;
-                labelYCoordinate.Visible = false;
 
-                textBoxXCoordinate.Visible = false;
-                textBoxYCoordinate.Visible = false;
-                
                 buttonFillColor.Visible = false;
                 buttonOutlineColor.Visible = false;
+
+                labelParameters.Visible = false;
             }
         }
 
@@ -78,22 +77,17 @@ namespace CourseWorkVisualInterface
                 textBoxHeight.Visible = true;
                 textBoxLenght.Visible = true;
 
+                labelParameters.Visible = true;
+
                 checkBoxCircle.Checked = false;
                 checkBoxTriangle.Checked = false;
-                
+
                 labelRadius.Visible = false;
                 textBoxRadius.Visible = false;
-                
+
                 labelSide.Visible = false;
                 textBoxSide.Visible = false;
-                
-                labelCoordinates.Visible = true;
-                labelXCoordinate.Visible = true;
-                labelYCoordinate.Visible = true;
 
-                textBoxXCoordinate.Visible = true;
-                textBoxYCoordinate.Visible = true;
-                
                 buttonFillColor.Visible = true;
                 buttonOutlineColor.Visible = true;
             }
@@ -104,16 +98,11 @@ namespace CourseWorkVisualInterface
 
                 textBoxHeight.Visible = false;
                 textBoxLenght.Visible = false;
-                
-                labelCoordinates.Visible = false;
-                labelXCoordinate.Visible = false;
-                labelYCoordinate.Visible = false;
 
-                textBoxXCoordinate.Visible = false;
-                textBoxYCoordinate.Visible = false;
-                
                 buttonFillColor.Visible = false;
                 buttonOutlineColor.Visible = false;
+
+                labelParameters.Visible = false;
             }
         }
 
@@ -126,23 +115,18 @@ namespace CourseWorkVisualInterface
 
                 checkBoxCircle.Checked = false;
                 checkBoxRectangle.Checked = false;
-                
+
+                labelParameters.Visible = true;
+
                 labelHeight.Visible = false;
                 textBoxHeight.Visible = false;
-                
+
                 labelLenght.Visible = false;
                 textBoxLenght.Visible = false;
-                
+
                 labelRadius.Visible = false;
                 textBoxRadius.Visible = false;
-                
-                labelCoordinates.Visible = true;
-                labelXCoordinate.Visible = true;
-                labelYCoordinate.Visible = true;
 
-                textBoxXCoordinate.Visible = true;
-                textBoxYCoordinate.Visible = true;
-                
                 buttonFillColor.Visible = true;
                 buttonOutlineColor.Visible = true;
             }
@@ -150,34 +134,94 @@ namespace CourseWorkVisualInterface
             {
                 labelSide.Visible = false;
                 textBoxSide.Visible = false;
-                
-                labelCoordinates.Visible = false;
-                labelXCoordinate.Visible = false;
-                labelYCoordinate.Visible = false;
 
-                textBoxXCoordinate.Visible = false;
-                textBoxYCoordinate.Visible = false;
-                
                 buttonFillColor.Visible = false;
                 buttonOutlineColor.Visible = false;
+
+                labelParameters.Visible = false;
             }
         }
 
         private void addShape_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            if (checkBoxCircle.Checked)
+            {
+                if (textBoxRadius.Text == null)
+                {
+                    MessageBox.Show(Constant.Messages.MessageRadius);
+                }
+
+                bool isNumber = decimal.TryParse(textBoxRadius.Text, out decimal radius);
+
+                if (isNumber)
+                {
+                    _shape = new Circle(_shapeXCoordinate, _shapeYCoordinate, radius, _outlineColor, _fillColor);
+                }
+                else
+                {
+                    MessageBox.Show(Constant.Messages.MessageNumber);
+                }
+            }
+            else if (checkBoxRectangle.Checked)
+            {
+                if (textBoxHeight.Text == null)
+                {
+                    MessageBox.Show(Constant.Messages.MessageHeight);
+                }
+                else if (textBoxLenght.Text == null)
+                {
+                    MessageBox.Show(Constant.Messages.MessageLenght);
+                }
+
+                bool isNumber = decimal.TryParse(textBoxHeight.Text, out decimal height);
+
+                bool isNumber2 = decimal.TryParse(textBoxLenght.Text, out decimal lenght);
+
+                if (isNumber && isNumber2)
+                {
+                    _shape = new CourseWorkEntities.Shapes.Rectangle(_shapeXCoordinate, _shapeYCoordinate, lenght,
+                        height, _outlineColor, _fillColor);
+                }
+                else
+                {
+                    MessageBox.Show(Constant.Messages.MessageNumber);
+                }
+            }
+            else if (checkBoxTriangle.Checked)
+            {
+                if (textBoxSide.Text == null)
+                {
+                    MessageBox.Show(Constant.Messages.MessageSide);
+                }
+
+                bool isNumber = decimal.TryParse(textBoxSide.Text, out decimal side);
+
+                if (isNumber)
+                {
+                    _shape = new Triangle(_shapeXCoordinate, _shapeYCoordinate, side, _outlineColor, _fillColor);
+                }
+                else
+                {
+                    MessageBox.Show(Constant.Messages.MessageNumber);
+                }
+            }
+
+            else
+            {
+                MessageBox.Show(Constant.Messages.MessageChooseShape);
+            }
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            DialogResult = DialogResult.Cancel;
         }
 
         private void buttonOutlineColor_Click(object sender, EventArgs e)
         {
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                outlineColor = colorDialog.Color;
+                _outlineColor = colorDialog.Color;
             }
         }
 
@@ -185,7 +229,7 @@ namespace CourseWorkVisualInterface
         {
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                fillColor = colorDialog.Color;
+                _fillColor = colorDialog.Color;
             }
         }
     }

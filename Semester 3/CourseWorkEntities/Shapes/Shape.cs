@@ -13,15 +13,6 @@ namespace CourseWorkEntities.Shapes
 
         public Color FillColor { get; set; }
 
-        protected Shape(int xCoordinate, int yCoordinate)
-        {
-            this.XCoordinate = xCoordinate;
-            this.YCoordinate = yCoordinate;
-            
-            this.OutlineColor = Color.Black;
-            this.FillColor = Color.White;
-        }
-
         protected Shape(int xCoordinate, int yCoordinate, Color outlineColor, Color fillColor)
         {
             XCoordinate = xCoordinate;
@@ -29,10 +20,10 @@ namespace CourseWorkEntities.Shapes
             OutlineColor = outlineColor;
             FillColor = fillColor;
         }
+        
+        public abstract decimal GetArea();
 
-        public abstract double GetArea();
-
-        public abstract void Draw();
+       // public abstract void Draw();
     }
 
    

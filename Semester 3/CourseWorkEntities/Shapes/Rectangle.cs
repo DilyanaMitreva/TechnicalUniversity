@@ -3,23 +3,14 @@ using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
 {
-    public class Rectangle:Shape
+    public class Rectangle : Shape
     {
-        public double Lenght { get; set; } // дължина
+        public decimal Lenght { get; set; } // дължина
 
-        public double Height { get; set; } // широчина
-        
-        public Rectangle(int xCoordinate, int yCoordinate, double lenght, double height) : base(xCoordinate, yCoordinate)
-        {
-            this.ShapeType = ShapeType.Rectangle;
-            this.Lenght = lenght;
-            this.Height = height;
+        public decimal Height { get; set; } // широчина
 
-            this.OutlineColor = Color.Black;
-            this.FillColor = Color.White;
-        }
-
-        public Rectangle(int xCoordinate, int yCoordinate, Color outlineColor, Color fillColor, double lenght, double height)
+        public Rectangle(int xCoordinate, int yCoordinate, decimal lenght, decimal height, Color outlineColor,
+            Color fillColor)
             : base(xCoordinate, yCoordinate, outlineColor, fillColor)
         {
             this.ShapeType = ShapeType.Rectangle;
@@ -27,16 +18,16 @@ namespace CourseWorkEntities.Shapes
             Height = height;
         }
 
-        public override double GetArea()
+        public override decimal GetArea()
         {
-            double result = Height * Lenght;
+            decimal result = Height * Lenght;
 
             return result;
         }
 
-        public override void Draw()
-        {
-            throw new System.NotImplementedException();
-        }
+        // public override void Draw()
+        // {
+        //     throw new System.NotImplementedException();
+        // }
     }
 }

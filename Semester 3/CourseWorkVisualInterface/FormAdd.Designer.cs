@@ -44,12 +44,7 @@ namespace CourseWorkVisualInterface
             this.labelLenght = new System.Windows.Forms.Label();
             this.textBoxLenght = new System.Windows.Forms.TextBox();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.textBoxXCoordinate = new System.Windows.Forms.TextBox();
-            this.textBoxYCoordinate = new System.Windows.Forms.TextBox();
-            this.labelXCoordinate = new System.Windows.Forms.Label();
-            this.labelYCoordinate = new System.Windows.Forms.Label();
             this.labelShapeType = new System.Windows.Forms.Label();
-            this.labelCoordinates = new System.Windows.Forms.Label();
             this.labelParameters = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.buttonOutlineColor = new System.Windows.Forms.Button();
@@ -59,7 +54,7 @@ namespace CourseWorkVisualInterface
             // addShape
             // 
             this.addShape.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.addShape.Location = new System.Drawing.Point(245, 500);
+            this.addShape.Location = new System.Drawing.Point(245, 362);
             this.addShape.Name = "addShape";
             this.addShape.Size = new System.Drawing.Size(159, 49);
             this.addShape.TabIndex = 0;
@@ -108,7 +103,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxRadius
             // 
-            this.textBoxRadius.Location = new System.Drawing.Point(7, 285);
+            this.textBoxRadius.Location = new System.Drawing.Point(9, 152);
             this.textBoxRadius.Name = "textBoxRadius";
             this.textBoxRadius.Size = new System.Drawing.Size(392, 22);
             this.textBoxRadius.TabIndex = 4;
@@ -116,7 +111,7 @@ namespace CourseWorkVisualInterface
             // 
             // labelRadius
             // 
-            this.labelRadius.Location = new System.Drawing.Point(7, 262);
+            this.labelRadius.Location = new System.Drawing.Point(9, 129);
             this.labelRadius.Name = "labelRadius";
             this.labelRadius.Size = new System.Drawing.Size(56, 20);
             this.labelRadius.TabIndex = 5;
@@ -125,7 +120,7 @@ namespace CourseWorkVisualInterface
             // 
             // labelSide
             // 
-            this.labelSide.Location = new System.Drawing.Point(7, 262);
+            this.labelSide.Location = new System.Drawing.Point(9, 129);
             this.labelSide.Name = "labelSide";
             this.labelSide.Size = new System.Drawing.Size(56, 20);
             this.labelSide.TabIndex = 9;
@@ -134,7 +129,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxSide
             // 
-            this.textBoxSide.Location = new System.Drawing.Point(8, 285);
+            this.textBoxSide.Location = new System.Drawing.Point(10, 152);
             this.textBoxSide.Name = "textBoxSide";
             this.textBoxSide.Size = new System.Drawing.Size(391, 22);
             this.textBoxSide.TabIndex = 8;
@@ -142,7 +137,7 @@ namespace CourseWorkVisualInterface
             // 
             // labelHeight
             // 
-            this.labelHeight.Location = new System.Drawing.Point(7, 262);
+            this.labelHeight.Location = new System.Drawing.Point(9, 129);
             this.labelHeight.Name = "labelHeight";
             this.labelHeight.Size = new System.Drawing.Size(56, 20);
             this.labelHeight.TabIndex = 11;
@@ -151,7 +146,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxHeight
             // 
-            this.textBoxHeight.Location = new System.Drawing.Point(8, 285);
+            this.textBoxHeight.Location = new System.Drawing.Point(10, 152);
             this.textBoxHeight.Name = "textBoxHeight";
             this.textBoxHeight.Size = new System.Drawing.Size(391, 22);
             this.textBoxHeight.TabIndex = 10;
@@ -159,7 +154,7 @@ namespace CourseWorkVisualInterface
             // 
             // labelLenght
             // 
-            this.labelLenght.Location = new System.Drawing.Point(8, 326);
+            this.labelLenght.Location = new System.Drawing.Point(10, 193);
             this.labelLenght.Name = "labelLenght";
             this.labelLenght.Size = new System.Drawing.Size(56, 20);
             this.labelLenght.TabIndex = 13;
@@ -168,7 +163,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxLenght
             // 
-            this.textBoxLenght.Location = new System.Drawing.Point(8, 349);
+            this.textBoxLenght.Location = new System.Drawing.Point(10, 216);
             this.textBoxLenght.Name = "textBoxLenght";
             this.textBoxLenght.Size = new System.Drawing.Size(392, 22);
             this.textBoxLenght.TabIndex = 12;
@@ -177,47 +172,13 @@ namespace CourseWorkVisualInterface
             // buttonCancel
             // 
             this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonCancel.Location = new System.Drawing.Point(12, 500);
+            this.buttonCancel.Location = new System.Drawing.Point(12, 362);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(159, 49);
             this.buttonCancel.TabIndex = 14;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // textBoxXCoordinate
-            // 
-            this.textBoxXCoordinate.Location = new System.Drawing.Point(8, 186);
-            this.textBoxXCoordinate.Name = "textBoxXCoordinate";
-            this.textBoxXCoordinate.Size = new System.Drawing.Size(133, 22);
-            this.textBoxXCoordinate.TabIndex = 15;
-            this.textBoxXCoordinate.Visible = false;
-            // 
-            // textBoxYCoordinate
-            // 
-            this.textBoxYCoordinate.Location = new System.Drawing.Point(271, 186);
-            this.textBoxYCoordinate.Name = "textBoxYCoordinate";
-            this.textBoxYCoordinate.Size = new System.Drawing.Size(133, 22);
-            this.textBoxYCoordinate.TabIndex = 16;
-            this.textBoxYCoordinate.Visible = false;
-            // 
-            // labelXCoordinate
-            // 
-            this.labelXCoordinate.Location = new System.Drawing.Point(6, 163);
-            this.labelXCoordinate.Name = "labelXCoordinate";
-            this.labelXCoordinate.Size = new System.Drawing.Size(134, 20);
-            this.labelXCoordinate.TabIndex = 17;
-            this.labelXCoordinate.Text = "X coordinate";
-            this.labelXCoordinate.Visible = false;
-            // 
-            // labelYCoordinate
-            // 
-            this.labelYCoordinate.Location = new System.Drawing.Point(271, 163);
-            this.labelYCoordinate.Name = "labelYCoordinate";
-            this.labelYCoordinate.Size = new System.Drawing.Size(134, 20);
-            this.labelYCoordinate.TabIndex = 18;
-            this.labelYCoordinate.Text = "Y coordinate";
-            this.labelYCoordinate.Visible = false;
             // 
             // labelShapeType
             // 
@@ -228,20 +189,10 @@ namespace CourseWorkVisualInterface
             this.labelShapeType.TabIndex = 19;
             this.labelShapeType.Text = "Select a shape type";
             // 
-            // labelCoordinates
-            // 
-            this.labelCoordinates.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCoordinates.Location = new System.Drawing.Point(11, 101);
-            this.labelCoordinates.Name = "labelCoordinates";
-            this.labelCoordinates.Size = new System.Drawing.Size(397, 62);
-            this.labelCoordinates.TabIndex = 20;
-            this.labelCoordinates.Text = "Enter the start coordinate \r\n(point (0,0) is in the top left corner)";
-            this.labelCoordinates.Visible = false;
-            // 
             // labelParameters
             // 
             this.labelParameters.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelParameters.Location = new System.Drawing.Point(6, 224);
+            this.labelParameters.Location = new System.Drawing.Point(8, 91);
             this.labelParameters.Name = "labelParameters";
             this.labelParameters.Size = new System.Drawing.Size(392, 30);
             this.labelParameters.TabIndex = 21;
@@ -251,7 +202,7 @@ namespace CourseWorkVisualInterface
             // buttonOutlineColor
             // 
             this.buttonOutlineColor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonOutlineColor.Location = new System.Drawing.Point(12, 406);
+            this.buttonOutlineColor.Location = new System.Drawing.Point(12, 268);
             this.buttonOutlineColor.Name = "buttonOutlineColor";
             this.buttonOutlineColor.Size = new System.Drawing.Size(159, 49);
             this.buttonOutlineColor.TabIndex = 22;
@@ -263,7 +214,7 @@ namespace CourseWorkVisualInterface
             // buttonFillColor
             // 
             this.buttonFillColor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonFillColor.Location = new System.Drawing.Point(245, 406);
+            this.buttonFillColor.Location = new System.Drawing.Point(245, 268);
             this.buttonFillColor.Name = "buttonFillColor";
             this.buttonFillColor.Size = new System.Drawing.Size(159, 49);
             this.buttonFillColor.TabIndex = 23;
@@ -276,16 +227,11 @@ namespace CourseWorkVisualInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 561);
+            this.ClientSize = new System.Drawing.Size(416, 423);
             this.Controls.Add(this.buttonFillColor);
             this.Controls.Add(this.buttonOutlineColor);
             this.Controls.Add(this.labelParameters);
-            this.Controls.Add(this.labelCoordinates);
             this.Controls.Add(this.labelShapeType);
-            this.Controls.Add(this.labelYCoordinate);
-            this.Controls.Add(this.labelXCoordinate);
-            this.Controls.Add(this.textBoxYCoordinate);
-            this.Controls.Add(this.textBoxXCoordinate);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.labelLenght);
             this.Controls.Add(this.textBoxLenght);
@@ -317,13 +263,6 @@ namespace CourseWorkVisualInterface
 
         private System.Windows.Forms.Label labelParameters;
 
-        private System.Windows.Forms.Label labelCoordinates;
-
-        private System.Windows.Forms.Label labelYCoordinate;
-
-        private System.Windows.Forms.TextBox textBoxXCoordinate;
-        private System.Windows.Forms.TextBox textBoxYCoordinate;
-        private System.Windows.Forms.Label labelXCoordinate;
         private System.Windows.Forms.Label labelShapeType;
 
         private System.Windows.Forms.Button buttonCancel;

@@ -66,6 +66,7 @@
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="ShapeCreateService.cs" />
         <EmbeddedResource Include="FormAdd.resx">
           <DependentUpon>FormAdd.cs</DependentUpon>
         </EmbeddedResource>

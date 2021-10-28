@@ -6,30 +6,24 @@ namespace CourseWorkEntities.Shapes
 {
     public class Circle:Shape
     {
-        public double Radius { get; set; }
-        
-        public Circle(int xCoordinate, int yCoordinate, double radius) : base(xCoordinate, yCoordinate)
-        {
-            this.ShapeType = ShapeType.Circle;
-            this.Radius = radius;
-        }
+        public decimal Radius { get; set; }
 
-        public Circle(int xCoordinate, int yCoordinate, Color outlineColor, Color fillColor, double radius) : base(xCoordinate, yCoordinate, outlineColor, fillColor)
+        public Circle(int xCoordinate, int yCoordinate, decimal radius, Color outlineColor, Color fillColor) : base(xCoordinate, yCoordinate, outlineColor, fillColor)
         {
             this.ShapeType = ShapeType.Circle;
             Radius = radius;
         }
 
-        public override double GetArea()
+        public override decimal GetArea()
         {
-            double result = Math.PI * Radius * Radius;
+            decimal result = (decimal)Math.PI * Radius * Radius;
 
             return result;
         }
 
-        public override void Draw()
-        {
-            throw new NotImplementedException();
-        }
+        // public override void Draw()
+        // {
+        //     throw new NotImplementedException();
+        // }
     }
 }

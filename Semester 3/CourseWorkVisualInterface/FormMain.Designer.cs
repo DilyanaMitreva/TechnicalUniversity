@@ -30,7 +30,6 @@
         private void InitializeComponent()
         {
             this.buttonFunctionality = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
             this.canvas = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
@@ -45,17 +44,6 @@
             this.buttonFunctionality.UseVisualStyleBackColor = true;
             this.buttonFunctionality.Click += new System.EventHandler(this.buttonFunctionality_Click);
             // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.Location = new System.Drawing.Point(823, 424);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(159, 29);
-            this.buttonAdd.TabIndex = 1;
-            this.buttonAdd.Text = "Add Shape";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.button2_Click);
-            // 
             // canvas
             // 
             this.canvas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
@@ -64,6 +52,7 @@
             this.canvas.Name = "canvas";
             this.canvas.Size = new System.Drawing.Size(992, 418);
             this.canvas.TabIndex = 2;
+            this.canvas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.canvas_MouseClick);
             // 
             // FormMain
             // 
@@ -72,7 +61,6 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(994, 465);
             this.Controls.Add(this.canvas);
-            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonFunctionality);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -82,7 +70,6 @@
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonFunctionality;
 
         private System.Windows.Forms.Panel canvas;
