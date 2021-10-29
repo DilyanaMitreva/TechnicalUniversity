@@ -46,8 +46,8 @@ namespace Exercise4
             }
 
             // Random r = new Random();
-            // Color c = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
-            // Color.FromArgb(100, c);
+            // Color borderColor = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255));
+            // Color fillColor =  Color.FromArgb(100, c);
             if (shape != null)
             {
                 _shapes.Add(shape);
@@ -70,7 +70,7 @@ namespace Exercise4
                     _shapes.RemoveAt(i);
                 }
             }
-            
+
             Invalidate();
         }
     }

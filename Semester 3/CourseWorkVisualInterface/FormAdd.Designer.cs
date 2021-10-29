@@ -31,7 +31,7 @@ namespace CourseWorkVisualInterface
         /// </summary>
         private void InitializeComponent()
         {
-            this.addShape = new System.Windows.Forms.Button();
+            this.buttonAddShape = new System.Windows.Forms.Button();
             this.checkBoxCircle = new System.Windows.Forms.CheckBox();
             this.checkBoxRectangle = new System.Windows.Forms.CheckBox();
             this.checkBoxTriangle = new System.Windows.Forms.CheckBox();
@@ -47,20 +47,18 @@ namespace CourseWorkVisualInterface
             this.labelShapeType = new System.Windows.Forms.Label();
             this.labelParameters = new System.Windows.Forms.Label();
             this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.buttonOutlineColor = new System.Windows.Forms.Button();
-            this.buttonFillColor = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // addShape
+            // buttonAddShape
             // 
-            this.addShape.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.addShape.Location = new System.Drawing.Point(245, 362);
-            this.addShape.Name = "addShape";
-            this.addShape.Size = new System.Drawing.Size(159, 49);
-            this.addShape.TabIndex = 0;
-            this.addShape.Text = "Add Shape";
-            this.addShape.UseVisualStyleBackColor = true;
-            this.addShape.Click += new System.EventHandler(this.addShape_Click);
+            this.buttonAddShape.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonAddShape.Location = new System.Drawing.Point(245, 275);
+            this.buttonAddShape.Name = "buttonAddShape";
+            this.buttonAddShape.Size = new System.Drawing.Size(159, 49);
+            this.buttonAddShape.TabIndex = 0;
+            this.buttonAddShape.Text = "Add Shape";
+            this.buttonAddShape.UseVisualStyleBackColor = true;
+            this.buttonAddShape.Click += new System.EventHandler(this.addShape_Click);
             // 
             // checkBoxCircle
             // 
@@ -91,12 +89,12 @@ namespace CourseWorkVisualInterface
             // checkBoxTriangle
             // 
             this.checkBoxTriangle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBoxTriangle.Location = new System.Drawing.Point(324, 39);
+            this.checkBoxTriangle.Location = new System.Drawing.Point(269, 39);
             this.checkBoxTriangle.Name = "checkBoxTriangle";
             this.checkBoxTriangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxTriangle.Size = new System.Drawing.Size(76, 49);
+            this.checkBoxTriangle.Size = new System.Drawing.Size(135, 49);
             this.checkBoxTriangle.TabIndex = 3;
-            this.checkBoxTriangle.Text = "Triangle";
+            this.checkBoxTriangle.Text = "EquilateralTriangle";
             this.checkBoxTriangle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.checkBoxTriangle.UseVisualStyleBackColor = true;
             this.checkBoxTriangle.CheckedChanged += new System.EventHandler(this.checkBoxTriangle_CheckedChanged);
@@ -158,7 +156,7 @@ namespace CourseWorkVisualInterface
             this.labelLenght.Name = "labelLenght";
             this.labelLenght.Size = new System.Drawing.Size(56, 20);
             this.labelLenght.TabIndex = 13;
-            this.labelLenght.Text = "Lenght";
+            this.labelLenght.Text = "Width";
             this.labelLenght.Visible = false;
             // 
             // textBoxLenght
@@ -172,7 +170,8 @@ namespace CourseWorkVisualInterface
             // buttonCancel
             // 
             this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonCancel.Location = new System.Drawing.Point(12, 362);
+            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonCancel.Location = new System.Drawing.Point(12, 275);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(159, 49);
             this.buttonCancel.TabIndex = 14;
@@ -185,7 +184,7 @@ namespace CourseWorkVisualInterface
             this.labelShapeType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelShapeType.Location = new System.Drawing.Point(8, 9);
             this.labelShapeType.Name = "labelShapeType";
-            this.labelShapeType.Size = new System.Drawing.Size(396, 27);
+            this.labelShapeType.Size = new System.Drawing.Size(163, 27);
             this.labelShapeType.TabIndex = 19;
             this.labelShapeType.Text = "Select a shape type";
             // 
@@ -194,42 +193,18 @@ namespace CourseWorkVisualInterface
             this.labelParameters.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelParameters.Location = new System.Drawing.Point(8, 91);
             this.labelParameters.Name = "labelParameters";
-            this.labelParameters.Size = new System.Drawing.Size(392, 30);
+            this.labelParameters.Size = new System.Drawing.Size(354, 30);
             this.labelParameters.TabIndex = 21;
             this.labelParameters.Text = "Enter the required parameters for the shape\r\n";
             this.labelParameters.Visible = false;
             // 
-            // buttonOutlineColor
-            // 
-            this.buttonOutlineColor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonOutlineColor.Location = new System.Drawing.Point(12, 268);
-            this.buttonOutlineColor.Name = "buttonOutlineColor";
-            this.buttonOutlineColor.Size = new System.Drawing.Size(159, 49);
-            this.buttonOutlineColor.TabIndex = 22;
-            this.buttonOutlineColor.Text = "Select Outline Color";
-            this.buttonOutlineColor.UseVisualStyleBackColor = true;
-            this.buttonOutlineColor.Visible = false;
-            this.buttonOutlineColor.Click += new System.EventHandler(this.buttonOutlineColor_Click);
-            // 
-            // buttonFillColor
-            // 
-            this.buttonFillColor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonFillColor.Location = new System.Drawing.Point(245, 268);
-            this.buttonFillColor.Name = "buttonFillColor";
-            this.buttonFillColor.Size = new System.Drawing.Size(159, 49);
-            this.buttonFillColor.TabIndex = 23;
-            this.buttonFillColor.Text = "Select Fill Color";
-            this.buttonFillColor.UseVisualStyleBackColor = true;
-            this.buttonFillColor.Visible = false;
-            this.buttonFillColor.Click += new System.EventHandler(this.buttonFillColor_Click);
-            // 
             // FormAdd
             // 
+            this.AcceptButton = this.buttonAddShape;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 423);
-            this.Controls.Add(this.buttonFillColor);
-            this.Controls.Add(this.buttonOutlineColor);
+            this.CancelButton = this.buttonCancel;
+            this.ClientSize = new System.Drawing.Size(416, 336);
             this.Controls.Add(this.labelParameters);
             this.Controls.Add(this.labelShapeType);
             this.Controls.Add(this.buttonCancel);
@@ -244,7 +219,7 @@ namespace CourseWorkVisualInterface
             this.Controls.Add(this.checkBoxTriangle);
             this.Controls.Add(this.checkBoxRectangle);
             this.Controls.Add(this.checkBoxCircle);
-            this.Controls.Add(this.addShape);
+            this.Controls.Add(this.buttonAddShape);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -255,8 +230,7 @@ namespace CourseWorkVisualInterface
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.Button buttonFillColor;
-        private System.Windows.Forms.Button buttonOutlineColor;
+        private System.Windows.Forms.Button buttonAddShape;
 
         private System.Windows.Forms.ColorDialog colorDialog;
 

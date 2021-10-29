@@ -4,10 +4,10 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{ADFAA952-32B8-4826-A227-4186D34D9661}</ProjectGuid>
+        <ProjectGuid>{C38157F7-D645-4365-9BB8-EDEC098ECAB0}</ProjectGuid>
         <OutputType>WinExe</OutputType>
-        <RootNamespace>CourseWorkVisualInterface</RootNamespace>
-        <AssemblyName>CourseWorkVisualInterface</AssemblyName>
+        <RootNamespace>Exercise5</RootNamespace>
+        <AssemblyName>Exercise5</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,34 +46,21 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="FormAdd.cs">
+        <Compile Include="FormMain.cs" />
+        <Compile Include="FormMain.Designer.cs" />
+        <Compile Include="FormProperties.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="FormAdd.Designer.cs">
-          <DependentUpon>FormAdd.cs</DependentUpon>
-        </Compile>
-        <Compile Include="FormFunctionality.cs">
-          <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="FormFunctionality.Designer.cs">
-          <DependentUpon>FormFunctionality.cs</DependentUpon>
-        </Compile>
-        <Compile Include="FormMain.cs">
-            <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="FormMain.Designer.cs">
-            <DependentUpon>FormMain.cs</DependentUpon>
+        <Compile Include="FormProperties.Designer.cs">
+          <DependentUpon>FormProperties.cs</DependentUpon>
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <EmbeddedResource Include="FormAdd.resx">
-          <DependentUpon>FormAdd.cs</DependentUpon>
-        </EmbeddedResource>
-        <EmbeddedResource Include="FormFunctionality.resx">
-          <DependentUpon>FormFunctionality.cs</DependentUpon>
-        </EmbeddedResource>
-        <EmbeddedResource Include="FormMain.resx">
-          <DependentUpon>FormMain.cs</DependentUpon>
+        <Compile Include="Rectangle.cs" />
+        <Compile Include="Shape.cs" />
+        <EmbeddedResource Include="FormMain.resx" />
+        <EmbeddedResource Include="FormProperties.resx">
+          <DependentUpon>FormProperties.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
@@ -96,12 +83,6 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="App.config" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\CourseWorkEntities\CourseWorkEntities.csproj">
-        <Project>{27034efe-699c-436e-b5e4-6ecf4bc429f4}</Project>
-        <Name>CourseWorkEntities</Name>
-      </ProjectReference>
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

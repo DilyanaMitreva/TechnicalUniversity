@@ -5,29 +5,37 @@ namespace CourseWorkEntities.Shapes
 {
     public class Rectangle : Shape
     {
-        public decimal Lenght { get; set; } // дължина
+        public int Width { get; set; } // дължина
 
-        public decimal Height { get; set; } // широчина
+        public int Height { get; set; } // широчина
 
-        public Rectangle(int xCoordinate, int yCoordinate, decimal lenght, decimal height, Color outlineColor,
+        public Rectangle(int xCoordinate, int yCoordinate, int width, int height, Color colorBorder,
             Color fillColor)
-            : base(xCoordinate, yCoordinate, outlineColor, fillColor)
+            : base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
             this.ShapeType = ShapeType.Rectangle;
-            Lenght = lenght;
+            Width = width;
             Height = height;
         }
 
         public override decimal GetArea()
         {
-            decimal result = Height * Lenght;
+            decimal result = Height * Width;
 
             return result;
         }
 
-        // public override void Draw()
-        // {
-        //     throw new System.NotImplementedException();
-        // }
+        public override void Draw(Graphics graphics)
+        {
+            using (Pen pen = new Pen(this.ColorBorder))
+            {
+                graphics.DrawRectangle(pen, this.XCoordinate, this.YCoordinate, this.Width, this.Height);
+            }
+
+            using (Brush brush = new SolidBrush(this.FillColor))
+            {
+                graphics.FillRectangle(brush, this.XCoordinate, this.YCoordinate, this.Width, this.Height);
+            }
+        }
     }
 }

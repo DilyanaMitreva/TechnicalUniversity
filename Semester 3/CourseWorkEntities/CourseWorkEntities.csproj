@@ -43,9 +43,8 @@
         <Compile Include="Shapes\Circle.cs" />
         <Compile Include="Shapes\Rectangle.cs" />
         <Compile Include="Shapes\Shape.cs" />
-        <Compile Include="Shapes\Triangle.cs" />
+        <Compile Include="Shapes\EquilateralTriangle.cs" />
         <Compile Include="Utilities\Constant.cs" />
-        <Compile Include="Utilities\ICreateService.cs" />
         <Compile Include="Utilities\ShapeType.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

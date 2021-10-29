@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseWorkEntities", "Cours
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseWorkVisualInterface", "CourseWorkVisualInterface\CourseWorkVisualInterface.csproj", "{ADFAA952-32B8-4826-A227-4186D34D9661}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercise5", "Exercise5\Exercise5.csproj", "{C38157F7-D645-4365-9BB8-EDEC098ECAB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{ADFAA952-32B8-4826-A227-4186D34D9661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADFAA952-32B8-4826-A227-4186D34D9661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADFAA952-32B8-4826-A227-4186D34D9661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C38157F7-D645-4365-9BB8-EDEC098ECAB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38157F7-D645-4365-9BB8-EDEC098ECAB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38157F7-D645-4365-9BB8-EDEC098ECAB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38157F7-D645-4365-9BB8-EDEC098ECAB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{27034EFE-699C-436E-B5E4-6ECF4BC429F4} = {942D7244-D183-4263-958A-1971E1403317}

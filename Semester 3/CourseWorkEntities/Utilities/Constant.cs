@@ -12,7 +12,7 @@
 
             public const string MessageHeight = "Enter height";
 
-            public const string MessageLenght = "Enter lenght";
+            public const string MessageWidth = "Enter width";
 
             public const string MessageChooseShape = "Choose a shape";
         }

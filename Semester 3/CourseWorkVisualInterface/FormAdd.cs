@@ -10,10 +10,6 @@ namespace CourseWorkVisualInterface
     {
         private Shape _shape;
 
-        private Color _outlineColor = Color.Black;
-
-        private Color _fillColor = Color.Transparent;
-
         private int _shapeXCoordinate;
         private int _shapeYCoordinate;
 
@@ -51,17 +47,12 @@ namespace CourseWorkVisualInterface
 
                 labelSide.Visible = false;
                 textBoxSide.Visible = false;
-
-                buttonFillColor.Visible = true;
-                buttonOutlineColor.Visible = true;
             }
             else
             {
                 labelRadius.Visible = false;
                 textBoxRadius.Visible = false;
 
-                buttonFillColor.Visible = false;
-                buttonOutlineColor.Visible = false;
 
                 labelParameters.Visible = false;
             }
@@ -87,9 +78,6 @@ namespace CourseWorkVisualInterface
 
                 labelSide.Visible = false;
                 textBoxSide.Visible = false;
-
-                buttonFillColor.Visible = true;
-                buttonOutlineColor.Visible = true;
             }
             else
             {
@@ -99,8 +87,6 @@ namespace CourseWorkVisualInterface
                 textBoxHeight.Visible = false;
                 textBoxLenght.Visible = false;
 
-                buttonFillColor.Visible = false;
-                buttonOutlineColor.Visible = false;
 
                 labelParameters.Visible = false;
             }
@@ -126,17 +112,12 @@ namespace CourseWorkVisualInterface
 
                 labelRadius.Visible = false;
                 textBoxRadius.Visible = false;
-
-                buttonFillColor.Visible = true;
-                buttonOutlineColor.Visible = true;
             }
             else
             {
                 labelSide.Visible = false;
                 textBoxSide.Visible = false;
 
-                buttonFillColor.Visible = false;
-                buttonOutlineColor.Visible = false;
 
                 labelParameters.Visible = false;
             }
@@ -144,6 +125,10 @@ namespace CourseWorkVisualInterface
 
         private void addShape_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
+            Color borderColor = Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
+            Color fillColor = Color.FromArgb(100, borderColor);
+
             if (checkBoxCircle.Checked)
             {
                 if (textBoxRadius.Text == null)
@@ -151,11 +136,11 @@ namespace CourseWorkVisualInterface
                     MessageBox.Show(Constant.Messages.MessageRadius);
                 }
 
-                bool isNumber = decimal.TryParse(textBoxRadius.Text, out decimal radius);
+                bool isNumber = int.TryParse(textBoxRadius.Text, out int radius);
 
                 if (isNumber)
                 {
-                    _shape = new Circle(_shapeXCoordinate, _shapeYCoordinate, radius, _outlineColor, _fillColor);
+                    _shape = new Circle(_shapeXCoordinate, _shapeYCoordinate, radius, borderColor, fillColor);
                 }
                 else
                 {
@@ -170,17 +155,17 @@ namespace CourseWorkVisualInterface
                 }
                 else if (textBoxLenght.Text == null)
                 {
-                    MessageBox.Show(Constant.Messages.MessageLenght);
+                    MessageBox.Show(Constant.Messages.MessageWidth);
                 }
 
-                bool isNumber = decimal.TryParse(textBoxHeight.Text, out decimal height);
+                bool isNumber = int.TryParse(textBoxHeight.Text, out int height);
 
-                bool isNumber2 = decimal.TryParse(textBoxLenght.Text, out decimal lenght);
+                bool isNumber2 = int.TryParse(textBoxLenght.Text, out int lenght);
 
                 if (isNumber && isNumber2)
                 {
                     _shape = new CourseWorkEntities.Shapes.Rectangle(_shapeXCoordinate, _shapeYCoordinate, lenght,
-                        height, _outlineColor, _fillColor);
+                        height, borderColor, fillColor);
                 }
                 else
                 {
@@ -194,43 +179,29 @@ namespace CourseWorkVisualInterface
                     MessageBox.Show(Constant.Messages.MessageSide);
                 }
 
-                bool isNumber = decimal.TryParse(textBoxSide.Text, out decimal side);
+                bool isNumber = int.TryParse(textBoxSide.Text, out int side);
 
                 if (isNumber)
                 {
-                    _shape = new Triangle(_shapeXCoordinate, _shapeYCoordinate, side, _outlineColor, _fillColor);
+                    _shape = new EquilateralTriangle(_shapeXCoordinate, _shapeYCoordinate, side, borderColor,
+                        fillColor);
                 }
                 else
                 {
                     MessageBox.Show(Constant.Messages.MessageNumber);
                 }
             }
-
             else
             {
                 MessageBox.Show(Constant.Messages.MessageChooseShape);
             }
+
+            DialogResult = DialogResult.OK;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-        }
-
-        private void buttonOutlineColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                _outlineColor = colorDialog.Color;
-            }
-        }
-
-        private void buttonFillColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-            {
-                _fillColor = colorDialog.Color;
-            }
         }
     }
 }

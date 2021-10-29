@@ -29,51 +29,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonFunctionality = new System.Windows.Forms.Button();
-            this.canvas = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonMoreFunctions = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonFunctionality
+            // panel1
             // 
-            this.buttonFunctionality.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonFunctionality.Location = new System.Drawing.Point(12, 424);
-            this.buttonFunctionality.Name = "buttonFunctionality";
-            this.buttonFunctionality.Size = new System.Drawing.Size(159, 29);
-            this.buttonFunctionality.TabIndex = 0;
-            this.buttonFunctionality.Text = "More Functions";
-            this.buttonFunctionality.UseVisualStyleBackColor = true;
-            this.buttonFunctionality.Click += new System.EventHandler(this.buttonFunctionality_Click);
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.buttonDelete);
+            this.panel1.Controls.Add(this.buttonMoreFunctions);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Location = new System.Drawing.Point(0, 560);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(982, 83);
+            this.panel1.TabIndex = 0;
             // 
-            // canvas
+            // buttonDelete
             // 
-            this.canvas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-            this.canvas.BackColor = System.Drawing.SystemColors.Control;
-            this.canvas.Location = new System.Drawing.Point(2, 0);
-            this.canvas.Name = "canvas";
-            this.canvas.Size = new System.Drawing.Size(992, 418);
-            this.canvas.TabIndex = 2;
-            this.canvas.MouseClick += new System.Windows.Forms.MouseEventHandler(this.canvas_MouseClick);
+            this.buttonDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDelete.Location = new System.Drawing.Point(781, 19);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(189, 52);
+            this.buttonDelete.TabIndex = 1;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            // 
+            // buttonMoreFunctions
+            // 
+            this.buttonMoreFunctions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonMoreFunctions.Location = new System.Drawing.Point(12, 19);
+            this.buttonMoreFunctions.Name = "buttonMoreFunctions";
+            this.buttonMoreFunctions.Size = new System.Drawing.Size(189, 52);
+            this.buttonMoreFunctions.TabIndex = 0;
+            this.buttonMoreFunctions.Text = "More Functions";
+            this.buttonMoreFunctions.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(994, 465);
-            this.Controls.Add(this.canvas);
-            this.Controls.Add(this.buttonFunctionality);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(982, 643);
+            this.Controls.Add(this.panel1);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scene";
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseClick);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button buttonFunctionality;
+        private System.Windows.Forms.Button buttonMoreFunctions;
 
-        private System.Windows.Forms.Panel canvas;
-        
+        private System.Windows.Forms.Button buttonDelete;
+
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+
+        private System.Windows.Forms.Panel panel1;
 
         #endregion
     }

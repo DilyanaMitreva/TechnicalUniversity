@@ -15,16 +15,17 @@ namespace CourseWorkVisualInterface
             InitializeComponent();
         }
 
-        private void buttonFunctionality_Click(object sender, EventArgs e)
+        protected override void OnPaint(PaintEventArgs e)
         {
-            FormFunctionality formFunctionality = new FormFunctionality();
-            if (formFunctionality.ShowDialog() == DialogResult.OK)
+            base.OnPaint(e);
+
+            foreach (var shape in _shapes)
             {
+                shape.Draw(e.Graphics);
             }
         }
 
-
-        private void canvas_MouseClick(object sender, MouseEventArgs e)
+        private void FormMain_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -32,10 +33,13 @@ namespace CourseWorkVisualInterface
                 if (formAdd.ShowDialog() == DialogResult.OK)
                 {
                     _shapes.Add(formAdd.getShape());
+                    
+                    
                 }
                 
-               // Invalidate();
+                Invalidate();
             }
         }
     }
 }
+

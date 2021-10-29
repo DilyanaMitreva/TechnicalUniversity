@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -9,21 +10,21 @@ namespace CourseWorkEntities.Shapes
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
 
-        public Color OutlineColor { get; set; }
+        public Color ColorBorder { get; set; }
 
         public Color FillColor { get; set; }
-
-        protected Shape(int xCoordinate, int yCoordinate, Color outlineColor, Color fillColor)
+        
+        protected Shape(int xCoordinate, int yCoordinate, Color colorBorder, Color fillColor)
         {
             XCoordinate = xCoordinate;
             YCoordinate = yCoordinate;
-            OutlineColor = outlineColor;
+            ColorBorder = colorBorder;
             FillColor = fillColor;
         }
         
         public abstract decimal GetArea();
 
-       // public abstract void Draw();
+        public abstract void Draw(Graphics graphics);
     }
 
    
