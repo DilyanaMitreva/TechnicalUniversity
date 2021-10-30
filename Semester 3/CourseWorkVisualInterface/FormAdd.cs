@@ -8,10 +8,10 @@ namespace CourseWorkVisualInterface
 {
     public partial class FormAdd : Form
     {
-        private Shape _shape;
+        private readonly int _shapeXCoordinate;
+        private readonly int _shapeYCoordinate;
 
-        private int _shapeXCoordinate;
-        private int _shapeYCoordinate;
+        public Shape Shape { get; set; }
 
         public FormAdd()
         {
@@ -24,8 +24,6 @@ namespace CourseWorkVisualInterface
             this._shapeXCoordinate = x;
             this._shapeYCoordinate = y;
         }
-
-        public Shape getShape() => _shape;
 
         private void checkBoxCircle_Click(object sender, EventArgs e)
         {
@@ -117,8 +115,6 @@ namespace CourseWorkVisualInterface
             {
                 labelSide.Visible = false;
                 textBoxSide.Visible = false;
-
-
                 labelParameters.Visible = false;
             }
         }
@@ -140,7 +136,7 @@ namespace CourseWorkVisualInterface
 
                 if (isNumber)
                 {
-                    _shape = new Circle(_shapeXCoordinate, _shapeYCoordinate, radius, borderColor, fillColor);
+                    Shape = new Circle(_shapeXCoordinate, _shapeYCoordinate, radius, borderColor, fillColor);
                 }
                 else
                 {
@@ -164,7 +160,7 @@ namespace CourseWorkVisualInterface
 
                 if (isNumber && isNumber2)
                 {
-                    _shape = new CourseWorkEntities.Shapes.Rectangle(_shapeXCoordinate, _shapeYCoordinate, lenght,
+                    Shape = new CourseWorkEntities.Shapes.Rectangle(_shapeXCoordinate, _shapeYCoordinate, lenght,
                         height, borderColor, fillColor);
                 }
                 else
@@ -183,7 +179,7 @@ namespace CourseWorkVisualInterface
 
                 if (isNumber)
                 {
-                    _shape = new EquilateralTriangle(_shapeXCoordinate, _shapeYCoordinate, side, borderColor,
+                    Shape = new EquilateralTriangle(_shapeXCoordinate, _shapeYCoordinate, side, borderColor,
                         fillColor);
                 }
                 else

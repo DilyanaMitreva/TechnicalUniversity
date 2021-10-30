@@ -7,6 +7,8 @@ namespace CourseWorkEntities.Shapes
     public class Circle : Shape
     {
         public int Radius { get; set; }
+        
+        public override decimal Area => (decimal)Math.PI * Radius * Radius;
 
         public Circle(int xCoordinate, int yCoordinate, int radius, Color colorBorder, Color fillColor) : base(
             xCoordinate, yCoordinate, colorBorder, fillColor)
@@ -15,24 +17,22 @@ namespace CourseWorkEntities.Shapes
             Radius = radius;
         }
 
-        public override decimal GetArea()
-        {
-            decimal result = (decimal)Math.PI * Radius * Radius;
-
-            return result;
+        public override bool PointInShape(PointImpl point)
+        { return
+                Location.X <= point.X && point.X <= Location.X + Radius
+                                   &&
+                                   Location.Y <= point.Y && point.Y <= Location.Y + Radius
+                ;
+            
+            
         }
 
-        public override void Draw(Graphics graphics)
+        public override bool Intersect(Shape shape)
         {
-            using (Pen pen = new Pen(this.ColorBorder))
-            {
-                graphics.DrawEllipse(pen, this.XCoordinate, this.YCoordinate, 2*Radius, 2*Radius);
-            }
-
-            using (Brush brush = new SolidBrush(this.FillColor))
-            {
-                graphics.FillEllipse(brush, this.XCoordinate, this.YCoordinate, 2 * Radius, 2 * Radius);
-            }
+            throw new NotImplementedException();
         }
+        
+       
+        
     }
 }

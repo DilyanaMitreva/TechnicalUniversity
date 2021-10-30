@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -9,6 +10,8 @@ namespace CourseWorkEntities.Shapes
 
         public int Height { get; set; } // широчина
 
+        public override decimal Area => Height * Width;
+
         public Rectangle(int xCoordinate, int yCoordinate, int width, int height, Color colorBorder,
             Color fillColor)
             : base(xCoordinate, yCoordinate, colorBorder, fillColor)
@@ -18,24 +21,18 @@ namespace CourseWorkEntities.Shapes
             Height = height;
         }
 
-        public override decimal GetArea()
-        {
-            decimal result = Height * Width;
 
-            return result;
+        public override bool PointInShape(PointImpl point)
+        {
+            return
+                 Location.X <= point.X && point.X <= Location.X + Width
+                 && 
+                 Location.Y <= point.Y && point.Y <= Location.Y + Height;
         }
 
-        public override void Draw(Graphics graphics)
+        public override bool Intersect(Shape shape)
         {
-            using (Pen pen = new Pen(this.ColorBorder))
-            {
-                graphics.DrawRectangle(pen, this.XCoordinate, this.YCoordinate, this.Width, this.Height);
-            }
-
-            using (Brush brush = new SolidBrush(this.FillColor))
-            {
-                graphics.FillRectangle(brush, this.XCoordinate, this.YCoordinate, this.Width, this.Height);
-            }
+            throw new NotImplementedException();
         }
     }
 }

@@ -15,35 +15,33 @@ namespace CourseWorkEntities.Shapes
             this.Side = side;
         }
 
-        public override decimal GetArea()
+        public override decimal Area =>((decimal)Math.Sqrt(3) * Side * Side) / 4;
+
+        public override bool PointInShape(PointImpl point)
         {
-            decimal result = ((decimal)Math.Sqrt(3) * Side * Side) / 4;
-            return result;
+            throw new NotImplementedException();
         }
 
-
-        public override void Draw(Graphics graphics)
+        public override bool Intersect(Shape shape)
         {
-            float angle = 0;
-
-            PointF[] p = new PointF[3];
-
-            p[0].X = this.XCoordinate;
-
-            p[0].Y = this.YCoordinate;
-
-            p[1].X = (float)(this.XCoordinate + this.Side * Math.Cos(angle));
-
-            p[1].Y = (float)(this.YCoordinate + this.Side * Math.Sin(angle));
-
-            p[2].X = (float)(this.XCoordinate + this.Side * Math.Cos(angle + Math.PI / 3));
-
-            p[2].Y = (float)(this.YCoordinate + this.Side * Math.Sin(angle + Math.PI / 3));
-
-            using (Pen pen = new Pen(this.ColorBorder))
-            {
-                graphics.DrawPolygon(pen, p);
-            }
+            throw new NotImplementedException();
         }
+
+        // public override void Draw(Graphics graphics)
+        // {
+        //     float angle = 0;
+        //
+        //     PointF[] points = new PointF[3];
+        //
+        //     points[0].X = this.XCoordinate;
+        //     points[0].Y = this.YCoordinate;
+        //     
+        //     points[1].X = (float)(this.XCoordinate + this.Side * Math.Cos(angle));
+        //     points[1].Y = (float)(this.YCoordinate + this.Side * Math.Sin(angle));
+        //     
+        //     points[2].X = (float)(this.XCoordinate + this.Side * Math.Cos(angle - Math.PI / 3));
+        //     points[2].Y = (float)(this.YCoordinate + this.Side * Math.Sin(angle - Math.PI / 3));
+        //
+        // }
     }
 }
