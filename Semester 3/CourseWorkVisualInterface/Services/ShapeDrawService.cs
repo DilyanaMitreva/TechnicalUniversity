@@ -8,7 +8,7 @@ namespace CourseWorkVisualInterface.Services
 {
     public static class ShapeDrawService
     {
-        private static readonly Color _selectedColor = Color.Red;
+        private static readonly Color SelectedColor = Color.Red;
 
         public static Graphics Graphics;
 
@@ -31,7 +31,7 @@ namespace CourseWorkVisualInterface.Services
 
         private static void DrawCircle(Circle circle)
         {
-            using (Pen pen = new Pen(circle.Selected ? _selectedColor : circle.ColorBorder))
+            using (Pen pen = new Pen(circle.Selected ? SelectedColor : circle.ColorBorder))
             {
                 Graphics.DrawEllipse(pen, circle.Location.X, circle.Location.Y, 2 * circle.Radius, 2 * circle.Radius);
             }
@@ -45,7 +45,7 @@ namespace CourseWorkVisualInterface.Services
 
         private static void DrawRectangle(Rectangle rectangle)
         {
-            using (Pen pen = new Pen(rectangle.Selected ? _selectedColor : rectangle.ColorBorder))
+            using (Pen pen = new Pen(rectangle.Selected ? SelectedColor : rectangle.ColorBorder))
             {
                 Graphics.DrawRectangle(pen, rectangle.Location.X, rectangle.Location.Y, rectangle.Width,
                     rectangle.Height);
@@ -75,7 +75,7 @@ namespace CourseWorkVisualInterface.Services
             points[2].Y = middlePoint.Y;
 
 
-            using (Pen pen = new Pen(triangle.Selected ? _selectedColor : triangle.ColorBorder))
+            using (Pen pen = new Pen(triangle.Selected ? SelectedColor : triangle.ColorBorder))
             {
                 Graphics.DrawPolygon(pen, points);
             }
@@ -85,5 +85,22 @@ namespace CourseWorkVisualInterface.Services
                 Graphics.FillPolygon(brush, points);
             }
         }
+
+
+        // public void DrawTriangle(EquilateralTriangle triangle)
+        // {
+        //     float angle = 0;
+        //
+        //     PointF[] points = new PointF[3];
+        //
+        //     points[0].X = triangle.Location.X;
+        //     points[0].Y = triangle.Location.Y;
+        //
+        //     points[1].X = (float)(triangle.Location.X + triangle.Side * Math.Cos(angle));
+        //     points[1].Y = (float)(triangle.Location.Y + triangle.Side * Math.Sin(angle));
+        //
+        //     points[2].X = (float)(triangle.Location.X + triangle.Side * Math.Cos(angle - Math.PI / 3));
+        //     points[2].Y = (float)(triangle.Location.Y + triangle.Side * Math.Sin(angle - Math.PI / 3));
+        // }
     }
 }

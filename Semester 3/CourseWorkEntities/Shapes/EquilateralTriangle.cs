@@ -8,40 +8,71 @@ namespace CourseWorkEntities.Shapes
     {
         public int Side { get; set; }
 
+        private PointImpl[] _vertices;
+
         public EquilateralTriangle(int xCoordinate, int yCoordinate, int side, Color colorBorder, Color fillColor) :
             base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
             this.ShapeType = ShapeType.Triangle;
             this.Side = side;
+            _vertices = GetVertices();
         }
 
-        public override decimal Area =>((decimal)Math.Sqrt(3) * Side * Side) / 4;
+        public override double Area => (Math.Sqrt(3) * Side * Side) / 4;
 
         public override bool PointInShape(PointImpl point)
         {
-            throw new NotImplementedException();
+            double area = GetAreaByPoints(_vertices[0], _vertices[1], _vertices[2]);
+
+            double area1 = GetAreaByPoints(point, _vertices[1], _vertices[2]);
+
+            double area2 = GetAreaByPoints(_vertices[0], point, _vertices[2]);
+
+            double area3 = GetAreaByPoints(_vertices[0], _vertices[1], point);
+
+            return area == area1 + area2 + area3;
         }
 
-        public override bool Intersect(Shape shape)
-        {
-            throw new NotImplementedException();
-        }
-
-        // public override void Draw(Graphics graphics)
+        // public override bool Intersect(Shape shape)
         // {
-        //     float angle = 0;
+        //     bool result = false;
+        //     if (shape is Rectangle rectangle)
+        //     {
+        //     }
+        //     else if (shape is EquilateralTriangle)
+        //     {
+        //     }
+        //     else if (shape is Circle)
+        //     {
+        //     }
         //
-        //     PointF[] points = new PointF[3];
-        //
-        //     points[0].X = this.XCoordinate;
-        //     points[0].Y = this.YCoordinate;
-        //     
-        //     points[1].X = (float)(this.XCoordinate + this.Side * Math.Cos(angle));
-        //     points[1].Y = (float)(this.YCoordinate + this.Side * Math.Sin(angle));
-        //     
-        //     points[2].X = (float)(this.XCoordinate + this.Side * Math.Cos(angle - Math.PI / 3));
-        //     points[2].Y = (float)(this.YCoordinate + this.Side * Math.Sin(angle - Math.PI / 3));
-        //
+        //     return result;
         // }
+
+        private PointImpl[] GetVertices()
+        {
+            PointImpl[] points = new PointImpl[3];
+
+            PointImpl middlePoint =
+                new PointImpl(this.Location.X, this.Location.Y + (int)((Math.Sqrt(3) / 2) * this.Side));
+
+            points[0] = new PointImpl(this.Location.X, this.Location.Y);
+
+            points[1] = new PointImpl(middlePoint.X - this.Side / 2, middlePoint.Y);
+
+            points[2] = new PointImpl(middlePoint.X + this.Side / 2, middlePoint.Y);
+
+
+            return points;
+        }
+
+        private double GetAreaByPoints(PointImpl point1, PointImpl point2, PointImpl point3)
+        {
+            double result = Math.Abs((point1.X * (point2.Y - point3.Y) +
+                                      point2.X * (point3.Y - point1.Y) +
+                                      point3.X * (point1.Y - point2.Y)) / 2.0);
+
+            return result;
+        }
     }
 }

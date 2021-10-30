@@ -7,8 +7,8 @@ namespace CourseWorkEntities.Shapes
     public class Circle : Shape
     {
         public int Radius { get; set; }
-        
-        public override decimal Area => (decimal)Math.PI * Radius * Radius;
+
+        public override double Area => Math.PI * Radius * Radius;
 
         public Circle(int xCoordinate, int yCoordinate, int radius, Color colorBorder, Color fillColor) : base(
             xCoordinate, yCoordinate, colorBorder, fillColor)
@@ -18,21 +18,28 @@ namespace CourseWorkEntities.Shapes
         }
 
         public override bool PointInShape(PointImpl point)
-        { return
-                Location.X <= point.X && point.X <= Location.X + Radius
-                                   &&
-                                   Location.Y <= point.Y && point.Y <= Location.Y + Radius
-                ;
-            
-            
+        {
+            bool result = (Location.X <= point.X && point.X <= Location.X + Radius)
+                          &&
+                          (Location.Y <= point.Y && point.Y <= Location.Y + Radius);
+
+            return result;
         }
 
-        public override bool Intersect(Shape shape)
-        {
-            throw new NotImplementedException();
-        }
-        
-       
-        
+        // public override bool Intersect(Shape shape)
+        // {
+        //     bool result = false;
+        //     if (shape is Rectangle rectangle)
+        //     {
+        //     }
+        //     else if (shape is EquilateralTriangle)
+        //     {
+        //     }
+        //     else if (shape is Circle)
+        //     {
+        //     }
+        //
+        //     return result;
+        // }
     }
 }

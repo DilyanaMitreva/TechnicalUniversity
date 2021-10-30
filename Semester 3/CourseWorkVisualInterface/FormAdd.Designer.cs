@@ -52,7 +52,7 @@ namespace CourseWorkVisualInterface
             // buttonAddShape
             // 
             this.buttonAddShape.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonAddShape.Location = new System.Drawing.Point(245, 275);
+            this.buttonAddShape.Location = new System.Drawing.Point(245, 339);
             this.buttonAddShape.Name = "buttonAddShape";
             this.buttonAddShape.Size = new System.Drawing.Size(159, 49);
             this.buttonAddShape.TabIndex = 0;
@@ -97,11 +97,11 @@ namespace CourseWorkVisualInterface
             this.checkBoxTriangle.Text = "EquilateralTriangle";
             this.checkBoxTriangle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.checkBoxTriangle.UseVisualStyleBackColor = true;
-            this.checkBoxTriangle.CheckedChanged += new System.EventHandler(this.checkBoxTriangle_CheckedChanged);
+            this.checkBoxTriangle.Click += new System.EventHandler(this.checkBoxTriangle_Click);
             // 
             // textBoxRadius
             // 
-            this.textBoxRadius.Location = new System.Drawing.Point(9, 152);
+            this.textBoxRadius.Location = new System.Drawing.Point(7, 200);
             this.textBoxRadius.Name = "textBoxRadius";
             this.textBoxRadius.Size = new System.Drawing.Size(392, 22);
             this.textBoxRadius.TabIndex = 4;
@@ -109,7 +109,7 @@ namespace CourseWorkVisualInterface
             // 
             // labelRadius
             // 
-            this.labelRadius.Location = new System.Drawing.Point(9, 129);
+            this.labelRadius.Location = new System.Drawing.Point(7, 177);
             this.labelRadius.Name = "labelRadius";
             this.labelRadius.Size = new System.Drawing.Size(56, 20);
             this.labelRadius.TabIndex = 5;
@@ -118,7 +118,7 @@ namespace CourseWorkVisualInterface
             // 
             // labelSide
             // 
-            this.labelSide.Location = new System.Drawing.Point(9, 129);
+            this.labelSide.Location = new System.Drawing.Point(7, 177);
             this.labelSide.Name = "labelSide";
             this.labelSide.Size = new System.Drawing.Size(56, 20);
             this.labelSide.TabIndex = 9;
@@ -127,7 +127,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxSide
             // 
-            this.textBoxSide.Location = new System.Drawing.Point(10, 152);
+            this.textBoxSide.Location = new System.Drawing.Point(8, 200);
             this.textBoxSide.Name = "textBoxSide";
             this.textBoxSide.Size = new System.Drawing.Size(391, 22);
             this.textBoxSide.TabIndex = 8;
@@ -135,7 +135,7 @@ namespace CourseWorkVisualInterface
             // 
             // labelHeight
             // 
-            this.labelHeight.Location = new System.Drawing.Point(9, 129);
+            this.labelHeight.Location = new System.Drawing.Point(7, 177);
             this.labelHeight.Name = "labelHeight";
             this.labelHeight.Size = new System.Drawing.Size(56, 20);
             this.labelHeight.TabIndex = 11;
@@ -144,7 +144,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxHeight
             // 
-            this.textBoxHeight.Location = new System.Drawing.Point(10, 152);
+            this.textBoxHeight.Location = new System.Drawing.Point(8, 200);
             this.textBoxHeight.Name = "textBoxHeight";
             this.textBoxHeight.Size = new System.Drawing.Size(391, 22);
             this.textBoxHeight.TabIndex = 10;
@@ -152,7 +152,7 @@ namespace CourseWorkVisualInterface
             // 
             // labelLenght
             // 
-            this.labelLenght.Location = new System.Drawing.Point(10, 193);
+            this.labelLenght.Location = new System.Drawing.Point(8, 241);
             this.labelLenght.Name = "labelLenght";
             this.labelLenght.Size = new System.Drawing.Size(56, 20);
             this.labelLenght.TabIndex = 13;
@@ -161,7 +161,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxLenght
             // 
-            this.textBoxLenght.Location = new System.Drawing.Point(10, 216);
+            this.textBoxLenght.Location = new System.Drawing.Point(8, 264);
             this.textBoxLenght.Name = "textBoxLenght";
             this.textBoxLenght.Size = new System.Drawing.Size(392, 22);
             this.textBoxLenght.TabIndex = 12;
@@ -171,7 +171,7 @@ namespace CourseWorkVisualInterface
             // 
             this.buttonCancel.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(12, 275);
+            this.buttonCancel.Location = new System.Drawing.Point(12, 339);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(159, 49);
             this.buttonCancel.TabIndex = 14;
@@ -193,9 +193,9 @@ namespace CourseWorkVisualInterface
             this.labelParameters.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelParameters.Location = new System.Drawing.Point(8, 91);
             this.labelParameters.Name = "labelParameters";
-            this.labelParameters.Size = new System.Drawing.Size(354, 30);
+            this.labelParameters.Size = new System.Drawing.Size(354, 72);
             this.labelParameters.TabIndex = 21;
-            this.labelParameters.Text = "Enter the required parameters for the shape\r\n";
+            this.labelParameters.Text = "Enter the required parameters for the shape\r\n(the unit of measurement is pixels (" + "px))\r\n";
             this.labelParameters.Visible = false;
             // 
             // FormAdd
@@ -204,7 +204,7 @@ namespace CourseWorkVisualInterface
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(416, 336);
+            this.ClientSize = new System.Drawing.Size(416, 400);
             this.Controls.Add(this.labelParameters);
             this.Controls.Add(this.labelShapeType);
             this.Controls.Add(this.buttonCancel);
@@ -262,10 +262,7 @@ namespace CourseWorkVisualInterface
         private System.Windows.Forms.CheckBox checkBoxTriangle;
         private System.Windows.Forms.CheckBox checkBoxCircle;
 
-       
-
-
-        private System.Windows.Forms.Button addShape;
+        
 
         #endregion
     }

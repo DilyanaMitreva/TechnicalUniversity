@@ -79,6 +79,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scene";
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseClick);
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDoubleClick);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
         }

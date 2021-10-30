@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using System.Windows.Forms;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
@@ -33,10 +32,20 @@ namespace CourseWorkVisualInterface
             {
                 this.AddShape(e);
             }
-            else if (e.Button == MouseButtons.Left)
-            {
-            }
 
+            Invalidate();
+        }
+
+        private void FormMain_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                foreach (Shape shape in _shapes)
+                {
+                    shape.Selected = shape.PointInShape(new PointImpl(e.X, e.Y));
+                }
+            }
+            
             Invalidate();
         }
 

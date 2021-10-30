@@ -19,12 +19,7 @@ namespace CourseWorkEntities.Shapes
 
         public bool Selected { get; set; }
 
-        public abstract decimal Area { get; }
-
-        protected Shape()
-        {
-        }
-
+        public abstract double Area { get; }
 
         protected Shape(int xCoordinate, int yCoordinate, Color colorBorder, Color fillColor)
         {
@@ -36,7 +31,24 @@ namespace CourseWorkEntities.Shapes
 
         public abstract bool PointInShape(PointImpl point);
 
-        public abstract bool Intersect(Shape shape);
+        public bool Intersect(Shape shape)
+        {
+            bool result = false;
+            if (this is Rectangle thisRectangle && shape is Rectangle inputRectangle)
+            {
+            }
+
+            else if (this is Circle thisCircle && shape is Circle inputCircle)
+            {
+            }
+
+            else if (this is EquilateralTriangle thisTriangle && shape is EquilateralTriangle inputTriangle)
+            {
+            }
+
+
+            return result;
+        }
 
         public void DrawShape(Draw draw)
         {

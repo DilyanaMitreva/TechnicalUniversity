@@ -51,7 +51,6 @@ namespace CourseWorkVisualInterface
                 labelRadius.Visible = false;
                 textBoxRadius.Visible = false;
 
-
                 labelParameters.Visible = false;
             }
         }
@@ -85,29 +84,24 @@ namespace CourseWorkVisualInterface
                 textBoxHeight.Visible = false;
                 textBoxLenght.Visible = false;
 
-
                 labelParameters.Visible = false;
             }
         }
 
-        private void checkBoxTriangle_CheckedChanged(object sender, EventArgs e)
+
+        private void checkBoxTriangle_Click(object sender, EventArgs e)
         {
             if (checkBoxTriangle.Checked)
             {
                 labelSide.Visible = true;
                 textBoxSide.Visible = true;
-
                 checkBoxCircle.Checked = false;
                 checkBoxRectangle.Checked = false;
-
                 labelParameters.Visible = true;
-
                 labelHeight.Visible = false;
                 textBoxHeight.Visible = false;
-
                 labelLenght.Visible = false;
                 textBoxLenght.Visible = false;
-
                 labelRadius.Visible = false;
                 textBoxRadius.Visible = false;
             }
@@ -118,6 +112,7 @@ namespace CourseWorkVisualInterface
                 labelParameters.Visible = false;
             }
         }
+
 
         private void addShape_Click(object sender, EventArgs e)
         {

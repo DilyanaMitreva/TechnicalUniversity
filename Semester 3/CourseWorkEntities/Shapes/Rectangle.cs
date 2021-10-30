@@ -10,7 +10,7 @@ namespace CourseWorkEntities.Shapes
 
         public int Height { get; set; } // широчина
 
-        public override decimal Area => Height * Width;
+        public override double Area => Height * Width;
 
         public Rectangle(int xCoordinate, int yCoordinate, int width, int height, Color colorBorder,
             Color fillColor)
@@ -25,14 +25,29 @@ namespace CourseWorkEntities.Shapes
         public override bool PointInShape(PointImpl point)
         {
             return
-                 Location.X <= point.X && point.X <= Location.X + Width
-                 && 
-                 Location.Y <= point.Y && point.Y <= Location.Y + Height;
+                Location.X <= point.X && point.X <= Location.X + Width
+                                      &&
+                                      Location.Y <= point.Y && point.Y <= Location.Y + Height;
         }
 
-        public override bool Intersect(Shape shape)
-        {
-            throw new NotImplementedException();
-        }
+        // public override bool Intersect(Shape shape)
+        // {
+        //     bool result = false;
+        //     if (shape is Rectangle rectangle)
+        //     {
+        //         result = (this.Location.X < rectangle.Location.X + rectangle.Width &&
+        //                   rectangle.Location.X < this.Location.X + Width &&
+        //                   this.Location.Y < rectangle.Location.Y + rectangle.Height &&
+        //                   rectangle.Location.Y < this.Location.Y + Height);
+        //     }
+        //     else if (shape is EquilateralTriangle)
+        //     {
+        //     }
+        //     else if (shape is Circle)
+        //     {
+        //     }
+        //
+        //     return result;
+        // }
     }
 }
