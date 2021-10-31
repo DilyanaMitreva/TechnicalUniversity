@@ -2,7 +2,7 @@
 
 namespace CourseWorkVisualInterface
 {
-    partial class FormAdd
+    partial class FormInput
     {
         /// <summary>
         /// Required designer variable.
@@ -56,7 +56,7 @@ namespace CourseWorkVisualInterface
             this.buttonAddShape.Name = "buttonAddShape";
             this.buttonAddShape.Size = new System.Drawing.Size(159, 49);
             this.buttonAddShape.TabIndex = 0;
-            this.buttonAddShape.Text = "Add Shape";
+            this.buttonAddShape.Text = "Add _shape";
             this.buttonAddShape.UseVisualStyleBackColor = true;
             this.buttonAddShape.Click += new System.EventHandler(this.addShape_Click);
             // 
@@ -198,7 +198,7 @@ namespace CourseWorkVisualInterface
             this.labelParameters.Text = "Enter the required parameters for the shape\r\n(the unit of measurement is pixels (" + "px))\r\n";
             this.labelParameters.Visible = false;
             // 
-            // FormAdd
+            // FormInput
             // 
             this.AcceptButton = this.buttonAddShape;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -223,9 +223,10 @@ namespace CourseWorkVisualInterface
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormAdd";
+            this.Name = "FormInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Shape";
+            this.Text = "Add _shape";
+            this.Load += new System.EventHandler(this.FormInput_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
         }

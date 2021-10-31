@@ -1,16 +1,18 @@
-﻿namespace CourseWorkEntities.Utilities
+﻿using System;
+
+namespace CourseWorkEntities.Utilities
 {
     public class PointImpl
     {
-        public int X { get; set; }
+        public Int32 X { get; set; }
 
-        public int Y { get; set; }
+        public Int32 Y { get; set; }
 
         public PointImpl()
         {
         }
 
-        public PointImpl(int x, int y)
+        public PointImpl(Int32 x, Int32 y)
         {
             X = x;
             Y = y;

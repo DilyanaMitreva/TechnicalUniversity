@@ -12,9 +12,11 @@
 
             public const string MessageHeight = "Enter height";
 
-            public const string MessageWidth = "Enter width";
+            public const string MessageLength = "Enter width";
 
             public const string MessageChooseShape = "Choose a shape";
+
+            public const string ErrorCaption = "Error";
         }
     }
 }

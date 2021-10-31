@@ -6,21 +6,20 @@ namespace CourseWorkEntities.Shapes
 {
     public class EquilateralTriangle : Shape // равнобедрен триъгълник
     {
-        public int Side { get; set; }
+        public Int32 Side { get; set; }
 
         private PointImpl[] _vertices;
 
-        public EquilateralTriangle(int xCoordinate, int yCoordinate, int side, Color colorBorder, Color fillColor) :
+        public EquilateralTriangle(Int32 xCoordinate, Int32 yCoordinate, Int32 side, Color colorBorder, Color fillColor) :
             base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
-            this.ShapeType = ShapeType.Triangle;
             this.Side = side;
-            _vertices = GetVertices();
+            this._vertices = GetVertices();
         }
 
-        public override double Area => (Math.Sqrt(3) * Side * Side) / 4;
+        public override Double Area => (Math.Sqrt(3) * Side * Side) / 4;
 
-        public override bool PointInShape(PointImpl point)
+        public override Boolean PointInShape(PointImpl point)
         {
             double area = GetAreaByPoints(_vertices[0], _vertices[1], _vertices[2]);
 
@@ -32,23 +31,7 @@ namespace CourseWorkEntities.Shapes
 
             return area == area1 + area2 + area3;
         }
-
-        // public override bool Intersect(Shape shape)
-        // {
-        //     bool result = false;
-        //     if (shape is Rectangle rectangle)
-        //     {
-        //     }
-        //     else if (shape is EquilateralTriangle)
-        //     {
-        //     }
-        //     else if (shape is Circle)
-        //     {
-        //     }
-        //
-        //     return result;
-        // }
-
+        
         private PointImpl[] GetVertices()
         {
             PointImpl[] points = new PointImpl[3];
@@ -66,7 +49,7 @@ namespace CourseWorkEntities.Shapes
             return points;
         }
 
-        private double GetAreaByPoints(PointImpl point1, PointImpl point2, PointImpl point3)
+        private Double GetAreaByPoints(PointImpl point1, PointImpl point2, PointImpl point3)
         {
             double result = Math.Abs((point1.X * (point2.Y - point3.Y) +
                                       point2.X * (point3.Y - point1.Y) +

@@ -6,22 +6,24 @@ namespace CourseWorkEntities.Shapes
 {
     public class Circle : Shape
     {
-        public int Radius { get; set; }
+        public Int32 Radius { get; set; }
 
-        public override double Area => Math.PI * Radius * Radius;
+        public override Double Area => Math.PI * Radius * Radius;
 
-        public Circle(int xCoordinate, int yCoordinate, int radius, Color colorBorder, Color fillColor) : base(
+        public Circle(Int32 xCoordinate, Int32 yCoordinate, Int32 radius, Color colorBorder, Color fillColor) : base(
             xCoordinate, yCoordinate, colorBorder, fillColor)
         {
-            this.ShapeType = ShapeType.Circle;
             Radius = radius;
         }
 
-        public override bool PointInShape(PointImpl point)
+        public override Boolean PointInShape(PointImpl point)
         {
-            bool result = (Location.X <= point.X && point.X <= Location.X + Radius)
-                          &&
-                          (Location.Y <= point.Y && point.Y <= Location.Y + Radius);
+            PointImpl circleCenter =
+                new PointImpl(this.Location.X + this.Radius, this.Location.Y + this.Radius);
+
+            Boolean result = (point.X - circleCenter.X) * (point.X - circleCenter.X) +
+                          (point.Y - circleCenter.Y) * (point.Y - circleCenter.Y)
+                          <= this.Radius * this.Radius;
 
             return result;
         }

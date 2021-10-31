@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
@@ -8,7 +9,8 @@ namespace CourseWorkVisualInterface
 {
     public partial class FormMain : Form
     {
-        private List<Shape> _shapes = new List<Shape>();
+        private readonly List<Shape> _shapes = new List<Shape>();
+        private Shape _selectedShape;
 
         public FormMain()
         {
@@ -33,6 +35,14 @@ namespace CourseWorkVisualInterface
                 this.AddShape(e);
             }
 
+            if (e.Button == MouseButtons.Left)
+            {
+                foreach (Shape shape in _shapes)
+                {
+                    shape.IsSelected = shape.PointInShape(new PointImpl(e.X, e.Y));
+                }
+            }
+
             Invalidate();
         }
 
@@ -40,30 +50,63 @@ namespace CourseWorkVisualInterface
         {
             if (e.Button == MouseButtons.Left)
             {
-                foreach (Shape shape in _shapes)
+                this.UpdateShape();
+            }
+        }
+
+        private void UpdateShape()
+        {
+            foreach (Shape shape in _shapes)
+            {
+                if (shape.IsSelected)
                 {
-                    shape.Selected = shape.PointInShape(new PointImpl(e.X, e.Y));
+                    this._selectedShape = shape;
+                    break;
                 }
             }
-            
-            Invalidate();
+
+            FormInput formUpdate = new FormInput(_selectedShape);
+            this.ExecureForm(formUpdate);
         }
 
         private void AddShape(MouseEventArgs e)
         {
-            FormAdd formAdd = new FormAdd(e.X, e.Y);
-            if (formAdd.ShowDialog() == DialogResult.OK)
+            FormInput formAdd = new FormInput(e.X, e.Y);
+
+            this.ExecureForm(formAdd);
+        }
+
+        private void ExecureForm(FormInput formInput)
+        {
+            do
+            {
+                formInput.ShowDialog();
+            } while (formInput.DialogResult == DialogResult.Retry);
+
+            if (formInput.DialogResult == DialogResult.OK)
             {
                 ShapeDrawService.Graphics = this.CreateGraphics();
 
-                Shape createdShape = formAdd.Shape;
+                Shape createdShape = formInput.getShape();
 
                 createdShape.DrawShape(ShapeDrawService.DrawShape);
 
-                _shapes.Add(createdShape);
+                this._shapes.Add(createdShape);
 
                 ShapeDrawService.Graphics.Dispose();
             }
+        }
+
+        private void FormMain_MouseDown(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void FormMain_MouseMove(object sender, MouseEventArgs e)
+        {
+        }
+
+        private void FormMain_MouseUp(object sender, MouseEventArgs e)
+        {
         }
     }
 }

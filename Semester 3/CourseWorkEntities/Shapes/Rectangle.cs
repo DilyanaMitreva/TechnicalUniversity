@@ -6,48 +6,28 @@ namespace CourseWorkEntities.Shapes
 {
     public class Rectangle : Shape
     {
-        public int Width { get; set; } // дължина
+        public Int32 Width { get; set; } // дължина
 
-        public int Height { get; set; } // широчина
+        public Int32 Height { get; set; } // широчина
 
-        public override double Area => Height * Width;
+        public override Double Area => Height * Width;
 
-        public Rectangle(int xCoordinate, int yCoordinate, int width, int height, Color colorBorder,
+        public Rectangle(Int32 xCoordinate, Int32 yCoordinate, Int32 width, Int32 height, Color colorBorder,
             Color fillColor)
             : base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
-            this.ShapeType = ShapeType.Rectangle;
             Width = width;
             Height = height;
         }
 
 
-        public override bool PointInShape(PointImpl point)
+        public override Boolean PointInShape(PointImpl point)
         {
             return
                 Location.X <= point.X && point.X <= Location.X + Width
                                       &&
                                       Location.Y <= point.Y && point.Y <= Location.Y + Height;
         }
-
-        // public override bool Intersect(Shape shape)
-        // {
-        //     bool result = false;
-        //     if (shape is Rectangle rectangle)
-        //     {
-        //         result = (this.Location.X < rectangle.Location.X + rectangle.Width &&
-        //                   rectangle.Location.X < this.Location.X + Width &&
-        //                   this.Location.Y < rectangle.Location.Y + rectangle.Height &&
-        //                   rectangle.Location.Y < this.Location.Y + Height);
-        //     }
-        //     else if (shape is EquilateralTriangle)
-        //     {
-        //     }
-        //     else if (shape is Circle)
-        //     {
-        //     }
-        //
-        //     return result;
-        // }
+        
     }
 }

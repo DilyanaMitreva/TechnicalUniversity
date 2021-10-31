@@ -80,6 +80,9 @@
             this.Text = "Scene";
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseClick);
             this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDoubleClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FormMain_MouseUp);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
         }
@@ -87,9 +90,6 @@
         private System.Windows.Forms.Button buttonMoreFunctions;
 
         private System.Windows.Forms.Button buttonDelete;
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
 
         private System.Windows.Forms.Panel panel1;
 

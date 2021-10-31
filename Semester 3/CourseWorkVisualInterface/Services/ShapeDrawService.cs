@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using CourseWorkEntities.Shapes;
-using CourseWorkEntities.Utilities;
 using Rectangle = CourseWorkEntities.Shapes.Rectangle;
 
 namespace CourseWorkVisualInterface.Services
@@ -31,9 +30,10 @@ namespace CourseWorkVisualInterface.Services
 
         private static void DrawCircle(Circle circle)
         {
-            using (Pen pen = new Pen(circle.Selected ? SelectedColor : circle.ColorBorder))
+            using (Pen pen = new Pen(circle.IsSelected ? SelectedColor : circle.ColorBorder, circle.IsSelected ? 3 : 1))
             {
                 Graphics.DrawEllipse(pen, circle.Location.X, circle.Location.Y, 2 * circle.Radius, 2 * circle.Radius);
+                //  Graphics.DrawRectangle(pen, circle.Location.X, circle.Location.Y, 2 * circle.Radius, 2 * circle.Radius);
             }
 
             using (Brush brush = new SolidBrush(circle.FillColor))
@@ -45,7 +45,8 @@ namespace CourseWorkVisualInterface.Services
 
         private static void DrawRectangle(Rectangle rectangle)
         {
-            using (Pen pen = new Pen(rectangle.Selected ? SelectedColor : rectangle.ColorBorder))
+            using (Pen pen = new Pen(rectangle.IsSelected ? SelectedColor : rectangle.ColorBorder,
+                rectangle.IsSelected ? 3 : 1))
             {
                 Graphics.DrawRectangle(pen, rectangle.Location.X, rectangle.Location.Y, rectangle.Width,
                     rectangle.Height);
@@ -75,7 +76,8 @@ namespace CourseWorkVisualInterface.Services
             points[2].Y = middlePoint.Y;
 
 
-            using (Pen pen = new Pen(triangle.Selected ? SelectedColor : triangle.ColorBorder))
+            using (Pen pen = new Pen(triangle.IsSelected ? SelectedColor : triangle.ColorBorder,
+                triangle.IsSelected ? 3 : 1))
             {
                 Graphics.DrawPolygon(pen, points);
             }

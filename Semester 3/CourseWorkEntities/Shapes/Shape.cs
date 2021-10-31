@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -8,18 +9,16 @@ namespace CourseWorkEntities.Shapes
         protected readonly Color SelectedColor = Color.Red;
 
         public delegate void Draw(Shape shape);
-
-        public ShapeType ShapeType { get; set; }
-
+        
         public PointImpl Location { get; set; }
 
         public Color ColorBorder { get; set; }
 
         public Color FillColor { get; set; }
 
-        public bool Selected { get; set; }
+        public Boolean IsSelected { get; set; }
 
-        public abstract double Area { get; }
+        public abstract Double Area { get; }
 
         protected Shape(int xCoordinate, int yCoordinate, Color colorBorder, Color fillColor)
         {
@@ -29,26 +28,7 @@ namespace CourseWorkEntities.Shapes
         }
 
 
-        public abstract bool PointInShape(PointImpl point);
-
-        public bool Intersect(Shape shape)
-        {
-            bool result = false;
-            if (this is Rectangle thisRectangle && shape is Rectangle inputRectangle)
-            {
-            }
-
-            else if (this is Circle thisCircle && shape is Circle inputCircle)
-            {
-            }
-
-            else if (this is EquilateralTriangle thisTriangle && shape is EquilateralTriangle inputTriangle)
-            {
-            }
-
-
-            return result;
-        }
+        public abstract Boolean PointInShape(PointImpl point);
 
         public void DrawShape(Draw draw)
         {

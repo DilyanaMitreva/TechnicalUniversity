@@ -15,7 +15,7 @@ namespace Exercise4
         public override void Paint(Graphics graphics)
         {
             Color color = Selected ? Color.Black : this.ColorFill;
-            
+
             using (Brush brush = new SolidBrush(color))
             {
                 graphics.FillEllipse(brush, Location.X, Location.Y, 2 * Radius, 2 * Radius);
