@@ -6,28 +6,35 @@ namespace CourseWorkEntities.Shapes
 {
     public class Rectangle : Shape
     {
-        public Int32 Width { get; set; } // дължина
+        public int Width { get; set; } // дължина
 
-        public Int32 Height { get; set; } // широчина
+        public int Height { get; set; } // широчина
 
-        public override Double Area => Height * Width;
+        public override double Area => Height * Width;
 
-        public Rectangle(Int32 xCoordinate, Int32 yCoordinate, Int32 width, Int32 height, Color colorBorder,
-            Color fillColor)
+        public Rectangle()
+        {
+        }
+
+        public Rectangle(int xCoordinate, int yCoordinate, int width, int height, Color colorBorder, Color fillColor)
             : base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
-            Width = width;
-            Height = height;
+            this.Width = width;
+            this.Height = height;
         }
 
-
-        public override Boolean PointInShape(PointImpl point)
+        public override bool PointInShape(PointImpl point)
         {
             return
-                Location.X <= point.X && point.X <= Location.X + Width
-                                      &&
-                                      Location.Y <= point.Y && point.Y <= Location.Y + Height;
+                this.Location.X <= point.X && point.X <= this.Location.X + Width
+                                           &&
+                                           this.Location.Y <= point.Y && point.Y <= this.Location.Y + Height;
         }
-        
+
+        public override bool Intersect(Rectangle rectangle) =>
+            this.Location.X < rectangle.Location.X + rectangle.Width &&
+            rectangle.Location.X < this.Location.X + Width &&
+            this.Location.Y < rectangle.Location.Y + rectangle.Height &&
+            rectangle.Location.Y < this.Location.Y + Height;
     }
 }

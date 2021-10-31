@@ -6,20 +6,21 @@ namespace CourseWorkEntities.Shapes
 {
     public class EquilateralTriangle : Shape // равнобедрен триъгълник
     {
-        public Int32 Side { get; set; }
+        public int Side { get; set; }
 
         private PointImpl[] _vertices;
 
-        public EquilateralTriangle(Int32 xCoordinate, Int32 yCoordinate, Int32 side, Color colorBorder, Color fillColor) :
+        public EquilateralTriangle(int xCoordinate, int yCoordinate, int side, Color colorBorder, Color fillColor) :
             base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
             this.Side = side;
             this._vertices = GetVertices();
         }
+        
 
-        public override Double Area => (Math.Sqrt(3) * Side * Side) / 4;
+        public override double Area => (Math.Sqrt(3) * Side * Side) / 4;
 
-        public override Boolean PointInShape(PointImpl point)
+        public override bool PointInShape(PointImpl point)
         {
             double area = GetAreaByPoints(_vertices[0], _vertices[1], _vertices[2]);
 
@@ -31,7 +32,12 @@ namespace CourseWorkEntities.Shapes
 
             return area == area1 + area2 + area3;
         }
-        
+
+        public override bool Intersect(Rectangle rectangle)
+        {
+            return true;
+        }
+
         private PointImpl[] GetVertices()
         {
             PointImpl[] points = new PointImpl[3];

@@ -31,10 +31,12 @@ namespace CourseWorkVisualInterface
         public FormInput(Shape selectedShape)
         {
             this._shape = selectedShape;
+            this.Text = "Update a shape";
             InitializeComponent();
+            
         }
 
-        public Shape getShape() => _shape;
+        public Shape GetShape() => _shape;
 
 
         private void FormInput_Load(object sender, EventArgs e)
@@ -54,13 +56,13 @@ namespace CourseWorkVisualInterface
                 checkBoxRectangle.Checked = true;
 
                 labelHeight.Visible = true;
-                labelLenght.Visible = true;
+                labelWidth.Visible = true;
 
                 textBoxHeight.Visible = true;
                 textBoxHeight.Text = rectangle.Height.ToString();
 
-                textBoxLenght.Visible = true;
-                textBoxLenght.Text = rectangle.Width.ToString();
+                textBoxWidth.Visible = true;
+                textBoxWidth.Text = rectangle.Width.ToString();
 
                 labelParameters.Visible = true;
             }
@@ -91,8 +93,8 @@ namespace CourseWorkVisualInterface
 
                 labelParameters.Visible = true;
 
-                labelLenght.Visible = false;
-                textBoxLenght.Visible = false;
+                labelWidth.Visible = false;
+                textBoxWidth.Visible = false;
 
                 labelSide.Visible = false;
                 textBoxSide.Visible = false;
@@ -111,10 +113,10 @@ namespace CourseWorkVisualInterface
             if (checkBoxRectangle.Checked)
             {
                 labelHeight.Visible = true;
-                labelLenght.Visible = true;
+                labelWidth.Visible = true;
 
                 textBoxHeight.Visible = true;
-                textBoxLenght.Visible = true;
+                textBoxWidth.Visible = true;
 
                 labelParameters.Visible = true;
 
@@ -130,10 +132,10 @@ namespace CourseWorkVisualInterface
             else
             {
                 labelHeight.Visible = false;
-                labelLenght.Visible = false;
+                labelWidth.Visible = false;
 
                 textBoxHeight.Visible = false;
-                textBoxLenght.Visible = false;
+                textBoxWidth.Visible = false;
 
                 labelParameters.Visible = false;
             }
@@ -154,8 +156,8 @@ namespace CourseWorkVisualInterface
                 labelHeight.Visible = false;
                 textBoxHeight.Visible = false;
 
-                labelLenght.Visible = false;
-                textBoxLenght.Visible = false;
+                labelWidth.Visible = false;
+                textBoxWidth.Visible = false;
 
                 labelRadius.Visible = false;
                 textBoxRadius.Visible = false;
@@ -174,6 +176,12 @@ namespace CourseWorkVisualInterface
 
             Color borderColor = Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
             Color fillColor = Color.FromArgb(100, borderColor);
+
+            // _xCoordinate = _shape != null ? _shape.Location.X : 0;
+            // _yCoordinate = _shape != null ? _shape.Location.Y : 0;
+
+            this._xCoordinate = this._xCoordinate != default ? this._xCoordinate : this._shape.Location.X;
+            this._yCoordinate = this._yCoordinate != default ? this._yCoordinate : this._shape.Location.Y;
 
             if (checkBoxCircle.Checked)
             {
@@ -213,7 +221,7 @@ namespace CourseWorkVisualInterface
                     DialogResult = DialogResult.Retry;
                     return;
                 }
-                else if (textBoxLenght.Text == null)
+                else if (textBoxWidth.Text == null)
                 {
                     MessageBox.Show(Constant.Messages.MessageLength, Constant.Messages.ErrorCaption,
                         MessageBoxButtons.OK,
@@ -225,7 +233,7 @@ namespace CourseWorkVisualInterface
                 {
                     bool isNumber = int.TryParse(textBoxHeight.Text, out int height);
 
-                    bool isNumber2 = int.TryParse(textBoxLenght.Text, out int lenght);
+                    bool isNumber2 = int.TryParse(textBoxWidth.Text, out int lenght);
 
                     if (isNumber && isNumber2)
                     {

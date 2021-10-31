@@ -46,17 +46,11 @@ namespace Exercise5
             {
                 foreach (Shape selectedShape in _shapes)
                 {
-                    if (selectedShape.PointInShape(e.Location))
-                    {
-                        selectedShape.Selected = true;
-                    }
-                    else selectedShape.Selected = false;
-
-                    break;
+                    selectedShape.Selected = selectedShape.PointInShape(e.Location);
                 }
-            }
 
-            Invalidate();
+                Invalidate();
+            }
         }
 
         private void FormMain_MouseMove(object sender, MouseEventArgs e)
@@ -144,9 +138,9 @@ namespace Exercise5
                     formProperties.Rectangle = (Rectangle)shape;
 
                     formProperties.ShowDialog();
-                    
+
                     Invalidate();
-                    
+
                     break;
                 }
             }

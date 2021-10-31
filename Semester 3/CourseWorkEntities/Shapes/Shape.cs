@@ -6,19 +6,21 @@ namespace CourseWorkEntities.Shapes
 {
     public abstract class Shape
     {
-        protected readonly Color SelectedColor = Color.Red;
-
         public delegate void Draw(Shape shape);
-        
+
         public PointImpl Location { get; set; }
 
         public Color ColorBorder { get; set; }
 
         public Color FillColor { get; set; }
 
-        public Boolean IsSelected { get; set; }
+        public bool IsSelected { get; set; }
 
-        public abstract Double Area { get; }
+        public abstract double Area { get; }
+
+        public Shape()
+        {
+        }
 
         protected Shape(int xCoordinate, int yCoordinate, Color colorBorder, Color fillColor)
         {
@@ -27,8 +29,16 @@ namespace CourseWorkEntities.Shapes
             FillColor = fillColor;
         }
 
+        protected Shape(Color colorBorder, Color fillColor)
+        {
+            ColorBorder = colorBorder;
+            FillColor = fillColor;
+        }
 
-        public abstract Boolean PointInShape(PointImpl point);
+
+        public abstract bool PointInShape(PointImpl point);
+
+        public abstract bool Intersect(Rectangle rectangle);
 
         public void DrawShape(Draw draw)
         {

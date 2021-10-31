@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
 using CourseWorkVisualInterface.Services;
+using Rectangle = CourseWorkEntities.Shapes.Rectangle;
 
 namespace CourseWorkVisualInterface
 {
@@ -11,6 +13,8 @@ namespace CourseWorkVisualInterface
     {
         private readonly List<Shape> _shapes = new List<Shape>();
         private Shape _selectedShape;
+        private Rectangle _frame;
+        private Point _mouseCaptureLocation;
 
         public FormMain()
         {
@@ -52,6 +56,8 @@ namespace CourseWorkVisualInterface
             {
                 this.UpdateShape();
             }
+
+            Invalidate();
         }
 
         private void UpdateShape()
@@ -65,18 +71,27 @@ namespace CourseWorkVisualInterface
                 }
             }
 
+            if (_selectedShape == null)
+            {
+                return;
+            }
+
             FormInput formUpdate = new FormInput(_selectedShape);
-            this.ExecureForm(formUpdate);
+            this.ExecuteForm(formUpdate);
+            if (formUpdate.DialogResult == DialogResult.OK)
+            {
+                _shapes.Remove(_selectedShape);
+            }
         }
 
         private void AddShape(MouseEventArgs e)
         {
             FormInput formAdd = new FormInput(e.X, e.Y);
 
-            this.ExecureForm(formAdd);
+            this.ExecuteForm(formAdd);
         }
 
-        private void ExecureForm(FormInput formInput)
+        private void ExecuteForm(FormInput formInput)
         {
             do
             {
@@ -87,7 +102,7 @@ namespace CourseWorkVisualInterface
             {
                 ShapeDrawService.Graphics = this.CreateGraphics();
 
-                Shape createdShape = formInput.getShape();
+                Shape createdShape = formInput.GetShape();
 
                 createdShape.DrawShape(ShapeDrawService.DrawShape);
 
@@ -99,14 +114,47 @@ namespace CourseWorkVisualInterface
 
         private void FormMain_MouseDown(object sender, MouseEventArgs e)
         {
+            _mouseCaptureLocation = e.Location;
+            _frame = new Rectangle()
+            {
+                ColorBorder = Color.Black,
+                FillColor = Color.Blue
+            };
         }
 
         private void FormMain_MouseMove(object sender, MouseEventArgs e)
         {
+            if (_frame == null)
+            {
+                return;
+            }
+
+            _frame.Location = new PointImpl()
+            {
+                X = Math.Min(_mouseCaptureLocation.X, e.Location.X),
+                Y = Math.Min(_mouseCaptureLocation.Y, e.Location.Y)
+            };
+
+            _frame.Width = Math.Abs(_mouseCaptureLocation.X - e.Location.X);
+            _frame.Height = Math.Abs(_mouseCaptureLocation.Y - e.Location.Y);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                foreach (Shape shape in _shapes)
+                {
+                    shape.IsSelected = shape.Intersect(_frame);
+                }
+            }
+
+            Invalidate();
         }
 
         private void FormMain_MouseUp(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.Left)
+                _frame = null;
+
+            Invalidate();
         }
     }
 }

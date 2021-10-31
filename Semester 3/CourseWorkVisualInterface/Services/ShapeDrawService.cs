@@ -33,7 +33,6 @@ namespace CourseWorkVisualInterface.Services
             using (Pen pen = new Pen(circle.IsSelected ? SelectedColor : circle.ColorBorder, circle.IsSelected ? 3 : 1))
             {
                 Graphics.DrawEllipse(pen, circle.Location.X, circle.Location.Y, 2 * circle.Radius, 2 * circle.Radius);
-                //  Graphics.DrawRectangle(pen, circle.Location.X, circle.Location.Y, 2 * circle.Radius, 2 * circle.Radius);
             }
 
             using (Brush brush = new SolidBrush(circle.FillColor))
