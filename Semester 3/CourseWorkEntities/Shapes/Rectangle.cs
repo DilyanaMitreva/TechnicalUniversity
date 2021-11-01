@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -31,10 +30,12 @@ namespace CourseWorkEntities.Shapes
                                            this.Location.Y <= point.Y && point.Y <= this.Location.Y + Height;
         }
 
-        public override bool Intersect(Rectangle rectangle) =>
-            this.Location.X < rectangle.Location.X + rectangle.Width &&
-            rectangle.Location.X < this.Location.X + Width &&
-            this.Location.Y < rectangle.Location.Y + rectangle.Height &&
-            rectangle.Location.Y < this.Location.Y + Height;
+        public override bool Intersect(Rectangle rectangle)
+        {
+            return this.Location.X < rectangle.Location.X + rectangle.Width &&
+                   rectangle.Location.X < this.Location.X + Width &&
+                   this.Location.Y < rectangle.Location.Y + rectangle.Height &&
+                   rectangle.Location.Y < this.Location.Y + Height;
+        }
     }
 }

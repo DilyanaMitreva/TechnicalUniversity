@@ -30,24 +30,14 @@ namespace CourseWorkVisualInterface
             {
                 shape.DrawShape(ShapeDrawService.DrawShape);
             }
-        }
 
-        private void FormMain_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Right)
+            if (_frame != null)
             {
-                this.AddShape(e);
-            }
-
-            if (e.Button == MouseButtons.Left)
-            {
-                foreach (Shape shape in _shapes)
+                if (_frame.Location != null)
                 {
-                    shape.IsSelected = shape.PointInShape(new PointImpl(e.X, e.Y));
+                    _frame.DrawShape(ShapeDrawService.DrawShape);
                 }
             }
-
-            Invalidate();
         }
 
         private void FormMain_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -59,6 +49,69 @@ namespace CourseWorkVisualInterface
 
             Invalidate();
         }
+
+
+        private void FormMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                this.AddShape(e);
+            }
+
+            if (e.Button == MouseButtons.Left)
+            {
+                _mouseCaptureLocation = e.Location;
+                _frame = new Rectangle()
+                {
+                    ColorBorder = Color.Black,
+                    FillColor = Color.Transparent,
+                };
+
+                foreach (Shape shape in _shapes)
+                {
+                    shape.IsSelected = shape.PointInShape(new PointImpl(e.X, e.Y));
+                }
+            }
+
+            Invalidate();
+        }
+
+
+        private void FormMain_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_frame == null)
+            {
+                return;
+            }
+
+            _frame.Location = new PointImpl()
+            {
+                X = Math.Min(_mouseCaptureLocation.X, e.Location.X),
+                Y = Math.Min(_mouseCaptureLocation.Y, e.Location.Y)
+            };
+
+            _frame.Width = Math.Abs(_mouseCaptureLocation.X - e.Location.X);
+            _frame.Height = Math.Abs(_mouseCaptureLocation.Y - e.Location.Y);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                foreach (Shape shape in _shapes)
+                {
+                    shape.IsSelected = shape.Intersect(_frame);
+                }
+            }
+            
+
+            Invalidate();
+        }
+
+        private void FormMain_MouseUp(object sender, MouseEventArgs e)
+        {
+            _frame = null;
+
+            Invalidate();
+        }
+
 
         private void UpdateShape()
         {
@@ -110,51 +163,6 @@ namespace CourseWorkVisualInterface
 
                 ShapeDrawService.Graphics.Dispose();
             }
-        }
-
-        private void FormMain_MouseDown(object sender, MouseEventArgs e)
-        {
-            _mouseCaptureLocation = e.Location;
-            _frame = new Rectangle()
-            {
-                ColorBorder = Color.Black,
-                FillColor = Color.Blue
-            };
-        }
-
-        private void FormMain_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (_frame == null)
-            {
-                return;
-            }
-
-            _frame.Location = new PointImpl()
-            {
-                X = Math.Min(_mouseCaptureLocation.X, e.Location.X),
-                Y = Math.Min(_mouseCaptureLocation.Y, e.Location.Y)
-            };
-
-            _frame.Width = Math.Abs(_mouseCaptureLocation.X - e.Location.X);
-            _frame.Height = Math.Abs(_mouseCaptureLocation.Y - e.Location.Y);
-
-            if (e.Button == MouseButtons.Left)
-            {
-                foreach (Shape shape in _shapes)
-                {
-                    shape.IsSelected = shape.Intersect(_frame);
-                }
-            }
-
-            Invalidate();
-        }
-
-        private void FormMain_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                _frame = null;
-
-            Invalidate();
         }
     }
 }

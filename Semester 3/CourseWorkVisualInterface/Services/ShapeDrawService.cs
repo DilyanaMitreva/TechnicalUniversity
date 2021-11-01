@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using CourseWorkEntities.Shapes;
 using Rectangle = CourseWorkEntities.Shapes.Rectangle;
 
@@ -32,13 +31,18 @@ namespace CourseWorkVisualInterface.Services
         {
             using (Pen pen = new Pen(circle.IsSelected ? SelectedColor : circle.ColorBorder, circle.IsSelected ? 3 : 1))
             {
-                Graphics.DrawEllipse(pen, circle.Location.X, circle.Location.Y, 2 * circle.Radius, 2 * circle.Radius);
+                Graphics.DrawEllipse(pen, circle.Center.X - circle.Radius, circle.Center.Y - circle.Radius,
+                    circle.Radius * 2, circle.Radius * 2);
+                //Graphics.DrawEllipse(pen, circle.Location.X, circle.Location.Y, 2 * circle.Radius, 2 * circle.Radius);
             }
 
             using (Brush brush = new SolidBrush(circle.FillColor))
             {
-                Graphics.FillEllipse(brush, circle.Location.X, circle.Location.Y, 2 * circle.Radius,
-                    2 * circle.Radius);
+                Graphics.FillEllipse(brush, circle.Center.X - circle.Radius, circle.Center.Y - circle.Radius,
+                    circle.Radius * 2, circle.Radius * 2);
+
+                // Graphics.FillEllipse(brush, circle.Location.X, circle.Location.Y, 2 * circle.Radius,
+                //     2 * circle.Radius);
             }
         }
 
@@ -62,17 +66,14 @@ namespace CourseWorkVisualInterface.Services
         {
             Point[] points = new Point[3];
 
-            points[0].X = triangle.Location.X;
-            points[0].Y = triangle.Location.Y;
+            points[0].X = triangle.Vertices[0].X;
+            points[0].Y = triangle.Vertices[0].Y;
 
-            Point middlePoint =
-                new Point(triangle.Location.X, triangle.Location.Y + (int)((Math.Sqrt(3) / 2) * triangle.Side));
+            points[1].X = triangle.Vertices[1].X;
+            points[1].Y = triangle.Vertices[1].Y;
 
-            points[1].X = middlePoint.X - triangle.Side / 2;
-            points[1].Y = middlePoint.Y;
-
-            points[2].X = middlePoint.X + triangle.Side / 2;
-            points[2].Y = middlePoint.Y;
+            points[2].X = triangle.Vertices[2].X;
+            points[2].Y = triangle.Vertices[2].Y;
 
 
             using (Pen pen = new Pen(triangle.IsSelected ? SelectedColor : triangle.ColorBorder,
@@ -86,7 +87,6 @@ namespace CourseWorkVisualInterface.Services
                 Graphics.FillPolygon(brush, points);
             }
         }
-
 
         // public void DrawTriangle(EquilateralTriangle triangle)
         // {
