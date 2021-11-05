@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Exercise5
+namespace Exercise6
 {
     public partial class FormProperties : Form
     {

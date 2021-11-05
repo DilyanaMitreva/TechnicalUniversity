@@ -66,7 +66,7 @@ namespace Exercise6
                 Y = Math.Min(_mouseCaptureLocation.Y, e.Location.Y)
             };
 
-            _frame.Widht = Math.Abs(_mouseCaptureLocation.X - e.Location.X);
+            _frame.Width = Math.Abs(_mouseCaptureLocation.X - e.Location.X);
             _frame.Height = Math.Abs(_mouseCaptureLocation.Y - e.Location.Y);
 
             if (e.Button == MouseButtons.Left)
@@ -82,6 +82,11 @@ namespace Exercise6
 
         private void FormMain_MouseUp(object sender, MouseEventArgs e)
         {
+            Random random = new Random();
+
+            Color borderColor = Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
+            Color fillColor = Color.FromArgb(100, borderColor);
+
             if (e.Button == MouseButtons.Right && _frame != null)
             {
                 int area = 0;
@@ -92,7 +97,8 @@ namespace Exercise6
                     area += shape.Area;
                 }
 
-                _frame.ColorFill = Color.Transparent;
+                _frame.ColorBorder = borderColor;
+                _frame.ColorFill = fillColor;
                 _shapes.Add(_frame);
                 _frame.Selected = true;
                 area += _frame.Area;
@@ -134,7 +140,7 @@ namespace Exercise6
             {
                 if (shape.Selected)
                 {
-                    FormProperties formProperties = new FormProperties();
+                    FormProperties formProperties = new FormProperties(true);
                     formProperties.Rectangle = (Rectangle)shape;
 
                     formProperties.ShowDialog();
@@ -144,6 +150,21 @@ namespace Exercise6
                     break;
                 }
             }
+        }
+
+        private void selectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormProperties formProperties = new FormProperties(false);
+
+            if (formProperties.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var rectangle in _shapes.Where(r => r.ColorBorder == formProperties.SelectedColor))
+                {
+                    rectangle.Selected = true;
+                }
+            }
+            
+            Invalidate();
         }
     }
 }

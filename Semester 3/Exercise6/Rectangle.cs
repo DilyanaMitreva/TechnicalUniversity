@@ -6,20 +6,20 @@ namespace Exercise6
     {
         public int Height { get; set; }
 
-        public int Widht { get; set; }
+        public int Width { get; set; }
 
 
-        public override int Area => this.Height * this.Widht;
+        public override int Area => this.Height * this.Width;
 
         public Rectangle()
         {
         }
 
-        public Rectangle(Point location, int height, int widht, Color colorBorder, Color colorFill) : base(location,
+        public Rectangle(Point location, int height, int width, Color colorBorder, Color colorFill) : base(location,
             colorBorder, colorFill)
         {
             Height = height;
-            Widht = widht;
+            Width = width;
         }
 
 
@@ -29,23 +29,23 @@ namespace Exercise6
 
             using (Brush brush = new SolidBrush(this.ColorFill))
             {
-                graphics.FillRectangle(brush, Location.X, Location.Y, Widht, Height);
+                graphics.FillRectangle(brush, Location.X, Location.Y, Width, Height);
             }
 
             using (Pen pen = new Pen(color))
             {
-                graphics.DrawRectangle(pen, Location.X, Location.Y, Widht, Height);
+                graphics.DrawRectangle(pen, Location.X, Location.Y, Width, Height);
             }
         }
 
         public override bool PointInShape(Point point) =>
-            (this.Location.X <= point.X && point.X <= this.Location.X + Widht)
+            (this.Location.X <= point.X && point.X <= this.Location.X + Width)
             &&
             (this.Location.Y <= point.Y && point.Y <= this.Location.Y + Height);
 
         public override bool Intersect(Rectangle rectangle) =>
-            (this.Location.X < rectangle.Location.X + rectangle.Widht &&
-             rectangle.Location.X < this.Location.X + Widht &&
+            (this.Location.X < rectangle.Location.X + rectangle.Width &&
+             rectangle.Location.X < this.Location.X + Width &&
              this.Location.Y < rectangle.Location.Y + rectangle.Height &&
              rectangle.Location.Y < this.Location.Y + Height);
     }

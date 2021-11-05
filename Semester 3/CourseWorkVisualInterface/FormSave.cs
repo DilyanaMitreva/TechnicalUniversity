@@ -2,9 +2,9 @@
 
 namespace CourseWorkVisualInterface
 {
-    public partial class FormFunctionality : Form
+    public partial class FormSave : Form
     {
-        public FormFunctionality()
+        public FormSave()
         {
             InitializeComponent();
         }

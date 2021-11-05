@@ -49,6 +49,7 @@
         <Compile Include="Shapes\Shape.cs" />
         <Compile Include="Shapes\EquilateralTriangle.cs" />
         <Compile Include="Utilities\Constant.cs" />
+        <Compile Include="Utilities\IAreaCalculationService.cs" />
         <Compile Include="Utilities\PointImpl.cs" />
     </ItemGroup>
     <ItemGroup>

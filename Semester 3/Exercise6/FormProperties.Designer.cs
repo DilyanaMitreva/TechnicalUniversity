@@ -37,12 +37,14 @@ namespace Exercise6
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.buttonOK = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.buttonColor = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(12, 144);
+            this.buttonCancel.Location = new System.Drawing.Point(10, 224);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(104, 36);
             this.buttonCancel.TabIndex = 0;
@@ -74,7 +76,7 @@ namespace Exercise6
             // 
             // buttonOK
             // 
-            this.buttonOK.Location = new System.Drawing.Point(167, 144);
+            this.buttonOK.Location = new System.Drawing.Point(165, 224);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(103, 36);
             this.buttonOK.TabIndex = 3;
@@ -90,13 +92,32 @@ namespace Exercise6
             this.label2.TabIndex = 6;
             this.label2.Text = "Height";
             // 
+            // buttonColor
+            // 
+            this.buttonColor.Location = new System.Drawing.Point(10, 153);
+            this.buttonColor.Name = "buttonColor";
+            this.buttonColor.Size = new System.Drawing.Size(151, 31);
+            this.buttonColor.TabIndex = 7;
+            this.buttonColor.UseVisualStyleBackColor = true;
+            this.buttonColor.Click += new System.EventHandler(this.buttonColor_Click);
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(10, 126);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 24);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Color";
+            // 
             // FormProperties
             // 
             this.AcceptButton = this.buttonOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(287, 201);
+            this.ClientSize = new System.Drawing.Size(280, 272);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.buttonColor);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxHeight);
             this.Controls.Add(this.buttonOK);
@@ -112,6 +133,10 @@ namespace Exercise6
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label3;
+
+        private System.Windows.Forms.Button buttonColor;
 
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label label1;

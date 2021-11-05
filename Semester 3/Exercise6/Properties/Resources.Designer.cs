@@ -45,7 +45,7 @@ namespace Exercise6.Properties
                 if ((resourceMan == null))
                 {
                     global::System.Resources.ResourceManager temp =
-                        new global::System.Resources.ResourceManager("Exercise5.Properties.Resources",
+                        new global::System.Resources.ResourceManager("Exercise6.Properties.Resources",
                             typeof(Resources).Assembly);
                     resourceMan = temp;
                 }

@@ -4,10 +4,10 @@ using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
 {
+    public delegate void Draw(Shape shape);
+
     public abstract class Shape
     {
-        public delegate void Draw(Shape shape);
-
         public PointImpl Location { get; set; }
 
         public Color ColorBorder { get; set; }
