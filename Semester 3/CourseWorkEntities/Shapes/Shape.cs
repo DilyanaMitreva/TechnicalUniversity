@@ -40,6 +40,12 @@ namespace CourseWorkEntities.Shapes
 
         public abstract bool Intersect(Rectangle rectangle);
 
+        // public abstract string AsString();
+        //
+        // public abstract string AsJson();
+        //
+        // public abstract string AsXml();
+
         public void DrawShape(Draw draw)
         {
             draw(this);

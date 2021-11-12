@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
+using System.Text;
 using System.Windows.Forms;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
@@ -19,7 +19,7 @@ namespace CourseWorkVisualInterface
 
         private Shape _selectedShape;
         private Rectangle _frame;
-        private IAreaCalculationService _areaCalculationService;
+        private readonly IAreaCalculationService _areaCalculationService;
 
 
         public FormMain()
@@ -56,8 +56,7 @@ namespace CourseWorkVisualInterface
 
             Invalidate();
         }
-
-
+        
         private void FormMain_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -82,8 +81,7 @@ namespace CourseWorkVisualInterface
 
             Invalidate();
         }
-
-
+        
         private void FormMain_MouseMove(object sender, MouseEventArgs e)
         {
             if (_frame == null)
@@ -118,8 +116,7 @@ namespace CourseWorkVisualInterface
 
             Invalidate();
         }
-
-
+        
         private void UpdateShape()
         {
             foreach (Shape shape in _shapes)
@@ -176,7 +173,7 @@ namespace CourseWorkVisualInterface
         {
             if (_shapes.Count == 0)
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
@@ -186,54 +183,39 @@ namespace CourseWorkVisualInterface
 
         private void selectAllTrianglesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
-            foreach (Shape shape in _shapes)
-            {
-                if (shape is EquilateralTriangle)
-                {
-                    shape.IsSelected = true;
-                }
-                else shape.IsSelected = false;
-            }
+            SelectAllShapesByType(typeof(EquilateralTriangle));
 
             Invalidate();
         }
 
         private void selectAllRectanglesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
-
-            foreach (Shape shape in _shapes)
-            {
-                if (shape is Rectangle)
-                {
-                    shape.IsSelected = true;
-                }
-                else shape.IsSelected = false;
-            }
+            
+            SelectAllShapesByType(typeof(Rectangle));
 
             Invalidate();
         }
 
         private void selectAllCirclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (Shape shape in _shapes)
+            if (ValidateListNotEmpty())
             {
-                if (shape is Circle)
-                {
-                    shape.IsSelected = true;
-                }
-                else shape.IsSelected = false;
+                MessageBoxEmptyList();
+                return;
             }
+
+            SelectAllShapesByType(typeof(Circle));
 
             Invalidate();
         }
@@ -243,123 +225,158 @@ namespace CourseWorkVisualInterface
             FormInput formInput = new FormInput(true);
             this.ExecuteForm(formInput);
         }
-
-
+        
         private void allShapesTotalAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
             double areaOfAllShapes = _areaCalculationService.AreaOfAllShapes(_shapes);
 
-            string message = $"The total area is {areaOfAllShapes:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.AllAreaCaption,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder().AppendLine($"The total area is {areaOfAllShapes:g2} pixels.")
+                .ToString();
+
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
 
         private void allShapeTypesTotalAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            if (ValidateListNotEmpty())
+            {
+                MessageBoxEmptyList();
+                return;
+            }
+
+            double allRectangles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Rectangle));
+            double allCircles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Circle));
+            double allEquilateralTriangles =
+                _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
+
+            string message = new StringBuilder()
+                .AppendLine($"Rectangles: {allRectangles:g2}")
+                .AppendLine($"Circles: {allCircles:g2}")
+                .AppendLine($"Equilateral triangles: {allEquilateralTriangles:g2}")
+                .ToString();
+
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
 
         private void allEquilateralTriangleAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
             double areaOfAllEquilateralTriangles =
                 _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message =
-                $"The total area of all equilateral triangles is {areaOfAllEquilateralTriangles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.AllAreaCaption,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine(
+                    $"The total area of all equilateral triangles is {areaOfAllEquilateralTriangles:g2} pixels.")
+                .ToString();
+
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
 
         private void allRectangleAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
             double areaOfAllRectangles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
-            string message = $"The total area of all rectangles is {areaOfAllRectangles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.AllAreaCaption,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine($"The total area of all rectangles is {areaOfAllRectangles:g2} pixels.")
+                .ToString();
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
 
         private void allCircleAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
             double areaOfAllCircles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = $"The total area of all circles is {areaOfAllCircles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.AllAreaCaption,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine($"The total area of all circles is {areaOfAllCircles:g2} pixels.")
+                .ToString();
+
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
 
         private void biggestAreaFromAllShapesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
             double biggestAreaOfAllShapes = _areaCalculationService.BiggestAreaOfAllShapes(_shapes);
 
-            string message = $"The biggest area of all shapes is {biggestAreaOfAllShapes:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.BiggestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine($"The biggest area of all shapes is {biggestAreaOfAllShapes:g2} pixels.")
+                .ToString();
+            GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
 
         private void biggestAreaFromTypeOfShapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            if (ValidateListNotEmpty())
+            {
+                MessageBoxEmptyList();
+                return;
+            }
+
+            double allRectangles = _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
+            double allCircles = _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Circle));
+            double allEquilateralTriangles =
+                _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
+
+            string message = new StringBuilder()
+                .AppendLine($"Rectangles: {allRectangles:g2}")
+                .AppendLine($"Circles: {allCircles:g2}")
+                .AppendLine($"Equilateral triangles: {allEquilateralTriangles:g2}")
+                .ToString();
+
+            GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
 
         private void biggestTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
             double biggestAreaOfAllEquilateralTriangles =
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message =
-                $"The biggest equilateral triangle has area of {biggestAreaOfAllEquilateralTriangles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.BiggestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine(
+                    $"The biggest equilateral triangle has area of {biggestAreaOfAllEquilateralTriangles:g2} pixels.")
+                .ToString();
+            GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
 
         private void biggestRectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_shapes.Count == 0)
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
@@ -367,122 +384,171 @@ namespace CourseWorkVisualInterface
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
             string message = $"The biggest rectangle has area of {biggestAreaOfAllRectangles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.BiggestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
 
         private void biggestCircleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
             double biggestAreaOfAllCircles =
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = $"The biggest circle has area of {biggestAreaOfAllCircles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.BiggestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine($"The biggest circle has area of {biggestAreaOfAllCircles:g2} pixels.")
+                .ToString();
+
+            GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
 
         private void smallestAreaFromAllShapesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
-            double smallestAreaOfAllShapes =  _areaCalculationService.SmallestAreaOfAllShapes(_shapes);
-            
-            string message = $"The smallest area of all shapes is {smallestAreaOfAllShapes:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.SmallestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            double smallestAreaOfAllShapes = _areaCalculationService.SmallestAreaOfAllShapes(_shapes);
+
+            string message = new StringBuilder()
+                .AppendLine($"The smallest area of all shapes is {smallestAreaOfAllShapes:g2} pixels.")
+                .ToString();
+            GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
         private void smallestAreaFromTypeOfShapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            if (ValidateListNotEmpty())
+            {
+                MessageBoxEmptyList();
+                return;
+            }
+
+            double allRectangles = _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
+            double allCircles = _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Circle));
+            double allEquilateralTriangles =
+                _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
+
+            string message = new StringBuilder()
+                .AppendLine($"Rectangles: {allRectangles:g2}")
+                .AppendLine($"Circles: {allCircles:g2}")
+                .AppendLine($"Equilateral triangles: {allEquilateralTriangles:g2}")
+                .ToString();
+
+            GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
         private void smallestTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
-            double smallestAreaOfAllEquilateralTriangles =  _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
+            double smallestAreaOfAllEquilateralTriangles =
+                _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message = $"The smallest equilateral triangle has area of {smallestAreaOfAllEquilateralTriangles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.SmallestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine(
+                    $"The smallest equilateral triangle has area of {smallestAreaOfAllEquilateralTriangles:g2} pixels.")
+                .ToString();
+            GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
         private void smallestRectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
-            double smallestAreaOfAllRectangles = _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
+            double smallestAreaOfAllRectangles =
+                _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
-            string message = $"The smallest rectangle has area of {smallestAreaOfAllRectangles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.SmallestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine($"The smallest rectangle has area of {smallestAreaOfAllRectangles:g2} pixels.")
+                .ToString();
+            GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
         private void smallestCircleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
-            double smallestAreaOfAllCircles = _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Circle));
+            double smallestAreaOfAllCircles =
+                _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = $"The smallest circle has area of {smallestAreaOfAllCircles:g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.SmallestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine($"The smallest circle has area of {smallestAreaOfAllCircles:g2} pixels.")
+                .ToString();
+            GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
         private void totalUnusedSpaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyListList();
+                MessageBoxEmptyList();
                 return;
             }
 
             double areaOfAllShapes = _areaCalculationService.AreaOfAllShapes(_shapes);
             double sceneArea = this.Height * this.Width;
 
-            string message = $"The unused area of the scene is {(sceneArea - areaOfAllShapes):g2} pixels.";
-            MessageBox.Show(message, Constant.InformationMessages.SmallestArea,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            string message = new StringBuilder()
+                .AppendLine($"The unused area of the scene is {(sceneArea - areaOfAllShapes):g2} pixels.")
+                .ToString();
+            GenerateMessageBox(message, Constant.Captions.TotalUnusedSpace);
         }
-
-
+        
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            if (_shapes.Count(s => s.IsSelected) == 0)
+            {
+                MessageBoxEmptyList();
+                return;
+            }
+
+            foreach (Shape shape in _shapes)
+            {
+                if (shape.IsSelected)
+                {
+                    _shapes.Remove(shape);
+                }
+            }
         }
 
-        public void MessageBoxEmptyListList() => MessageBox.Show(Constant.ErrorMessages.EmptyListMessage,
-            Constant.ErrorMessages.ErrorCaption,
-            MessageBoxButtons.OK, MessageBoxIcon.Error);
+        private void MessageBoxEmptyList() =>
+            MessageBox.Show(Constant.ErrorMessages.EmptyListMessage,
+                Constant.Captions.ErrorCaption,
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        private void GenerateMessageBox(string message, string caption)
+            => MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        private bool ValidateListNotEmpty() => _shapes.Count == 0;
+
+        private void SelectAllShapesByType(Type type)
+        {
+            foreach (Shape shape in _shapes)
+            {
+                if (shape.GetType() == type)
+                {
+                    shape.IsSelected = true;
+                }
+                else shape.IsSelected = false;
+            }
+        }
     }
 }

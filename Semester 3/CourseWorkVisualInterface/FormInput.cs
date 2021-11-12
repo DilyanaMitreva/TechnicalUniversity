@@ -9,12 +9,12 @@ namespace CourseWorkVisualInterface
 {
     public partial class FormInput : Form
     {
-        private bool _fromMenuBar;
+        private readonly bool _fromMenuBar;
 
-        private int _mouseXCoordinate;
-        private int _mouseYCoordinate;
+        private readonly int _mouseXCoordinate;
+        private readonly int _mouseYCoordinate;
 
-        private Color _defaultButtonColor;
+        private readonly Color _defaultButtonColor = Color.Transparent;
         private Color _borderColor;
         private Color _fillColor;
 
@@ -381,7 +381,7 @@ namespace CourseWorkVisualInterface
             }
             else
             {
-                MessageBox.Show(Constant.ErrorMessages.ChooseShapeMessage, Constant.ErrorMessages.ErrorCaption,
+                MessageBox.Show(Constant.ErrorMessages.ChooseShapeMessage, Constant.Captions.ErrorCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 DialogResult = DialogResult.Retry;
@@ -396,7 +396,6 @@ namespace CourseWorkVisualInterface
 
         private void ValidateColors()
         {
-            _defaultButtonColor = buttonCancel.BackColor;
             Random random = new Random();
             _borderColor = buttonBorderColor.BackColor;
             _fillColor = buttonFillColor.BackColor;
@@ -420,7 +419,7 @@ namespace CourseWorkVisualInterface
         {
             if (textBox.Text == "")
             {
-                MessageBox.Show(errorMessage, Constant.ErrorMessages.ErrorCaption,
+                MessageBox.Show(errorMessage, Constant.Captions.ErrorCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 DialogResult = DialogResult.Retry;
@@ -439,7 +438,7 @@ namespace CourseWorkVisualInterface
                 }
                 else
                 {
-                    MessageBox.Show(Constant.ErrorMessages.PositiveNumberMessage, Constant.ErrorMessages.ErrorCaption,
+                    MessageBox.Show(Constant.ErrorMessages.PositiveNumberMessage, Constant.Captions.ErrorCaption,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     DialogResult = DialogResult.Retry;
@@ -449,7 +448,7 @@ namespace CourseWorkVisualInterface
             }
             else
             {
-                MessageBox.Show(Constant.ErrorMessages.NumberMessage, Constant.ErrorMessages.ErrorCaption,
+                MessageBox.Show(Constant.ErrorMessages.NumberMessage, Constant.Captions.ErrorCaption,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 DialogResult = DialogResult.Retry;
@@ -479,6 +478,88 @@ namespace CourseWorkVisualInterface
             {
                 buttonFillColor.BackColor = colorDialog.Color;
             }
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e) => ResetForm();
+
+
+        private void ResetForm()
+        {
+            if (checkBoxCircle.Checked)
+            {
+                ResetCircleElements();
+            }
+            else if (checkBoxRectangle.Checked)
+            {
+                ResetRectangleElements();
+            }
+            else if (checkBoxTriangle.Checked)
+            {
+                ResetEquilateralTriangleElements();
+            }
+
+            labelParameters.Visible = false;
+
+            if (_fromMenuBar)
+                ResetCoordinateElements();
+            ResetColorButton();
+        }
+
+        private void ResetColorButton()
+        {
+            buttonBorderColor.BackColor = Color.Transparent;
+            buttonBorderColor.Visible = false;
+
+            buttonFillColor.BackColor = Color.Transparent;
+            buttonFillColor.Visible = false;
+        }
+
+        private void ResetCircleElements()
+        {
+            checkBoxCircle.Checked = false;
+
+            labelRadius.Visible = false;
+
+            textBoxRadius.Text = String.Empty;
+            textBoxRadius.Visible = false;
+        }
+
+        private void ResetRectangleElements()
+        {
+            checkBoxRectangle.Checked = false;
+
+            labelHeight.Visible = false;
+            labelWidth.Visible = false;
+
+            textBoxHeight.Text = String.Empty;
+            textBoxHeight.Visible = false;
+
+            textBoxWidth.Text = String.Empty;
+            textBoxWidth.Visible = false;
+        }
+
+        private void ResetEquilateralTriangleElements()
+        {
+            checkBoxTriangle.Checked = false;
+
+            labelSide.Visible = false;
+
+            textBoxRadius.Text = String.Empty;
+            textBoxRadius.Visible = false;
+        }
+
+        private void ResetCoordinateElements()
+        {
+            labelCoordinates.Visible = false;
+
+            labelXCoordinate.Visible = false;
+            labelYCoordinate.Visible = false;
+
+            textBoxXCoordinate.Text = String.Empty;
+            textBoxXCoordinate.Visible = false;
+
+            textBoxYCoordinate.Text = String.Empty;
+            textBoxYCoordinate.Visible = false;
         }
     }
 }

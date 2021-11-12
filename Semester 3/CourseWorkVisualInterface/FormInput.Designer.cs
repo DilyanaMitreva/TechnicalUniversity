@@ -53,6 +53,9 @@ namespace CourseWorkVisualInterface
             this.labelYCoordinate = new System.Windows.Forms.Label();
             this.textBoxXCoordinate = new System.Windows.Forms.TextBox();
             this.textBoxYCoordinate = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonAddShape
@@ -71,7 +74,7 @@ namespace CourseWorkVisualInterface
             // 
             this.checkBoxCircle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxCircle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxCircle.Location = new System.Drawing.Point(8, 39);
+            this.checkBoxCircle.Location = new System.Drawing.Point(9, 58);
             this.checkBoxCircle.Name = "checkBoxCircle";
             this.checkBoxCircle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxCircle.Size = new System.Drawing.Size(108, 68);
@@ -85,7 +88,7 @@ namespace CourseWorkVisualInterface
             // 
             this.checkBoxRectangle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxRectangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxRectangle.Location = new System.Drawing.Point(186, 39);
+            this.checkBoxRectangle.Location = new System.Drawing.Point(187, 58);
             this.checkBoxRectangle.Name = "checkBoxRectangle";
             this.checkBoxRectangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxRectangle.Size = new System.Drawing.Size(100, 68);
@@ -99,7 +102,7 @@ namespace CourseWorkVisualInterface
             // 
             this.checkBoxTriangle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.checkBoxTriangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxTriangle.Location = new System.Drawing.Point(333, 39);
+            this.checkBoxTriangle.Location = new System.Drawing.Point(334, 58);
             this.checkBoxTriangle.Name = "checkBoxTriangle";
             this.checkBoxTriangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.checkBoxTriangle.Size = new System.Drawing.Size(144, 68);
@@ -111,7 +114,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxRadius
             // 
-            this.textBoxRadius.Location = new System.Drawing.Point(9, 201);
+            this.textBoxRadius.Location = new System.Drawing.Point(10, 220);
             this.textBoxRadius.Name = "textBoxRadius";
             this.textBoxRadius.Size = new System.Drawing.Size(465, 22);
             this.textBoxRadius.TabIndex = 4;
@@ -120,7 +123,7 @@ namespace CourseWorkVisualInterface
             // labelRadius
             // 
             this.labelRadius.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRadius.Location = new System.Drawing.Point(7, 178);
+            this.labelRadius.Location = new System.Drawing.Point(8, 197);
             this.labelRadius.Name = "labelRadius";
             this.labelRadius.Size = new System.Drawing.Size(133, 20);
             this.labelRadius.TabIndex = 5;
@@ -130,7 +133,7 @@ namespace CourseWorkVisualInterface
             // labelSide
             // 
             this.labelSide.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSide.Location = new System.Drawing.Point(9, 178);
+            this.labelSide.Location = new System.Drawing.Point(10, 197);
             this.labelSide.Name = "labelSide";
             this.labelSide.Size = new System.Drawing.Size(133, 20);
             this.labelSide.TabIndex = 9;
@@ -139,7 +142,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxSide
             // 
-            this.textBoxSide.Location = new System.Drawing.Point(10, 201);
+            this.textBoxSide.Location = new System.Drawing.Point(11, 220);
             this.textBoxSide.Name = "textBoxSide";
             this.textBoxSide.Size = new System.Drawing.Size(464, 22);
             this.textBoxSide.TabIndex = 8;
@@ -148,7 +151,7 @@ namespace CourseWorkVisualInterface
             // labelHeight
             // 
             this.labelHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHeight.Location = new System.Drawing.Point(8, 239);
+            this.labelHeight.Location = new System.Drawing.Point(9, 258);
             this.labelHeight.Name = "labelHeight";
             this.labelHeight.Size = new System.Drawing.Size(469, 20);
             this.labelHeight.TabIndex = 11;
@@ -157,7 +160,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxHeight
             // 
-            this.textBoxHeight.Location = new System.Drawing.Point(8, 262);
+            this.textBoxHeight.Location = new System.Drawing.Point(9, 281);
             this.textBoxHeight.Name = "textBoxHeight";
             this.textBoxHeight.Size = new System.Drawing.Size(469, 22);
             this.textBoxHeight.TabIndex = 10;
@@ -166,7 +169,7 @@ namespace CourseWorkVisualInterface
             // labelWidth
             // 
             this.labelWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWidth.Location = new System.Drawing.Point(7, 178);
+            this.labelWidth.Location = new System.Drawing.Point(8, 197);
             this.labelWidth.Name = "labelWidth";
             this.labelWidth.Size = new System.Drawing.Size(133, 20);
             this.labelWidth.TabIndex = 13;
@@ -175,7 +178,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxWidth
             // 
-            this.textBoxWidth.Location = new System.Drawing.Point(8, 201);
+            this.textBoxWidth.Location = new System.Drawing.Point(9, 220);
             this.textBoxWidth.Name = "textBoxWidth";
             this.textBoxWidth.Size = new System.Drawing.Size(469, 22);
             this.textBoxWidth.TabIndex = 12;
@@ -197,16 +200,16 @@ namespace CourseWorkVisualInterface
             // labelShapeType
             // 
             this.labelShapeType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelShapeType.Location = new System.Drawing.Point(8, 9);
+            this.labelShapeType.Location = new System.Drawing.Point(8, 28);
             this.labelShapeType.Name = "labelShapeType";
-            this.labelShapeType.Size = new System.Drawing.Size(469, 27);
+            this.labelShapeType.Size = new System.Drawing.Size(216, 27);
             this.labelShapeType.TabIndex = 19;
             this.labelShapeType.Text = "Select a shape type";
             // 
             // labelParameters
             // 
             this.labelParameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelParameters.Location = new System.Drawing.Point(12, 110);
+            this.labelParameters.Location = new System.Drawing.Point(13, 129);
             this.labelParameters.Name = "labelParameters";
             this.labelParameters.Size = new System.Drawing.Size(465, 60);
             this.labelParameters.TabIndex = 21;
@@ -216,33 +219,35 @@ namespace CourseWorkVisualInterface
             // buttonBorderColor
             // 
             this.buttonBorderColor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonBorderColor.BackColor = System.Drawing.Color.Transparent;
             this.buttonBorderColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBorderColor.Location = new System.Drawing.Point(8, 299);
+            this.buttonBorderColor.Location = new System.Drawing.Point(9, 318);
             this.buttonBorderColor.Name = "buttonBorderColor";
             this.buttonBorderColor.Size = new System.Drawing.Size(159, 49);
             this.buttonBorderColor.TabIndex = 23;
             this.buttonBorderColor.Text = "Border Color";
-            this.buttonBorderColor.UseVisualStyleBackColor = true;
+            this.buttonBorderColor.UseVisualStyleBackColor = false;
             this.buttonBorderColor.Visible = false;
             this.buttonBorderColor.Click += new System.EventHandler(this.buttonBorderColor_Click);
             // 
             // buttonFillColor
             // 
             this.buttonFillColor.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonFillColor.BackColor = System.Drawing.Color.Transparent;
             this.buttonFillColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonFillColor.Location = new System.Drawing.Point(319, 299);
+            this.buttonFillColor.Location = new System.Drawing.Point(320, 318);
             this.buttonFillColor.Name = "buttonFillColor";
             this.buttonFillColor.Size = new System.Drawing.Size(159, 49);
             this.buttonFillColor.TabIndex = 22;
             this.buttonFillColor.Text = "Fill Color";
-            this.buttonFillColor.UseVisualStyleBackColor = true;
+            this.buttonFillColor.UseVisualStyleBackColor = false;
             this.buttonFillColor.Visible = false;
             this.buttonFillColor.Click += new System.EventHandler(this.buttonFillColor_Click);
             // 
             // labelCoordinates
             // 
             this.labelCoordinates.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCoordinates.Location = new System.Drawing.Point(8, 366);
+            this.labelCoordinates.Location = new System.Drawing.Point(9, 385);
             this.labelCoordinates.Name = "labelCoordinates";
             this.labelCoordinates.Size = new System.Drawing.Size(465, 47);
             this.labelCoordinates.TabIndex = 24;
@@ -252,7 +257,7 @@ namespace CourseWorkVisualInterface
             // labelXCoordinate
             // 
             this.labelXCoordinate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelXCoordinate.Location = new System.Drawing.Point(12, 407);
+            this.labelXCoordinate.Location = new System.Drawing.Point(13, 426);
             this.labelXCoordinate.Name = "labelXCoordinate";
             this.labelXCoordinate.Size = new System.Drawing.Size(35, 37);
             this.labelXCoordinate.TabIndex = 25;
@@ -263,7 +268,7 @@ namespace CourseWorkVisualInterface
             // labelYCoordinate
             // 
             this.labelYCoordinate.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelYCoordinate.Location = new System.Drawing.Point(319, 407);
+            this.labelYCoordinate.Location = new System.Drawing.Point(320, 426);
             this.labelYCoordinate.Name = "labelYCoordinate";
             this.labelYCoordinate.Size = new System.Drawing.Size(60, 37);
             this.labelYCoordinate.TabIndex = 26;
@@ -273,7 +278,7 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxXCoordinate
             // 
-            this.textBoxXCoordinate.Location = new System.Drawing.Point(12, 447);
+            this.textBoxXCoordinate.Location = new System.Drawing.Point(13, 466);
             this.textBoxXCoordinate.Name = "textBoxXCoordinate";
             this.textBoxXCoordinate.Size = new System.Drawing.Size(159, 22);
             this.textBoxXCoordinate.TabIndex = 27;
@@ -281,11 +286,27 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxYCoordinate
             // 
-            this.textBoxYCoordinate.Location = new System.Drawing.Point(318, 447);
+            this.textBoxYCoordinate.Location = new System.Drawing.Point(319, 466);
             this.textBoxYCoordinate.Name = "textBoxYCoordinate";
             this.textBoxYCoordinate.Size = new System.Drawing.Size(159, 22);
             this.textBoxYCoordinate.TabIndex = 28;
             this.textBoxYCoordinate.Visible = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.resetToolStripMenuItem });
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(489, 28);
+            this.menuStrip1.TabIndex = 29;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.resetToolStripMenuItem.Text = "Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
             // FormInput
             // 
@@ -316,16 +337,23 @@ namespace CourseWorkVisualInterface
             this.Controls.Add(this.checkBoxRectangle);
             this.Controls.Add(this.checkBoxCircle);
             this.Controls.Add(this.buttonAddShape);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormInput";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Shape information";
             this.Load += new System.EventHandler(this.FormInput_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
 
         private System.Windows.Forms.TextBox textBoxYCoordinate;
         private System.Windows.Forms.TextBox textBoxXCoordinate;
