@@ -15,16 +15,18 @@ namespace CourseWorkVisualInterface
     {
         private Point _mouseCaptureLocation;
 
-        private readonly List<Shape> _shapes = new List<Shape>();
+        private List<Shape> _shapes = new List<Shape>();
 
         private Shape _selectedShape;
         private Rectangle _frame;
         private readonly IAreaCalculationService _areaCalculationService;
+        private readonly ISelectShapeService _selectShapeService;
 
 
         public FormMain()
         {
             this._areaCalculationService = new AreaCalculationService();
+            this._selectShapeService = new SelectShapeService();
             InitializeComponent();
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
         }
@@ -56,7 +58,7 @@ namespace CourseWorkVisualInterface
 
             Invalidate();
         }
-        
+
         private void FormMain_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)
@@ -81,7 +83,7 @@ namespace CourseWorkVisualInterface
 
             Invalidate();
         }
-        
+
         private void FormMain_MouseMove(object sender, MouseEventArgs e)
         {
             if (_frame == null)
@@ -116,7 +118,7 @@ namespace CourseWorkVisualInterface
 
             Invalidate();
         }
-        
+
         private void UpdateShape()
         {
             foreach (Shape shape in _shapes)
@@ -177,7 +179,7 @@ namespace CourseWorkVisualInterface
                 return;
             }
 
-            _shapes.ForEach(s => s.IsSelected = true);
+            _selectShapeService.SelectAllShapes(_shapes);
             Invalidate();
         }
 
@@ -189,7 +191,7 @@ namespace CourseWorkVisualInterface
                 return;
             }
 
-            SelectAllShapesByType(typeof(EquilateralTriangle));
+            _selectShapeService.SelectAllShapesByType(_shapes, typeof(EquilateralTriangle));
 
             Invalidate();
         }
@@ -201,8 +203,8 @@ namespace CourseWorkVisualInterface
                 MessageBoxEmptyList();
                 return;
             }
-            
-            SelectAllShapesByType(typeof(Rectangle));
+
+            _selectShapeService.SelectAllShapesByType(_shapes, typeof(Rectangle));
 
             Invalidate();
         }
@@ -215,7 +217,7 @@ namespace CourseWorkVisualInterface
                 return;
             }
 
-            SelectAllShapesByType(typeof(Circle));
+            _selectShapeService.SelectAllShapesByType(_shapes, typeof(Circle));
 
             Invalidate();
         }
@@ -225,7 +227,7 @@ namespace CourseWorkVisualInterface
             FormInput formInput = new FormInput(true);
             this.ExecuteForm(formInput);
         }
-        
+
         private void allShapesTotalAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
@@ -511,7 +513,7 @@ namespace CourseWorkVisualInterface
                 .ToString();
             GenerateMessageBox(message, Constant.Captions.TotalUnusedSpace);
         }
-        
+
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (_shapes.Count(s => s.IsSelected) == 0)
@@ -529,6 +531,32 @@ namespace CourseWorkVisualInterface
             }
         }
 
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ValidateListNotEmpty())
+            {
+                MessageBoxEmptyList();
+                return;
+            }
+            
+            FormExport formExport = new FormExport(_shapes);
+            do
+            {
+                formExport.ShowDialog();
+            } while (formExport.DialogResult == DialogResult.Retry);
+            
+            if (formExport.DialogResult == DialogResult.OK)
+            {
+               // open file in windows??
+            }
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _shapes = new List<Shape>();
+            Invalidate();
+        }
+
         private void MessageBoxEmptyList() =>
             MessageBox.Show(Constant.ErrorMessages.EmptyListMessage,
                 Constant.Captions.ErrorCaption,
@@ -538,17 +566,5 @@ namespace CourseWorkVisualInterface
             => MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         private bool ValidateListNotEmpty() => _shapes.Count == 0;
-
-        private void SelectAllShapesByType(Type type)
-        {
-            foreach (Shape shape in _shapes)
-            {
-                if (shape.GetType() == type)
-                {
-                    shape.IsSelected = true;
-                }
-                else shape.IsSelected = false;
-            }
-        }
     }
 }

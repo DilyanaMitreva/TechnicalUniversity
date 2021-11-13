@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -40,6 +41,21 @@ namespace CourseWorkEntities.Shapes
             int distanceY = yNear - Center.Y;
 
             return (distanceX * distanceX + distanceY * distanceY) <= this.Radius * this.Radius;
+        }
+
+        public override string AsString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Circle")
+                .Append($"Location: {this.Location.AsString()}")
+                .AppendLine($"Radius: {this.Radius}")
+                .AppendLine($"Area: {this.Area}")
+                .AppendLine($"BorderColor: {this.ColorBorder.ToString()}")
+                .AppendLine($"FillColor: {this.FillColor.ToString()}")
+                .AppendLine($"Is Selected: {this.IsSelected.ToString()}");
+
+            return sb.ToString();
         }
     }
 }

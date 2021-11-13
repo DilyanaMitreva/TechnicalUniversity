@@ -64,18 +64,8 @@ namespace CourseWorkVisualInterface.Services
 
         private static void DrawEquilateralTriangle(EquilateralTriangle triangle)
         {
-            Point[] points = new Point[3];
-
-            points[0].X = triangle.Vertices[0].X;
-            points[0].Y = triangle.Vertices[0].Y;
-
-            points[1].X = triangle.Vertices[1].X;
-            points[1].Y = triangle.Vertices[1].Y;
-
-            points[2].X = triangle.Vertices[2].X;
-            points[2].Y = triangle.Vertices[2].Y;
-
-
+            Point[] points = triangle.GetVertices();
+            
             using (Pen pen = new Pen(triangle.IsSelected ? SelectedColor : triangle.ColorBorder,
                 triangle.IsSelected ? 3 : 1))
             {

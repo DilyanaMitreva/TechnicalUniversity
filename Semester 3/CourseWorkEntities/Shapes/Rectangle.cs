@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Text;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -36,6 +37,22 @@ namespace CourseWorkEntities.Shapes
                    rectangle.Location.X < this.Location.X + Width &&
                    this.Location.Y < rectangle.Location.Y + rectangle.Height &&
                    rectangle.Location.Y < this.Location.Y + Height;
+        }
+
+        public override string AsString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("Rectangle")
+                .Append($"Location: {this.Location.AsString()}")
+                .AppendLine($"Width: {this.Width}")
+                .AppendLine($"Height: {this.Height}")
+                .AppendLine($"Area: {this.Area}")
+                .AppendLine($"BorderColor: {this.ColorBorder.ToString()}")
+                .AppendLine($"FillColor: {this.FillColor.ToString()}")
+                .AppendLine($"Is Selected: {this.IsSelected.ToString()}");
+
+            return sb.ToString();
         }
     }
 }

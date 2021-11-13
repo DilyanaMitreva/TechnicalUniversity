@@ -54,12 +54,14 @@
             this.smallestCircleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.totalUnusedSpaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.selectToolStripMenuItem, this.addToolStripMenuItem, this.functionsToolStripMenuItem, this.deleteToolStripMenuItem });
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { this.selectToolStripMenuItem, this.addToolStripMenuItem, this.functionsToolStripMenuItem, this.deleteToolStripMenuItem, this.exportToolStripMenuItem, this.resetToolStripMenuItem });
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(982, 28);
@@ -236,6 +238,20 @@
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(107, 24);
+            this.exportToolStripMenuItem.Text = "Export Scene";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
+            // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+            this.resetToolStripMenuItem.Text = "Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -258,7 +274,11 @@
             this.PerformLayout();
         }
 
-        
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+
+        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
+
+
         private System.Windows.Forms.ToolStripMenuItem allEquilateralTriangleAreaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allRectangleAreaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem allCircleAreaToolStripMenuItem;

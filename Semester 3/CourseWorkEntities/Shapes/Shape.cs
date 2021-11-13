@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -18,7 +17,7 @@ namespace CourseWorkEntities.Shapes
 
         public abstract double Area { get; }
 
-        public Shape()
+        protected Shape()
         {
         }
 
@@ -29,18 +28,12 @@ namespace CourseWorkEntities.Shapes
             FillColor = fillColor;
         }
 
-        protected Shape(Color colorBorder, Color fillColor)
-        {
-            ColorBorder = colorBorder;
-            FillColor = fillColor;
-        }
-
 
         public abstract bool PointInShape(PointImpl point);
 
         public abstract bool Intersect(Rectangle rectangle);
 
-        // public abstract string AsString();
+         public abstract string AsString();
         //
         // public abstract string AsJson();
         //

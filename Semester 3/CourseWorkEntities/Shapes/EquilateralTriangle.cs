@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
@@ -8,13 +9,13 @@ namespace CourseWorkEntities.Shapes
     {
         public int Side { get; set; }
 
-        public PointImpl[] Vertices { get; set; }
+        private PointImpl[] Vertices { get; set; }
 
         public EquilateralTriangle(int xCoordinate, int yCoordinate, int side, Color colorBorder, Color fillColor) :
             base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
             this.Side = side;
-            this.Vertices = GetVertices(new PointImpl(xCoordinate, yCoordinate), side);
+            this.Vertices = GenerateVertices(new PointImpl(xCoordinate, yCoordinate), side);
         }
 
 
@@ -50,7 +51,39 @@ namespace CourseWorkEntities.Shapes
             return false;
         }
 
-        private PointImpl[] GetVertices(PointImpl location, int side)
+        public override string AsString()
+        {
+            StringBuilder sb = new StringBuilder();
+            
+            sb.AppendLine("Equilateral Triangle")
+                .Append($"Location: {this.Location.AsString()}")
+                .AppendLine($"Side: {this.Side}")
+                .AppendLine($"Area: {this.Area}")
+                .AppendLine($"BorderColor: {this.ColorBorder.ToString()}")
+                .AppendLine($"FillColor: {this.FillColor.ToString()}")
+                .AppendLine($"Is Selected: {this.IsSelected.ToString()}");
+
+            return sb.ToString();
+        }
+
+        public Point[] GetVertices()
+        {
+            Point[] points = new Point[3];
+
+            points[0].X = this.Vertices[0].X;
+            points[0].Y = this.Vertices[0].Y;
+
+            points[1].X = this.Vertices[1].X;
+            points[1].Y = this.Vertices[1].Y;
+
+            points[2].X = this.Vertices[2].X;
+            points[2].Y = this.Vertices[2].Y;
+
+            return points;
+        }
+
+
+        private PointImpl[] GenerateVertices(PointImpl location, int side)
         {
             PointImpl[] points = new PointImpl[3];
 

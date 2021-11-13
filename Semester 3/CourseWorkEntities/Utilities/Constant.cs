@@ -4,6 +4,9 @@ namespace CourseWorkEntities.Utilities
 {
     public static class Constant
     {
+        public const string FileLocationTxt =
+            @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.txt";
+
         public static class ErrorMessages
         {
             public const string RadiusMessage = "Enter radius";
@@ -25,6 +28,8 @@ namespace CourseWorkEntities.Utilities
             public const string ChooseShapeMessage = "Choose a shape";
 
             public const string EmptyListMessage = "No items";
+
+            public const string SelectTypeForExport = "Select type of export";
         }
 
         public static class Captions

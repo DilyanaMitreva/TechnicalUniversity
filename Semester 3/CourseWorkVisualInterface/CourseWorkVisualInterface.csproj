@@ -33,10 +33,6 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Xml.Linq" />
@@ -56,11 +52,11 @@
         <Compile Include="FormInput.Designer.cs">
           <DependentUpon>FormInput.cs</DependentUpon>
         </Compile>
-        <Compile Include="FormSave.cs">
+        <Compile Include="FormExport.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="FormSave.Designer.cs">
-          <DependentUpon>FormSave.cs</DependentUpon>
+        <Compile Include="FormExport.Designer.cs">
+          <DependentUpon>FormExport.cs</DependentUpon>
         </Compile>
         <Compile Include="FormMain.cs">
             <SubType>Form</SubType>
@@ -71,12 +67,14 @@
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Services\AreaCalculationService.cs" />
+        <Compile Include="Services\SelectShapeService.cs" />
+        <Compile Include="Services\SerializeShapeService.cs" />
         <Compile Include="Services\ShapeDrawService.cs" />
         <EmbeddedResource Include="FormInput.resx">
           <DependentUpon>FormInput.cs</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="FormSave.resx">
-          <DependentUpon>FormSave.cs</DependentUpon>
+        <EmbeddedResource Include="FormExport.resx">
+          <DependentUpon>FormExport.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="FormMain.resx">
           <DependentUpon>FormMain.cs</DependentUpon>
@@ -90,7 +88,6 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
-        <None Include="packages.config" />
         <None Include="Properties\Settings.settings">
             <Generator>SettingsSingleFileGenerator</Generator>
             <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -109,6 +106,9 @@
         <Project>{27034efe-699c-436e-b5e4-6ecf4bc429f4}</Project>
         <Name>CourseWorkEntities</Name>
       </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="shapes.txt" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

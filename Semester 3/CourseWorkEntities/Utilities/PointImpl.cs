@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Text;
 
 namespace CourseWorkEntities.Utilities
 {
@@ -16,6 +16,17 @@ namespace CourseWorkEntities.Utilities
         {
             X = x;
             Y = y;
+        }
+
+        public string AsString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine()
+                .AppendLine($"\t X coordinate: {this.X}")
+                .AppendLine($"\t Y coordinate: {this.Y}");
+
+            return sb.ToString();
         }
     }
 }
