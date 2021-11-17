@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
+using CourseWorkEntities.Utilities.Interfaces;
 
-namespace CourseWorkVisualInterface.Services
+namespace CourseWorkEntities.Services
 {
     public class SelectShapeService : ISelectShapeService
     {

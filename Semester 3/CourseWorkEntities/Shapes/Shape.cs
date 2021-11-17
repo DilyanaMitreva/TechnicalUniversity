@@ -33,8 +33,8 @@ namespace CourseWorkEntities.Shapes
 
         public abstract bool Intersect(Rectangle rectangle);
 
-         public abstract string AsString();
-        //
+        public abstract string AsString();
+
         // public abstract string AsJson();
         //
         // public abstract string AsXml();

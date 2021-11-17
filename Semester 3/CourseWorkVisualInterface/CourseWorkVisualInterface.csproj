@@ -66,10 +66,6 @@
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Services\AreaCalculationService.cs" />
-        <Compile Include="Services\SelectShapeService.cs" />
-        <Compile Include="Services\SerializeShapeService.cs" />
-        <Compile Include="Services\ShapeDrawService.cs" />
         <EmbeddedResource Include="FormInput.resx">
           <DependentUpon>FormInput.cs</DependentUpon>
         </EmbeddedResource>
@@ -106,9 +102,6 @@
         <Project>{27034efe-699c-436e-b5e4-6ecf4bc429f4}</Project>
         <Name>CourseWorkEntities</Name>
       </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="shapes.txt" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

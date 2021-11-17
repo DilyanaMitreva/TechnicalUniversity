@@ -3,12 +3,13 @@ using System.IO;
 using System.Text;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
+using CourseWorkEntities.Utilities.Interfaces;
 
-namespace CourseWorkVisualInterface.Services
+namespace CourseWorkEntities.Services
 {
-    public class SerializeShapeService : ISerializeShapeService
+    public class ConvertShapeService : IConvertShapeService
     {
-        public void SerializeAsTxt(List<Shape> shapes)
+        public void ConvertToTxtFile(List<Shape> shapes)
         {
             StringBuilder sb = new StringBuilder().AppendLine("Shapes");
             foreach (Shape shape in shapes)
@@ -22,12 +23,12 @@ namespace CourseWorkVisualInterface.Services
             File.WriteAllText(Constant.FileLocationTxt, sb.ToString());
         }
 
-        public void SerializeAsJson(List<Shape> shapes)
+        public void ConvertToJsonFile(List<Shape> shapes)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SerializeAsXml(List<Shape> shapes)
+        public void ConvertToXmlFile(List<Shape> shapes)
         {
             throw new System.NotImplementedException();
         }

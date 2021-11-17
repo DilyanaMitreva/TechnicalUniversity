@@ -9,22 +9,19 @@ namespace CourseWorkEntities.Shapes
     {
         public int Radius { get; set; }
 
-        public PointImpl Center { get; set; }
-
         public override double Area => Math.PI * Radius * Radius;
 
-        public Circle(int xCoordinate, int yCoordinate, int radius, Color colorBorder, Color fillColor) : base(
-            xCoordinate, yCoordinate, colorBorder, fillColor)
+        public Circle(int xCoordinate, int yCoordinate, int radius, Color colorBorder, Color fillColor)
+            : base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
             this.Radius = radius;
-            this.Center = new PointImpl(this.Location.X + this.Radius, this.Location.Y + this.Radius);
         }
 
 
         public override Boolean PointInShape(PointImpl point)
         {
-            Boolean result = (point.X - Center.X) * (point.X - Center.X) +
-                             (point.Y - Center.Y) * (point.Y - Center.Y)
+            Boolean result = (point.X - Location.X) * (point.X - Location.X) +
+                             (point.Y - Location.Y) * (point.Y - Location.Y)
                              <= this.Radius * this.Radius;
 
             return result;
@@ -33,12 +30,12 @@ namespace CourseWorkEntities.Shapes
         public override bool Intersect(Rectangle rectangle)
         {
             int xNear = Math.Max(rectangle.Location.X,
-                Math.Min(Center.X, rectangle.Location.X + rectangle.Width));
+                Math.Min(Location.X, rectangle.Location.X + rectangle.Width));
             int yNear = Math.Max(rectangle.Location.Y,
-                Math.Min(Center.Y, rectangle.Location.Y + rectangle.Height));
+                Math.Min(Location.Y, rectangle.Location.Y + rectangle.Height));
 
-            int distanceX = xNear - Center.X;
-            int distanceY = yNear - Center.Y;
+            int distanceX = xNear - Location.X;
+            int distanceY = yNear - Location.Y;
 
             return (distanceX * distanceX + distanceY * distanceY) <= this.Radius * this.Radius;
         }

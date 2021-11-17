@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CourseWorkEntities.Services;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
-using CourseWorkVisualInterface.Services;
+using CourseWorkEntities.Utilities.Interfaces;
 
 namespace CourseWorkVisualInterface
 {
     public partial class FormExport : Form
     {
-        private List<Shape> _shapes;
+        private readonly List<Shape> _shapes;
 
-        private ISerializeShapeService _serializeShapeService;
+        private readonly IConvertShapeService _convertShapeService;
         public FormExport()
         {
-            _serializeShapeService = new SerializeShapeService();
+            _convertShapeService = new ConvertShapeService();
             InitializeComponent();
         }
         
         public FormExport(List<Shape> shapes)
         {
             this._shapes = shapes;
-            _serializeShapeService = new SerializeShapeService();
+            _convertShapeService = new ConvertShapeService();
             InitializeComponent();
         }
 
@@ -29,15 +30,15 @@ namespace CourseWorkVisualInterface
         {
             if (checkBoxJson.Checked)
             {
-                _serializeShapeService.SerializeAsJson(_shapes);
+                _convertShapeService.ConvertToJsonFile(_shapes);
             }
             if (checkBoxXml.Checked)
             {
-                _serializeShapeService.SerializeAsXml(_shapes);
+                _convertShapeService.ConvertToXmlFile(_shapes);
             }
             if (checkBoxTxt.Checked)
             {
-                _serializeShapeService.SerializeAsTxt(_shapes);
+                _convertShapeService.ConvertToTxtFile(_shapes);
             }
             else
             {

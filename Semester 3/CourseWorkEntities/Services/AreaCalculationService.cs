@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
+using CourseWorkEntities.Utilities.Interfaces;
 
-namespace CourseWorkVisualInterface.Services
+namespace CourseWorkEntities.Services
 {
     public class AreaCalculationService : IAreaCalculationService
     {
@@ -21,17 +22,19 @@ namespace CourseWorkVisualInterface.Services
                 .Max();
 
         public double AreaOfAllShapesFromType(List<Shape> shapes, Type type) =>
-            shapes.Where(s => s.GetType() == type)
+            shapes
+                .Where(s => s.GetType() == type)
+                .Select(s => s.Area)
                 .ToList()
-                .Sum(s => s.Area);
+                .Sum();
 
 
         public double SmallestAreaOfAllShapesFromType(List<Shape> shapes, Type type) =>
             shapes.Where(s => s.GetType() == type)
-                .OrderBy(s => s.Area)
+                .Select(s => s.Area)
+                .OrderBy(area => area)
                 .ToList()
-                .First()
-                .Area;
+                .First();
 
         public double BiggestAreaOfAllShapesFromType(List<Shape> shapes, Type type) =>
             shapes.Where(s => s.GetType() == type)

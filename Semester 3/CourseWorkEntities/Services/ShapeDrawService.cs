@@ -2,7 +2,7 @@
 using CourseWorkEntities.Shapes;
 using Rectangle = CourseWorkEntities.Shapes.Rectangle;
 
-namespace CourseWorkVisualInterface.Services
+namespace CourseWorkEntities.Services
 {
     public static class ShapeDrawService
     {
@@ -31,18 +31,14 @@ namespace CourseWorkVisualInterface.Services
         {
             using (Pen pen = new Pen(circle.IsSelected ? SelectedColor : circle.ColorBorder, circle.IsSelected ? 3 : 1))
             {
-                Graphics.DrawEllipse(pen, circle.Center.X - circle.Radius, circle.Center.Y - circle.Radius,
-                    circle.Radius * 2, circle.Radius * 2);
-                //Graphics.DrawEllipse(pen, circle.Location.X, circle.Location.Y, 2 * circle.Radius, 2 * circle.Radius);
+                Graphics.DrawEllipse(pen, circle.Location.X - circle.Radius, circle.Location.Y - circle.Radius,
+                    2 * circle.Radius, 2 * circle.Radius);
             }
 
             using (Brush brush = new SolidBrush(circle.FillColor))
             {
-                Graphics.FillEllipse(brush, circle.Center.X - circle.Radius, circle.Center.Y - circle.Radius,
-                    circle.Radius * 2, circle.Radius * 2);
-
-                // Graphics.FillEllipse(brush, circle.Location.X, circle.Location.Y, 2 * circle.Radius,
-                //     2 * circle.Radius);
+                Graphics.FillEllipse(brush, circle.Location.X - circle.Radius, circle.Location.Y - circle.Radius,
+                    2 * circle.Radius, 2 * circle.Radius);
             }
         }
 
@@ -65,7 +61,7 @@ namespace CourseWorkVisualInterface.Services
         private static void DrawEquilateralTriangle(EquilateralTriangle triangle)
         {
             Point[] points = triangle.GetVertices();
-            
+
             using (Pen pen = new Pen(triangle.IsSelected ? SelectedColor : triangle.ColorBorder,
                 triangle.IsSelected ? 3 : 1))
             {

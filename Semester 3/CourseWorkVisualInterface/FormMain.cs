@@ -4,9 +4,10 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using CourseWorkEntities.Services;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
-using CourseWorkVisualInterface.Services;
+using CourseWorkEntities.Utilities.Interfaces;
 using Rectangle = CourseWorkEntities.Shapes.Rectangle;
 
 namespace CourseWorkVisualInterface
@@ -522,13 +523,16 @@ namespace CourseWorkVisualInterface
                 return;
             }
 
-            foreach (Shape shape in _shapes)
+            for (int i = _shapes.Count - 1; i >= 0; i--)
             {
+                Shape shape = _shapes[i];
                 if (shape.IsSelected)
                 {
                     _shapes.Remove(shape);
                 }
             }
+
+            Invalidate();
         }
 
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
@@ -538,16 +542,16 @@ namespace CourseWorkVisualInterface
                 MessageBoxEmptyList();
                 return;
             }
-            
+
             FormExport formExport = new FormExport(_shapes);
             do
             {
                 formExport.ShowDialog();
             } while (formExport.DialogResult == DialogResult.Retry);
-            
+
             if (formExport.DialogResult == DialogResult.OK)
             {
-               // open file in windows??
+                // open file in windows??
             }
         }
 

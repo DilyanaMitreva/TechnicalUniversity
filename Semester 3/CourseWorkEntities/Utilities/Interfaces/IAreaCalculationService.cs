@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using CourseWorkEntities.Shapes;
 
-namespace CourseWorkEntities.Utilities
+namespace CourseWorkEntities.Utilities.Interfaces
 {
     public interface IAreaCalculationService
     {
