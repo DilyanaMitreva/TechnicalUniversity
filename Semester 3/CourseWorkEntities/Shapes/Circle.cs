@@ -5,11 +5,16 @@ using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
 {
+    [Serializable]
     public class Circle : Shape
     {
         public int Radius { get; set; }
 
         public override double Area => Math.PI * Radius * Radius;
+
+        public Circle() : base()
+        {
+        }
 
         public Circle(int xCoordinate, int yCoordinate, int radius, Color colorBorder, Color fillColor)
             : base(xCoordinate, yCoordinate, colorBorder, fillColor)
@@ -18,7 +23,7 @@ namespace CourseWorkEntities.Shapes
         }
 
 
-        public override Boolean PointInShape(PointImpl point)
+        public override bool PointInShape(PointImpl point)
         {
             Boolean result = (point.X - Location.X) * (point.X - Location.X) +
                              (point.Y - Location.Y) * (point.Y - Location.Y)

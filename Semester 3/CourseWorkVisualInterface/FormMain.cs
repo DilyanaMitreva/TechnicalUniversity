@@ -41,12 +41,9 @@ namespace CourseWorkVisualInterface
                 shape.DrawShape(ShapeDrawService.DrawShape);
             }
 
-            if (_frame != null)
+            if (_frame?.Location != null)
             {
-                if (_frame.Location != null)
-                {
-                    _frame.DrawShape(ShapeDrawService.DrawShape);
-                }
+                _frame.DrawShape(ShapeDrawService.DrawShape);
             }
         }
 
@@ -140,6 +137,7 @@ namespace CourseWorkVisualInterface
             this.ExecuteForm(formUpdate);
             if (formUpdate.DialogResult == DialogResult.OK)
             {
+                _shapes.Add(formUpdate.GetShape());
                 _shapes.Remove(_selectedShape);
             }
         }
@@ -239,8 +237,7 @@ namespace CourseWorkVisualInterface
 
             double areaOfAllShapes = _areaCalculationService.AreaOfAllShapes(_shapes);
 
-            string message = new StringBuilder().AppendLine($"The total area is {areaOfAllShapes:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.AllAreaMessage, areaOfAllShapes);
 
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
@@ -253,16 +250,7 @@ namespace CourseWorkVisualInterface
                 return;
             }
 
-            double allRectangles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Rectangle));
-            double allCircles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Circle));
-            double allEquilateralTriangles =
-                _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
-
-            string message = new StringBuilder()
-                .AppendLine($"Rectangles: {allRectangles:g2}")
-                .AppendLine($"Circles: {allCircles:g2}")
-                .AppendLine($"Equilateral triangles: {allEquilateralTriangles:g2}")
-                .ToString();
+            string message = _areaCalculationService.AllShapesAreaByType(_shapes);
 
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
@@ -278,10 +266,8 @@ namespace CourseWorkVisualInterface
             double areaOfAllEquilateralTriangles =
                 _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message = new StringBuilder()
-                .AppendLine(
-                    $"The total area of all equilateral triangles is {areaOfAllEquilateralTriangles:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
+                nameof(EquilateralTriangle), areaOfAllEquilateralTriangles);
 
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
@@ -296,9 +282,9 @@ namespace CourseWorkVisualInterface
 
             double areaOfAllRectangles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
-            string message = new StringBuilder()
-                .AppendLine($"The total area of all rectangles is {areaOfAllRectangles:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
+                nameof(Rectangle), areaOfAllRectangles);
+
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
 
@@ -312,9 +298,8 @@ namespace CourseWorkVisualInterface
 
             double areaOfAllCircles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = new StringBuilder()
-                .AppendLine($"The total area of all circles is {areaOfAllCircles:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
+                nameof(Circle), areaOfAllCircles);
 
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
         }
@@ -329,9 +314,7 @@ namespace CourseWorkVisualInterface
 
             double biggestAreaOfAllShapes = _areaCalculationService.BiggestAreaOfAllShapes(_shapes);
 
-            string message = new StringBuilder()
-                .AppendLine($"The biggest area of all shapes is {biggestAreaOfAllShapes:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.BiggestAreaMessage, biggestAreaOfAllShapes);
             GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
 
@@ -343,16 +326,7 @@ namespace CourseWorkVisualInterface
                 return;
             }
 
-            double allRectangles = _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
-            double allCircles = _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Circle));
-            double allEquilateralTriangles =
-                _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
-
-            string message = new StringBuilder()
-                .AppendLine($"Rectangles: {allRectangles:g2}")
-                .AppendLine($"Circles: {allCircles:g2}")
-                .AppendLine($"Equilateral triangles: {allEquilateralTriangles:g2}")
-                .ToString();
+            string message = _areaCalculationService.AllShapesBiggestAreaByType(_shapes);
 
             GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
@@ -368,10 +342,8 @@ namespace CourseWorkVisualInterface
             double biggestAreaOfAllEquilateralTriangles =
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message = new StringBuilder()
-                .AppendLine(
-                    $"The biggest equilateral triangle has area of {biggestAreaOfAllEquilateralTriangles:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
+                nameof(EquilateralTriangle), biggestAreaOfAllEquilateralTriangles);
             GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
 
@@ -386,7 +358,9 @@ namespace CourseWorkVisualInterface
             double biggestAreaOfAllRectangles =
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
-            string message = $"The biggest rectangle has area of {biggestAreaOfAllRectangles:g2} pixels.";
+            string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
+                nameof(Rectangle), biggestAreaOfAllRectangles);
+
             GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
 
@@ -401,9 +375,8 @@ namespace CourseWorkVisualInterface
             double biggestAreaOfAllCircles =
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = new StringBuilder()
-                .AppendLine($"The biggest circle has area of {biggestAreaOfAllCircles:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
+                nameof(Circle), biggestAreaOfAllCircles);
 
             GenerateMessageBox(message, Constant.Captions.BiggestArea);
         }
@@ -418,9 +391,7 @@ namespace CourseWorkVisualInterface
 
             double smallestAreaOfAllShapes = _areaCalculationService.SmallestAreaOfAllShapes(_shapes);
 
-            string message = new StringBuilder()
-                .AppendLine($"The smallest area of all shapes is {smallestAreaOfAllShapes:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.SmallestAreaMessage, smallestAreaOfAllShapes);
             GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
@@ -432,16 +403,7 @@ namespace CourseWorkVisualInterface
                 return;
             }
 
-            double allRectangles = _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
-            double allCircles = _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Circle));
-            double allEquilateralTriangles =
-                _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
-
-            string message = new StringBuilder()
-                .AppendLine($"Rectangles: {allRectangles:g2}")
-                .AppendLine($"Circles: {allCircles:g2}")
-                .AppendLine($"Equilateral triangles: {allEquilateralTriangles:g2}")
-                .ToString();
+            string message = _areaCalculationService.AllShapesSmallestAreaByType(_shapes);
 
             GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
@@ -457,10 +419,9 @@ namespace CourseWorkVisualInterface
             double smallestAreaOfAllEquilateralTriangles =
                 _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message = new StringBuilder()
-                .AppendLine(
-                    $"The smallest equilateral triangle has area of {smallestAreaOfAllEquilateralTriangles:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
+                nameof(EquilateralTriangle), smallestAreaOfAllEquilateralTriangles);
+
             GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
@@ -475,9 +436,9 @@ namespace CourseWorkVisualInterface
             double smallestAreaOfAllRectangles =
                 _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
-            string message = new StringBuilder()
-                .AppendLine($"The smallest rectangle has area of {smallestAreaOfAllRectangles:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
+                nameof(Rectangle), smallestAreaOfAllRectangles);
+
             GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
@@ -492,9 +453,9 @@ namespace CourseWorkVisualInterface
             double smallestAreaOfAllCircles =
                 _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = new StringBuilder()
-                .AppendLine($"The smallest circle has area of {smallestAreaOfAllCircles:g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
+                nameof(Circle), smallestAreaOfAllCircles);
+
             GenerateMessageBox(message, Constant.Captions.SmallestArea);
         }
 
@@ -509,9 +470,8 @@ namespace CourseWorkVisualInterface
             double areaOfAllShapes = _areaCalculationService.AreaOfAllShapes(_shapes);
             double sceneArea = this.Height * this.Width;
 
-            string message = new StringBuilder()
-                .AppendLine($"The unused area of the scene is {(sceneArea - areaOfAllShapes):g2} pixels.")
-                .ToString();
+            string message = String.Format(Constant.InformationMessages.UnusedSpaceMessage,
+                (sceneArea - areaOfAllShapes));
             GenerateMessageBox(message, Constant.Captions.TotalUnusedSpace);
         }
 

@@ -13,12 +13,13 @@ namespace CourseWorkVisualInterface
         private readonly List<Shape> _shapes;
 
         private readonly IConvertShapeService _convertShapeService;
+
         public FormExport()
         {
             _convertShapeService = new ConvertShapeService();
             InitializeComponent();
         }
-        
+
         public FormExport(List<Shape> shapes)
         {
             this._shapes = shapes;
@@ -31,14 +32,17 @@ namespace CourseWorkVisualInterface
             if (checkBoxJson.Checked)
             {
                 _convertShapeService.ConvertToJsonFile(_shapes);
+                GetMessageBox();
             }
-            if (checkBoxXml.Checked)
+            else if (checkBoxXml.Checked)
             {
                 _convertShapeService.ConvertToXmlFile(_shapes);
+                GetMessageBox();
             }
-            if (checkBoxTxt.Checked)
+            else if (checkBoxTxt.Checked)
             {
                 _convertShapeService.ConvertToTxtFile(_shapes);
+                GetMessageBox();
             }
             else
             {
@@ -47,6 +51,7 @@ namespace CourseWorkVisualInterface
                 DialogResult = DialogResult.Retry;
                 return;
             }
+
             DialogResult = DialogResult.OK;
         }
 
@@ -72,5 +77,11 @@ namespace CourseWorkVisualInterface
             checkBoxJson.Checked = false;
             checkBoxTxt.Checked = false;
         }
+
+        private void GetMessageBox()
+            => MessageBox.Show(Constant.InformationMessages.ExportReady,
+                Constant.Captions.Export,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
     }
 }

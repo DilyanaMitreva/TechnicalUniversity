@@ -1,9 +1,11 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Text;
 using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
 {
+    [Serializable]
     public class Rectangle : Shape
     {
         public int Width { get; set; } // дължина
@@ -12,7 +14,7 @@ namespace CourseWorkEntities.Shapes
 
         public override double Area => Height * Width;
 
-        public Rectangle()
+        public Rectangle() : base()
         {
         }
 

@@ -10,6 +10,7 @@ namespace CourseWorkVisualInterface
     public partial class FormInput : Form
     {
         private readonly bool _fromMenuBar;
+        private readonly bool _updateShape;
 
         private readonly int _mouseXCoordinate;
         private readonly int _mouseYCoordinate;
@@ -34,13 +35,14 @@ namespace CourseWorkVisualInterface
 
         public FormInput(Shape selectedShape)
         {
-            this._shape = selectedShape;
+            _shape = selectedShape;
+            _updateShape = true;
             InitializeComponent();
         }
 
         public FormInput(bool fromMenuBar)
         {
-            this._fromMenuBar = fromMenuBar;
+            _fromMenuBar = fromMenuBar;
             InitializeComponent();
         }
 
@@ -51,81 +53,24 @@ namespace CourseWorkVisualInterface
         {
             if (_shape is Circle circle)
             {
-                checkBoxCircle.Checked = true;
-
-                labelParameters.Visible = true;
-
-                labelRadius.Visible = true;
-                textBoxRadius.Visible = true;
-                textBoxRadius.Text = circle.Radius.ToString();
-
-
-                labelCoordinates.Visible = true;
-
-                labelXCoordinate.Visible = true;
-                textBoxXCoordinate.Text = circle.Location.X.ToString();
-
-                labelYCoordinate.Visible = true;
-                textBoxYCoordinate.Text = circle.Location.Y.ToString();
-
-                buttonBorderColor.Visible = true;
-                buttonBorderColor.BackColor = circle.ColorBorder;
-
-                buttonFillColor.Visible = true;
-                buttonFillColor.BackColor = circle.FillColor;
+                LoadCircleData(circle);
+                ShowCircleElements();
+                ShowCoordinateElements();
+                ShowColorElements();
             }
             else if (_shape is Rectangle rectangle)
             {
-                checkBoxRectangle.Checked = true;
-
-                labelParameters.Visible = true;
-
-                labelHeight.Visible = true;
-                labelWidth.Visible = true;
-
-                textBoxHeight.Visible = true;
-                textBoxHeight.Text = rectangle.Height.ToString();
-
-                textBoxWidth.Visible = true;
-                textBoxWidth.Text = rectangle.Width.ToString();
-
-                labelCoordinates.Visible = true;
-
-                labelXCoordinate.Visible = true;
-                textBoxXCoordinate.Text = rectangle.Location.X.ToString();
-
-                labelYCoordinate.Visible = true;
-                textBoxYCoordinate.Text = rectangle.Location.Y.ToString();
-
-                buttonBorderColor.Visible = true;
-                buttonBorderColor.BackColor = rectangle.ColorBorder;
-
-                buttonFillColor.Visible = true;
-                buttonFillColor.BackColor = rectangle.FillColor;
+                LoadRectangleData(rectangle);
+                ShowRectangleElements();
+                ShowCoordinateElements();
+                ShowColorElements();
             }
             else if (_shape is EquilateralTriangle triangle)
             {
-                checkBoxTriangle.Checked = true;
-
-                labelParameters.Visible = true;
-
-                labelSide.Visible = true;
-                textBoxSide.Visible = true;
-                textBoxSide.Text = triangle.Side.ToString();
-
-                labelCoordinates.Visible = true;
-
-                labelXCoordinate.Visible = true;
-                textBoxXCoordinate.Text = triangle.Location.X.ToString();
-
-                labelYCoordinate.Visible = true;
-                textBoxYCoordinate.Text = triangle.Location.Y.ToString();
-
-                buttonBorderColor.Visible = true;
-                buttonBorderColor.BackColor = triangle.ColorBorder;
-
-                buttonFillColor.Visible = true;
-                buttonFillColor.BackColor = triangle.FillColor;
+                LoadEquilateralTriangleData(triangle);
+                ShowEquilateralTriangleElements();
+                ShowCoordinateElements();
+                ShowColorElements();
             }
         }
 
@@ -133,56 +78,28 @@ namespace CourseWorkVisualInterface
         {
             if (checkBoxCircle.Checked)
             {
-                labelParameters.Visible = true;
+                ResetRectangleElements();
 
-                labelRadius.Visible = true;
-                textBoxRadius.Visible = true;
+                ResetEquilateralTriangleElements();
 
-                buttonBorderColor.Visible = true;
-                buttonFillColor.Visible = true;
+                ShowCircleElements();
 
-                checkBoxTriangle.Checked = false;
-                checkBoxRectangle.Checked = false;
+                ShowColorElements();
 
-                labelHeight.Visible = false;
-                textBoxHeight.Visible = false;
-
-                labelWidth.Visible = false;
-                textBoxWidth.Visible = false;
-
-                labelSide.Visible = false;
-                textBoxSide.Visible = false;
-
-                if (_fromMenuBar)
+                if (_fromMenuBar || _updateShape)
                 {
-                    labelCoordinates.Visible = true;
-
-                    labelXCoordinate.Visible = true;
-                    textBoxXCoordinate.Visible = true;
-
-                    labelYCoordinate.Visible = true;
-                    textBoxYCoordinate.Visible = true;
+                    ShowCoordinateElements();
                 }
             }
             else
             {
-                labelRadius.Visible = false;
-                textBoxRadius.Visible = false;
+                ResetCircleElements();
 
-                labelParameters.Visible = false;
+                ResetColorElements();
 
-                buttonBorderColor.Visible = false;
-                buttonFillColor.Visible = false;
-
-                if (_fromMenuBar)
+                if (_fromMenuBar || _updateShape)
                 {
-                    labelCoordinates.Visible = false;
-
-                    labelXCoordinate.Visible = false;
-                    textBoxXCoordinate.Visible = false;
-
-                    labelYCoordinate.Visible = false;
-                    textBoxYCoordinate.Visible = false;
+                    ResetCoordinateElements();
                 }
             }
         }
@@ -191,59 +108,24 @@ namespace CourseWorkVisualInterface
         {
             if (checkBoxRectangle.Checked)
             {
-                labelParameters.Visible = true;
+                ResetCircleElements();
+                ResetEquilateralTriangleElements();
+                ShowRectangleElements();
+                ShowColorElements();
 
-                labelHeight.Visible = true;
-                labelWidth.Visible = true;
-
-                textBoxHeight.Visible = true;
-                textBoxWidth.Visible = true;
-
-                buttonBorderColor.Visible = true;
-                buttonFillColor.Visible = true;
-
-                if (_fromMenuBar)
+                if (_fromMenuBar || _updateShape)
                 {
-                    labelCoordinates.Visible = true;
-
-                    labelXCoordinate.Visible = true;
-                    textBoxXCoordinate.Visible = true;
-
-                    labelYCoordinate.Visible = true;
-                    textBoxYCoordinate.Visible = true;
+                    ShowCoordinateElements();
                 }
-
-                checkBoxCircle.Checked = false;
-                checkBoxTriangle.Checked = false;
-
-                labelRadius.Visible = false;
-                textBoxRadius.Visible = false;
-
-                labelSide.Visible = false;
-                textBoxSide.Visible = false;
             }
             else
             {
-                labelParameters.Visible = false;
+                ResetRectangleElements();
+                ResetColorElements();
 
-                labelHeight.Visible = false;
-                labelWidth.Visible = false;
-
-                textBoxHeight.Visible = false;
-                textBoxWidth.Visible = false;
-
-                buttonBorderColor.Visible = false;
-                buttonFillColor.Visible = false;
-
-                if (_fromMenuBar)
+                if (_fromMenuBar || _updateShape)
                 {
-                    labelCoordinates.Visible = false;
-
-                    labelXCoordinate.Visible = false;
-                    textBoxXCoordinate.Visible = false;
-
-                    labelYCoordinate.Visible = false;
-                    textBoxYCoordinate.Visible = false;
+                    ResetCoordinateElements();
                 }
             }
         }
@@ -252,56 +134,27 @@ namespace CourseWorkVisualInterface
         {
             if (checkBoxTriangle.Checked)
             {
-                labelParameters.Visible = true;
+                ResetCircleElements();
 
-                labelSide.Visible = true;
-                textBoxSide.Visible = true;
+                ResetRectangleElements();
 
-                buttonBorderColor.Visible = true;
-                buttonFillColor.Visible = true;
+                ShowEquilateralTriangleElements();
 
-                if (_fromMenuBar)
+                ShowColorElements();
+
+                if (_fromMenuBar || _updateShape)
                 {
-                    labelCoordinates.Visible = true;
-
-                    labelXCoordinate.Visible = true;
-                    textBoxXCoordinate.Visible = true;
-
-                    labelYCoordinate.Visible = true;
-                    textBoxYCoordinate.Visible = true;
+                    ShowCoordinateElements();
                 }
-
-                checkBoxCircle.Checked = false;
-                checkBoxRectangle.Checked = false;
-
-                labelHeight.Visible = false;
-                textBoxHeight.Visible = false;
-
-                labelWidth.Visible = false;
-                textBoxWidth.Visible = false;
-
-                labelRadius.Visible = false;
-                textBoxRadius.Visible = false;
             }
             else
             {
-                labelParameters.Visible = false;
+                ResetEquilateralTriangleElements();
+                ResetColorElements();
 
-                labelSide.Visible = false;
-                textBoxSide.Visible = false;
-
-                buttonBorderColor.Visible = false;
-                buttonFillColor.Visible = false;
-
-                if (_fromMenuBar)
+                if (_fromMenuBar || _updateShape)
                 {
-                    labelCoordinates.Visible = false;
-
-                    labelXCoordinate.Visible = false;
-                    textBoxXCoordinate.Visible = false;
-
-                    labelYCoordinate.Visible = false;
-                    textBoxYCoordinate.Visible = false;
+                    ResetCoordinateElements();
                 }
             }
         }
@@ -314,10 +167,11 @@ namespace CourseWorkVisualInterface
             {
                 if (ValidateTextBox(textBoxRadius, Constant.ErrorMessages.RadiusMessage, out int radius))
                 {
-                    if (_fromMenuBar)
+                    if (_fromMenuBar || _updateShape)
                     {
                         if (ValidateTextBox(textBoxXCoordinate, Constant.ErrorMessages.XCoordinateMessage,
-                                out int xCoordinate) &&
+                                out int xCoordinate)
+                            &&
                             ValidateTextBox(textBoxYCoordinate, Constant.ErrorMessages.YCoordinateMessage,
                                 out int yCoordinate))
                         {
@@ -337,7 +191,7 @@ namespace CourseWorkVisualInterface
                 if (ValidateTextBox(textBoxHeight, Constant.ErrorMessages.HeightMessage, out int height) &&
                     ValidateTextBox(textBoxWidth, Constant.ErrorMessages.WidthMessage, out int width))
                 {
-                    if (_fromMenuBar)
+                    if (_fromMenuBar || _updateShape)
                     {
                         if (ValidateTextBox(textBoxXCoordinate, Constant.ErrorMessages.XCoordinateMessage,
                                 out int xCoordinate) &&
@@ -360,7 +214,7 @@ namespace CourseWorkVisualInterface
             {
                 if (ValidateTextBox(textBoxSide, Constant.ErrorMessages.SideMessage, out int side))
                 {
-                    if (_fromMenuBar)
+                    if (_fromMenuBar || _updateShape)
                     {
                         if (ValidateTextBox(textBoxXCoordinate, Constant.ErrorMessages.XCoordinateMessage,
                                 out int xCoordinate) &&
@@ -481,8 +335,7 @@ namespace CourseWorkVisualInterface
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e) => ResetForm();
-
-
+        
         private void ResetForm()
         {
             if (checkBoxCircle.Checked)
@@ -498,14 +351,15 @@ namespace CourseWorkVisualInterface
                 ResetEquilateralTriangleElements();
             }
 
-            labelParameters.Visible = false;
-
-            if (_fromMenuBar)
+            if (_fromMenuBar || _updateShape)
+            {
                 ResetCoordinateElements();
-            ResetColorButton();
+            }
+
+            ResetColorElements();
         }
 
-        private void ResetColorButton()
+        private void ResetColorElements()
         {
             buttonBorderColor.BackColor = Color.Transparent;
             buttonBorderColor.Visible = false;
@@ -522,6 +376,8 @@ namespace CourseWorkVisualInterface
 
             textBoxRadius.Text = String.Empty;
             textBoxRadius.Visible = false;
+
+            labelParameters.Visible = false;
         }
 
         private void ResetRectangleElements()
@@ -536,6 +392,8 @@ namespace CourseWorkVisualInterface
 
             textBoxWidth.Text = String.Empty;
             textBoxWidth.Visible = false;
+
+            labelParameters.Visible = false;
         }
 
         private void ResetEquilateralTriangleElements()
@@ -544,8 +402,10 @@ namespace CourseWorkVisualInterface
 
             labelSide.Visible = false;
 
-            textBoxRadius.Text = String.Empty;
-            textBoxRadius.Visible = false;
+            textBoxSide.Text = String.Empty;
+            textBoxSide.Visible = false;
+
+            labelParameters.Visible = false;
         }
 
         private void ResetCoordinateElements()
@@ -560,6 +420,98 @@ namespace CourseWorkVisualInterface
 
             textBoxYCoordinate.Text = String.Empty;
             textBoxYCoordinate.Visible = false;
+        }
+
+        private void ShowCircleElements()
+        {
+            checkBoxCircle.Checked = true;
+
+            labelParameters.Visible = true;
+
+            labelRadius.Visible = true;
+            textBoxRadius.Visible = true;
+        }
+
+        private void ShowRectangleElements()
+        {
+            checkBoxRectangle.Checked = true;
+
+            labelParameters.Visible = true;
+
+            labelHeight.Visible = true;
+            labelWidth.Visible = true;
+
+            textBoxHeight.Visible = true;
+            textBoxWidth.Visible = true;
+        }
+
+        private void ShowEquilateralTriangleElements()
+        {
+            checkBoxTriangle.Checked = true;
+
+            labelParameters.Visible = true;
+
+            labelSide.Visible = true;
+            textBoxSide.Visible = true;
+        }
+
+        private void ShowColorElements()
+        {
+            buttonBorderColor.Visible = true;
+            buttonFillColor.Visible = true;
+        }
+
+        private void ShowCoordinateElements()
+        {
+            labelCoordinates.Visible = true;
+
+            labelXCoordinate.Visible = true;
+            textBoxXCoordinate.Visible = true;
+
+            labelYCoordinate.Visible = true;
+            textBoxYCoordinate.Visible = true;
+        }
+
+        private void LoadCircleData(Circle circle)
+        {
+            textBoxRadius.Text = circle.Radius.ToString();
+            
+            textBoxXCoordinate.Text = circle.Location.X.ToString();
+
+            textBoxYCoordinate.Text = circle.Location.Y.ToString();
+            
+            buttonBorderColor.BackColor = circle.ColorBorder;
+            
+            buttonFillColor.BackColor = circle.FillColor;
+        }
+
+        private void LoadRectangleData(Rectangle rectangle)
+        {
+            
+            textBoxHeight.Text = rectangle.Height.ToString();
+            
+            textBoxWidth.Text = rectangle.Width.ToString();
+            
+            textBoxXCoordinate.Text = rectangle.Location.X.ToString();
+            
+            textBoxYCoordinate.Text = rectangle.Location.Y.ToString();
+            
+            buttonBorderColor.BackColor = rectangle.ColorBorder;
+            
+            buttonFillColor.BackColor = rectangle.FillColor;
+        }
+
+        private void LoadEquilateralTriangleData(EquilateralTriangle triangle)
+        {
+            textBoxSide.Text = triangle.Side.ToString();
+            
+            textBoxXCoordinate.Text = triangle.Location.X.ToString();
+            
+            textBoxYCoordinate.Text = triangle.Location.Y.ToString();
+            
+            buttonBorderColor.BackColor = triangle.ColorBorder;
+            
+            buttonFillColor.BackColor = triangle.FillColor;
         }
     }
 }

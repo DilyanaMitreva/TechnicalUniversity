@@ -17,5 +17,12 @@ namespace CourseWorkEntities.Utilities.Interfaces
         double SmallestAreaOfAllShapesFromType(List<Shape> shapes,  Type type);
 
         double BiggestAreaOfAllShapesFromType(List<Shape> shapes,  Type type);
+
+        string AllShapesAreaByType(List<Shape> shapes);
+        
+        string AllShapesSmallestAreaByType(List<Shape> shapes);
+        
+        string AllShapesBiggestAreaByType(List<Shape> shapes);
+
     }
 }

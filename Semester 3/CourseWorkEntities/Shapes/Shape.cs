@@ -1,10 +1,15 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Text;
 using CourseWorkEntities.Utilities;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace CourseWorkEntities.Shapes
 {
     public delegate void Draw(Shape shape);
-
+    
+    [Serializable]
     public abstract class Shape
     {
         public PointImpl Location { get; set; }
@@ -35,7 +40,8 @@ namespace CourseWorkEntities.Shapes
 
         public abstract string AsString();
 
-        // public abstract string AsJson();
+
+        // public string AsJson();
         //
         // public abstract string AsXml();
 

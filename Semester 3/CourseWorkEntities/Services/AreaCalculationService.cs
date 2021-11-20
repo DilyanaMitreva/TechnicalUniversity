@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using CourseWorkEntities.Shapes;
-using CourseWorkEntities.Utilities;
 using CourseWorkEntities.Utilities.Interfaces;
 
 namespace CourseWorkEntities.Services
@@ -42,5 +41,22 @@ namespace CourseWorkEntities.Services
                 .ToList()
                 .Last()
                 .Area;
+
+        public string AllShapesAreaByType(List<Shape> shapes) =>
+            shapes.GroupBy(s => s.GetType().Name, shape => shape.Area)
+                .Select(s => $"{s.Key}: {s.Sum():N2}")
+                .Aggregate((f, s) => f + Environment.NewLine + s);
+
+
+        public string AllShapesSmallestAreaByType(List<Shape> shapes) =>
+            shapes.GroupBy(s => s.GetType().Name, shape => shape.Area)
+                .Select(s => $"{s.Key}: {s.Min():N2}")
+                .Aggregate((f, s) => f + Environment.NewLine + s);
+
+
+        public string AllShapesBiggestAreaByType(List<Shape> shapes) =>
+            shapes.GroupBy(s => s.GetType().Name, shape => shape.Area)
+                .Select(s => $"{s.Key}: {s.Max():N2}")
+                .Aggregate((f, s) => f + Environment.NewLine + s);
     }
 }

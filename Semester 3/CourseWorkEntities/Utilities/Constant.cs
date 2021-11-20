@@ -7,6 +7,14 @@ namespace CourseWorkEntities.Utilities
         public const string FileLocationTxt =
             @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.txt";
 
+        public const string FileLocationJson =
+            @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.json";
+
+        public const string FileLocationXml =
+            @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.xml";
+
+        public static readonly string ShapeSeparatorTxt = "<" + new string('-', 50) + ">" + "\n";
+
         public static class ErrorMessages
         {
             public const string RadiusMessage = "Enter radius";
@@ -32,6 +40,27 @@ namespace CourseWorkEntities.Utilities
             public const string SelectTypeForExport = "Select type of export";
         }
 
+        public static class InformationMessages
+        {
+            public const string ExportReady = "The export is ready";
+
+            public const string AllAreaMessage = "The total used area is {0:N2} pixels.";
+
+            public const string AllAreaOfTypeMessage =
+                "The total area of all {0}s is {1:N2} pixels.";
+
+            public const string BiggestAreaMessage = "The biggest area of all shapes is {0:N2} pixels.";
+
+            public const string BiggestAreaOfTypeMessage = "The biggest {0} has area of {1:N2} pixels.";
+
+            public const string SmallestAreaMessage = "The smallest area of all shapes is {0:N2} pixels.";
+
+            public const string SmallestAreaOfTypeMessage = "The smallest {0} has area of {1:N2} pixels.";
+
+            public const string UnusedSpaceMessage =
+                "The unused area of the scene is {0:N2} pixels.";
+        }
+
         public static class Captions
         {
             public const string ErrorCaption = "Error";
@@ -43,6 +72,8 @@ namespace CourseWorkEntities.Utilities
             public const string BiggestArea = "Biggest area";
 
             public const string TotalUnusedSpace = "Total unused space";
+
+            public const string Export = "Export";
         }
     }
 }

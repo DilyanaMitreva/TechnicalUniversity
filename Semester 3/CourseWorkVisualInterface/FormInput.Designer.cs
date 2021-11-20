@@ -35,14 +35,11 @@ namespace CourseWorkVisualInterface
             this.checkBoxCircle = new System.Windows.Forms.CheckBox();
             this.checkBoxRectangle = new System.Windows.Forms.CheckBox();
             this.checkBoxTriangle = new System.Windows.Forms.CheckBox();
-            this.textBoxRadius = new System.Windows.Forms.TextBox();
             this.labelRadius = new System.Windows.Forms.Label();
             this.labelSide = new System.Windows.Forms.Label();
-            this.textBoxSide = new System.Windows.Forms.TextBox();
             this.labelHeight = new System.Windows.Forms.Label();
             this.textBoxHeight = new System.Windows.Forms.TextBox();
             this.labelWidth = new System.Windows.Forms.Label();
-            this.textBoxWidth = new System.Windows.Forms.TextBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.labelShapeType = new System.Windows.Forms.Label();
             this.labelParameters = new System.Windows.Forms.Label();
@@ -55,6 +52,9 @@ namespace CourseWorkVisualInterface
             this.textBoxYCoordinate = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textBoxRadius = new System.Windows.Forms.TextBox();
+            this.textBoxSide = new System.Windows.Forms.TextBox();
+            this.textBoxWidth = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -112,14 +112,6 @@ namespace CourseWorkVisualInterface
             this.checkBoxTriangle.UseVisualStyleBackColor = true;
             this.checkBoxTriangle.Click += new System.EventHandler(this.checkBoxTriangle_Click);
             // 
-            // textBoxRadius
-            // 
-            this.textBoxRadius.Location = new System.Drawing.Point(10, 220);
-            this.textBoxRadius.Name = "textBoxRadius";
-            this.textBoxRadius.Size = new System.Drawing.Size(465, 22);
-            this.textBoxRadius.TabIndex = 4;
-            this.textBoxRadius.Visible = false;
-            // 
             // labelRadius
             // 
             this.labelRadius.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -129,6 +121,14 @@ namespace CourseWorkVisualInterface
             this.labelRadius.TabIndex = 5;
             this.labelRadius.Text = "Radius";
             this.labelRadius.Visible = false;
+            // 
+            // textBoxRadius
+            // 
+            this.textBoxRadius.Location = new System.Drawing.Point(8, 220);
+            this.textBoxRadius.Name = "textBoxRadius";
+            this.textBoxRadius.Size = new System.Drawing.Size(469, 22);
+            this.textBoxRadius.TabIndex = 30;
+            this.textBoxRadius.Visible = false;
             // 
             // labelSide
             // 
@@ -142,16 +142,16 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxSide
             // 
-            this.textBoxSide.Location = new System.Drawing.Point(11, 220);
+            this.textBoxSide.Location = new System.Drawing.Point(8, 220);
             this.textBoxSide.Name = "textBoxSide";
-            this.textBoxSide.Size = new System.Drawing.Size(464, 22);
-            this.textBoxSide.TabIndex = 8;
+            this.textBoxSide.Size = new System.Drawing.Size(469, 22);
+            this.textBoxSide.TabIndex = 31;
             this.textBoxSide.Visible = false;
             // 
             // labelHeight
             // 
             this.labelHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelHeight.Location = new System.Drawing.Point(9, 258);
+            this.labelHeight.Location = new System.Drawing.Point(8, 258);
             this.labelHeight.Name = "labelHeight";
             this.labelHeight.Size = new System.Drawing.Size(469, 20);
             this.labelHeight.TabIndex = 11;
@@ -178,10 +178,10 @@ namespace CourseWorkVisualInterface
             // 
             // textBoxWidth
             // 
-            this.textBoxWidth.Location = new System.Drawing.Point(9, 220);
+            this.textBoxWidth.Location = new System.Drawing.Point(8, 220);
             this.textBoxWidth.Name = "textBoxWidth";
             this.textBoxWidth.Size = new System.Drawing.Size(469, 22);
-            this.textBoxWidth.TabIndex = 12;
+            this.textBoxWidth.TabIndex = 32;
             this.textBoxWidth.Visible = false;
             // 
             // buttonCancel
@@ -315,6 +315,9 @@ namespace CourseWorkVisualInterface
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(489, 629);
+            this.Controls.Add(this.textBoxWidth);
+            this.Controls.Add(this.textBoxSide);
+            this.Controls.Add(this.textBoxRadius);
             this.Controls.Add(this.textBoxYCoordinate);
             this.Controls.Add(this.textBoxXCoordinate);
             this.Controls.Add(this.labelYCoordinate);
@@ -326,13 +329,10 @@ namespace CourseWorkVisualInterface
             this.Controls.Add(this.labelShapeType);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.labelWidth);
-            this.Controls.Add(this.textBoxWidth);
             this.Controls.Add(this.labelHeight);
             this.Controls.Add(this.textBoxHeight);
             this.Controls.Add(this.labelSide);
-            this.Controls.Add(this.textBoxSide);
             this.Controls.Add(this.labelRadius);
-            this.Controls.Add(this.textBoxRadius);
             this.Controls.Add(this.checkBoxTriangle);
             this.Controls.Add(this.checkBoxRectangle);
             this.Controls.Add(this.checkBoxCircle);

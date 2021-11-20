@@ -5,11 +5,16 @@ using CourseWorkEntities.Utilities;
 
 namespace CourseWorkEntities.Shapes
 {
+    [Serializable]
     public class EquilateralTriangle : Shape // равнобедрен триъгълник
     {
         public int Side { get; set; }
 
         private PointImpl[] Vertices { get; set; }
+
+        public EquilateralTriangle() : base()
+        {
+        }
 
         public EquilateralTriangle(int xCoordinate, int yCoordinate, int side, Color colorBorder, Color fillColor) :
             base(xCoordinate, yCoordinate, colorBorder, fillColor)
@@ -40,13 +45,13 @@ namespace CourseWorkEntities.Shapes
             PointImpl left = Vertices[1];
             PointImpl right = Vertices[2];
 
-            bool result1 = PointInShape(new PointImpl(rectangle.Location.X + rectangle.Width,
-                rectangle.Location.Y + rectangle.Height));
-
-            bool result = (left.X <= rectangle.Location.X + rectangle.Width &&
-                           rectangle.Location.X + rectangle.Width <= right.X) &&
-                          (top.Y <= rectangle.Location.Y + rectangle.Height &&
-                           rectangle.Location.Y + rectangle.Height <= left.Y);
+            // bool result1 = PointInShape(new PointImpl(rectangle.Location.X + rectangle.Width,
+            //     rectangle.Location.Y + rectangle.Height));
+            //
+            // bool result = (left.X <= rectangle.Location.X + rectangle.Width &&
+            //                rectangle.Location.X + rectangle.Width <= right.X) &&
+            //               (top.Y <= rectangle.Location.Y + rectangle.Height &&
+            //                rectangle.Location.Y + rectangle.Height <= left.Y);
 
             return false;
         }
@@ -54,7 +59,7 @@ namespace CourseWorkEntities.Shapes
         public override string AsString()
         {
             StringBuilder sb = new StringBuilder();
-            
+
             sb.AppendLine("Equilateral Triangle")
                 .Append($"Location: {this.Location.AsString()}")
                 .AppendLine($"Side: {this.Side}")
