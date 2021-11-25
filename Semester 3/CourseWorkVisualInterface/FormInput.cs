@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
 using Rectangle = CourseWorkEntities.Shapes.Rectangle;
@@ -47,7 +48,6 @@ namespace CourseWorkVisualInterface
         }
 
         public Shape GetShape() => _shape;
-
 
         private void FormInput_Load(object sender, EventArgs e)
         {
@@ -132,7 +132,7 @@ namespace CourseWorkVisualInterface
 
         private void checkBoxTriangle_Click(object sender, EventArgs e)
         {
-            if (checkBoxTriangle.Checked)
+            if (checkBoxEquilateralTriangle.Checked)
             {
                 ResetCircleElements();
 
@@ -161,91 +161,115 @@ namespace CourseWorkVisualInterface
 
         private void addShape_Click(object sender, EventArgs e)
         {
-            ValidateColors();
+            try
+            {
+                ValidateColors();
 
-            if (checkBoxCircle.Checked)
-            {
-                if (ValidateTextBox(textBoxRadius, Constant.ErrorMessages.RadiusMessage, out int radius))
+                if (checkBoxCircle.Checked)
                 {
-                    if (_fromMenuBar || _updateShape)
-                    {
-                        if (ValidateTextBox(textBoxXCoordinate, Constant.ErrorMessages.XCoordinateMessage,
-                                out int xCoordinate)
-                            &&
-                            ValidateTextBox(textBoxYCoordinate, Constant.ErrorMessages.YCoordinateMessage,
-                                out int yCoordinate))
-                        {
-                            _shape = new Circle(xCoordinate, yCoordinate, radius, _borderColor, _fillColor);
-                        }
-                        else return;
-                    }
-                    else
-                    {
-                        _shape = new Circle(_mouseXCoordinate, _mouseYCoordinate, radius, _borderColor, _fillColor);
-                    }
+                    _shape = CreateCircle();
                 }
-                else return;
+                else if (checkBoxRectangle.Checked)
+                {
+                    _shape = CreateRectangle();
+                }
+                else if (checkBoxEquilateralTriangle.Checked)
+                {
+                    _shape = CreateEquilateralTriangle();
+                }
+                else
+                {
+                    CreateMessageBox(Constant.ExceptionMessages.ChooseShapeMessage, Constant.Captions.ErrorCaption,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    DialogResult = DialogResult.Retry;
+                }
+
+                if (_shape != null)
+                {
+                    DialogResult = DialogResult.OK;
+                }
             }
-            else if (checkBoxRectangle.Checked)
+            catch (Exception exception)
             {
-                if (ValidateTextBox(textBoxHeight, Constant.ErrorMessages.HeightMessage, out int height) &&
-                    ValidateTextBox(textBoxWidth, Constant.ErrorMessages.WidthMessage, out int width))
-                {
-                    if (_fromMenuBar || _updateShape)
-                    {
-                        if (ValidateTextBox(textBoxXCoordinate, Constant.ErrorMessages.XCoordinateMessage,
-                                out int xCoordinate) &&
-                            ValidateTextBox(textBoxYCoordinate, Constant.ErrorMessages.YCoordinateMessage,
-                                out int yCoordinate))
-                        {
-                            _shape = new Rectangle(xCoordinate, yCoordinate, width, height, _borderColor, _fillColor);
-                        }
-                        else return;
-                    }
-                    else
-                    {
-                        _shape = new Rectangle(_mouseXCoordinate, _mouseYCoordinate, width, height, _borderColor,
-                            _fillColor);
-                    }
-                }
-                else return;
+                CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-            else if (checkBoxTriangle.Checked)
+        }
+
+        private Shape CreateCircle()
+        {
+            Shape result;
+
+            int radius = ValidateTextBox(textBoxRadius, Constant.ExceptionMessages.RadiusMessage);
+
+            if (_fromMenuBar || _updateShape)
             {
-                if (ValidateTextBox(textBoxSide, Constant.ErrorMessages.SideMessage, out int side))
-                {
-                    if (_fromMenuBar || _updateShape)
-                    {
-                        if (ValidateTextBox(textBoxXCoordinate, Constant.ErrorMessages.XCoordinateMessage,
-                                out int xCoordinate) &&
-                            ValidateTextBox(textBoxYCoordinate, Constant.ErrorMessages.YCoordinateMessage,
-                                out int yCoordinate))
-                        {
-                            _shape = new EquilateralTriangle(xCoordinate, yCoordinate, side, _borderColor, _fillColor);
-                        }
-                        else return;
-                    }
-                    else
-                    {
-                        _shape = new EquilateralTriangle(_mouseXCoordinate, _mouseYCoordinate, side, _borderColor,
-                            _fillColor);
-                    }
-                }
-                else return;
+                int xCoordinate = ValidateTextBox(textBoxXCoordinate,
+                    Constant.ExceptionMessages.XCoordinateMessage);
+
+                int yCoordinate = ValidateTextBox(textBoxXCoordinate,
+                    Constant.ExceptionMessages.XCoordinateMessage);
+
+                result = new Circle(xCoordinate, yCoordinate, radius, _borderColor, _fillColor);
             }
             else
             {
-                MessageBox.Show(Constant.ErrorMessages.ChooseShapeMessage, Constant.Captions.ErrorCaption,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                DialogResult = DialogResult.Retry;
-                return;
+                result = new Circle(_mouseXCoordinate, _mouseYCoordinate, radius, _borderColor, _fillColor);
             }
 
-            if (_shape != null)
+            return result;
+        }
+
+        private Shape CreateRectangle()
+        {
+            Shape result;
+
+            int height = ValidateTextBox(textBoxHeight, Constant.ExceptionMessages.HeightMessage);
+            int width = ValidateTextBox(textBoxWidth, Constant.ExceptionMessages.WidthMessage);
+
+            if (_fromMenuBar || _updateShape)
             {
-                DialogResult = DialogResult.OK;
+                int xCoordinate = ValidateTextBox(textBoxXCoordinate,
+                    Constant.ExceptionMessages.XCoordinateMessage);
+
+                int yCoordinate = ValidateTextBox(textBoxXCoordinate,
+                    Constant.ExceptionMessages.XCoordinateMessage);
+
+                result = new Rectangle(xCoordinate, yCoordinate, width, height, _borderColor, _fillColor);
             }
+            else
+            {
+                result = new Rectangle(_mouseXCoordinate, _mouseYCoordinate, width, height, _borderColor,
+                    _fillColor);
+            }
+
+            return result;
+        }
+
+        private Shape CreateEquilateralTriangle()
+        {
+            Shape result;
+
+            int side = ValidateTextBox(textBoxSide, Constant.ExceptionMessages.SideMessage);
+
+            if (_fromMenuBar || _updateShape)
+            {
+                int xCoordinate = ValidateTextBox(textBoxXCoordinate,
+                    Constant.ExceptionMessages.XCoordinateMessage);
+
+                int yCoordinate = ValidateTextBox(textBoxXCoordinate,
+                    Constant.ExceptionMessages.XCoordinateMessage);
+
+                result = new EquilateralTriangle(xCoordinate, yCoordinate, side, _borderColor, _fillColor);
+            }
+            else
+            {
+                result = new EquilateralTriangle(_mouseXCoordinate, _mouseYCoordinate, side, _borderColor,
+                    _fillColor);
+            }
+
+            return result;
         }
 
         private void ValidateColors()
@@ -269,46 +293,24 @@ namespace CourseWorkVisualInterface
             }
         }
 
-        private bool ValidateTextBox(TextBox textBox, String errorMessage, out int result)
+        private int ValidateTextBox(TextBox textBox, string message)
         {
-            if (textBox.Text == "")
+            if (textBox.Text.Equals(""))
             {
-                MessageBox.Show(errorMessage, Constant.Captions.ErrorCaption,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                DialogResult = DialogResult.Retry;
-                result = -1;
-                return false;
+                throw new TextBoxException(message);
             }
 
-            bool isNumber = int.TryParse(textBox.Text, out int number);
+            if (!int.TryParse(textBox.Text, out var result))
+            {
+                throw new TextBoxException(Constant.ExceptionMessages.NumberMessage);
+            }
 
-            if (isNumber)
+            if (result < 0)
             {
-                if (number > 0)
-                {
-                    result = number;
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show(Constant.ErrorMessages.PositiveNumberMessage, Constant.Captions.ErrorCaption,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    DialogResult = DialogResult.Retry;
-                    result = -1;
-                    return false;
-                }
+                throw new TextBoxException(Constant.ExceptionMessages.PositiveNumberMessage);
             }
-            else
-            {
-                MessageBox.Show(Constant.ErrorMessages.NumberMessage, Constant.Captions.ErrorCaption,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                DialogResult = DialogResult.Retry;
-                result = -1;
-                return false;
-            }
+
+            return result;
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -335,7 +337,7 @@ namespace CourseWorkVisualInterface
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e) => ResetForm();
-        
+
         private void ResetForm()
         {
             if (checkBoxCircle.Checked)
@@ -346,7 +348,7 @@ namespace CourseWorkVisualInterface
             {
                 ResetRectangleElements();
             }
-            else if (checkBoxTriangle.Checked)
+            else if (checkBoxEquilateralTriangle.Checked)
             {
                 ResetEquilateralTriangleElements();
             }
@@ -398,7 +400,7 @@ namespace CourseWorkVisualInterface
 
         private void ResetEquilateralTriangleElements()
         {
-            checkBoxTriangle.Checked = false;
+            checkBoxEquilateralTriangle.Checked = false;
 
             labelSide.Visible = false;
 
@@ -447,7 +449,7 @@ namespace CourseWorkVisualInterface
 
         private void ShowEquilateralTriangleElements()
         {
-            checkBoxTriangle.Checked = true;
+            checkBoxEquilateralTriangle.Checked = true;
 
             labelParameters.Visible = true;
 
@@ -475,43 +477,46 @@ namespace CourseWorkVisualInterface
         private void LoadCircleData(Circle circle)
         {
             textBoxRadius.Text = circle.Radius.ToString();
-            
+
             textBoxXCoordinate.Text = circle.Location.X.ToString();
 
             textBoxYCoordinate.Text = circle.Location.Y.ToString();
-            
+
             buttonBorderColor.BackColor = circle.ColorBorder;
-            
+
             buttonFillColor.BackColor = circle.FillColor;
         }
 
         private void LoadRectangleData(Rectangle rectangle)
         {
-            
             textBoxHeight.Text = rectangle.Height.ToString();
-            
+
             textBoxWidth.Text = rectangle.Width.ToString();
-            
+
             textBoxXCoordinate.Text = rectangle.Location.X.ToString();
-            
+
             textBoxYCoordinate.Text = rectangle.Location.Y.ToString();
-            
+
             buttonBorderColor.BackColor = rectangle.ColorBorder;
-            
+
             buttonFillColor.BackColor = rectangle.FillColor;
         }
 
         private void LoadEquilateralTriangleData(EquilateralTriangle triangle)
         {
             textBoxSide.Text = triangle.Side.ToString();
-            
+
             textBoxXCoordinate.Text = triangle.Location.X.ToString();
-            
+
             textBoxYCoordinate.Text = triangle.Location.Y.ToString();
-            
+
             buttonBorderColor.BackColor = triangle.ColorBorder;
-            
+
             buttonFillColor.BackColor = triangle.FillColor;
         }
+
+        private static void CreateMessageBox(string message, string caption, MessageBoxButtons messageBoxButtons,
+            MessageBoxIcon messageBoxIcon) =>
+            MessageBox.Show(message, caption, messageBoxButtons, messageBoxIcon);
     }
 }

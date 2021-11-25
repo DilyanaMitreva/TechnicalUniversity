@@ -17,7 +17,6 @@ namespace Exercise8
         public FormMain()
         {
             InitializeComponent();
-
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
         }
 

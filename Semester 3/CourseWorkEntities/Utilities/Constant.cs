@@ -4,22 +4,26 @@ namespace CourseWorkEntities.Utilities
 {
     public static class Constant
     {
-        public const string FileLocationTxt =
-            @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.txt";
-
-        public const string FileLocationJson =
-            @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.json";
-
-        public const string FileLocationXml =
-            @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.xml";
-
         public static readonly string ShapeSeparatorTxt = "<" + new string('-', 50) + ">" + "\n";
 
-        public static class ErrorMessages
+        public static class FileLocation
+        {
+            public const string FileLocationTxt =
+                @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.txt";
+
+            public const string FileLocationJson =
+                @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.json";
+            
+            public const string FileLocationJsonSave =
+                @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\save.json";
+
+            public const string FileLocationXml =
+                @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.xml";
+        }
+        
+        public static class ExceptionMessages
         {
             public const string RadiusMessage = "Enter radius";
-
-            public const string NumberMessage = "Enter a number";
 
             public const string PositiveNumberMessage = "Enter a positive integer";
 
@@ -28,6 +32,8 @@ namespace CourseWorkEntities.Utilities
             public const string HeightMessage = "Enter height";
 
             public const string WidthMessage = "Enter width";
+
+            public const string NumberMessage = "Enter a number";
 
             public const string XCoordinateMessage = "Enter X coordinate";
 

@@ -103,5 +103,11 @@
         <Name>CourseWorkEntities</Name>
       </ProjectReference>
     </ItemGroup>
+    <ItemGroup>
+      <Content Include="save.json" />
+      <Content Include="shapes.json" />
+      <Content Include="shapes.txt" />
+      <Content Include="shapes.xml" />
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

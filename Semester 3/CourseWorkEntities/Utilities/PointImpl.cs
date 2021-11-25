@@ -1,7 +1,9 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace CourseWorkEntities.Utilities
 {
+    [Serializable]
     public class PointImpl
     {
         public int X { get; set; }

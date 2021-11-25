@@ -1,0 +1,12 @@
+Shapes count: 1<-------------------------------------------------->
+Circle
+Location: 
+	 X coordinate: 176
+	 Y coordinate: 161
+Radius: 100
+Area: 31415.9265358979
+BorderColor: Color [A=255, R=184, G=222, B=91]
+FillColor: Color [A=100, R=184, G=222, B=91]
+Is Selected: False
+<-------------------------------------------------->
+

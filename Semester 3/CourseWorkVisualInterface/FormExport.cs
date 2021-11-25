@@ -12,18 +12,18 @@ namespace CourseWorkVisualInterface
     {
         private readonly List<Shape> _shapes;
 
-        private readonly IConvertShapeService _convertShapeService;
+        private readonly ISerializeShapeService _serializeShapeService;
 
         public FormExport()
         {
-            _convertShapeService = new ConvertShapeService();
+            _serializeShapeService = new SerializeShapeService();
             InitializeComponent();
         }
 
         public FormExport(List<Shape> shapes)
         {
             this._shapes = shapes;
-            _convertShapeService = new ConvertShapeService();
+            _serializeShapeService = new SerializeShapeService();
             InitializeComponent();
         }
 
@@ -31,22 +31,22 @@ namespace CourseWorkVisualInterface
         {
             if (checkBoxJson.Checked)
             {
-                _convertShapeService.ConvertToJsonFile(_shapes);
+                _serializeShapeService.SerializeToJsonFile(_shapes, Constant.FileLocation.FileLocationJson);
                 GetMessageBox();
             }
             else if (checkBoxXml.Checked)
             {
-                _convertShapeService.ConvertToXmlFile(_shapes);
+                _serializeShapeService.SerializeToXmlFile(_shapes);
                 GetMessageBox();
             }
             else if (checkBoxTxt.Checked)
             {
-                _convertShapeService.ConvertToTxtFile(_shapes);
+                _serializeShapeService.SerializeToTxtFile(_shapes);
                 GetMessageBox();
             }
             else
             {
-                MessageBox.Show(Constant.ErrorMessages.SelectTypeForExport, Constant.Captions.ErrorCaption,
+                MessageBox.Show(Constant.ExceptionMessages.SelectTypeForExport, Constant.Captions.ErrorCaption,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.Retry;
                 return;

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<ArrayOfShape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Shape xsi:type="Rectangle">
+    <Location>
+      <X>186</X>
+      <Y>120</Y>
+    </Location>
+    <ColorBorder />
+    <FillColor />
+    <IsSelected>false</IsSelected>
+    <Width>100</Width>
+    <Height>100</Height>
+  </Shape>
+</ArrayOfShape>

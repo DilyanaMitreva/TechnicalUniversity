@@ -34,7 +34,7 @@ namespace CourseWorkVisualInterface
             this.buttonAddShape = new System.Windows.Forms.Button();
             this.checkBoxCircle = new System.Windows.Forms.CheckBox();
             this.checkBoxRectangle = new System.Windows.Forms.CheckBox();
-            this.checkBoxTriangle = new System.Windows.Forms.CheckBox();
+            this.checkBoxEquilateralTriangle = new System.Windows.Forms.CheckBox();
             this.labelRadius = new System.Windows.Forms.Label();
             this.labelSide = new System.Windows.Forms.Label();
             this.labelHeight = new System.Windows.Forms.Label();
@@ -98,19 +98,19 @@ namespace CourseWorkVisualInterface
             this.checkBoxRectangle.UseVisualStyleBackColor = true;
             this.checkBoxRectangle.Click += new System.EventHandler(this.checkBoxRectangle_Click);
             // 
-            // checkBoxTriangle
+            // checkBoxEquilateralTriangle
             // 
-            this.checkBoxTriangle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.checkBoxTriangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxTriangle.Location = new System.Drawing.Point(334, 58);
-            this.checkBoxTriangle.Name = "checkBoxTriangle";
-            this.checkBoxTriangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxTriangle.Size = new System.Drawing.Size(144, 68);
-            this.checkBoxTriangle.TabIndex = 3;
-            this.checkBoxTriangle.Text = "EquilateralTriangle";
-            this.checkBoxTriangle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.checkBoxTriangle.UseVisualStyleBackColor = true;
-            this.checkBoxTriangle.Click += new System.EventHandler(this.checkBoxTriangle_Click);
+            this.checkBoxEquilateralTriangle.CheckAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.checkBoxEquilateralTriangle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxEquilateralTriangle.Location = new System.Drawing.Point(334, 58);
+            this.checkBoxEquilateralTriangle.Name = "checkBoxEquilateralTriangle";
+            this.checkBoxEquilateralTriangle.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxEquilateralTriangle.Size = new System.Drawing.Size(144, 68);
+            this.checkBoxEquilateralTriangle.TabIndex = 3;
+            this.checkBoxEquilateralTriangle.Text = "EquilateralTriangle";
+            this.checkBoxEquilateralTriangle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.checkBoxEquilateralTriangle.UseVisualStyleBackColor = true;
+            this.checkBoxEquilateralTriangle.Click += new System.EventHandler(this.checkBoxTriangle_Click);
             // 
             // labelRadius
             // 
@@ -333,7 +333,7 @@ namespace CourseWorkVisualInterface
             this.Controls.Add(this.textBoxHeight);
             this.Controls.Add(this.labelSide);
             this.Controls.Add(this.labelRadius);
-            this.Controls.Add(this.checkBoxTriangle);
+            this.Controls.Add(this.checkBoxEquilateralTriangle);
             this.Controls.Add(this.checkBoxRectangle);
             this.Controls.Add(this.checkBoxCircle);
             this.Controls.Add(this.buttonAddShape);
@@ -395,7 +395,7 @@ namespace CourseWorkVisualInterface
         
 
         private System.Windows.Forms.CheckBox checkBoxRectangle;
-        private System.Windows.Forms.CheckBox checkBoxTriangle;
+        private System.Windows.Forms.CheckBox checkBoxEquilateralTriangle;
         private System.Windows.Forms.CheckBox checkBoxCircle;
 
         

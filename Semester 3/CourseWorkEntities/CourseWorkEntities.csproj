@@ -43,9 +43,11 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Exceptions\TextBoxException.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="Services\AreaCalculationService.cs" />
-        <Compile Include="Services\ConvertShapeService.cs" />
+        <Compile Include="Services\DeserializeShapeService.cs" />
+        <Compile Include="Services\SerializeShapeService.cs" />
         <Compile Include="Services\SelectShapeService.cs" />
         <Compile Include="Services\ShapeDrawService.cs" />
         <Compile Include="Shapes\Circle.cs" />
@@ -54,7 +56,8 @@
         <Compile Include="Shapes\EquilateralTriangle.cs" />
         <Compile Include="Utilities\Constant.cs" />
         <Compile Include="Utilities\Interfaces\IAreaCalculationService.cs" />
-        <Compile Include="Utilities\Interfaces\IConvertShapeService.cs" />
+        <Compile Include="Utilities\Interfaces\IDeserializeShapeService.cs" />
+        <Compile Include="Utilities\Interfaces\ISerializeShapeService.cs" />
         <Compile Include="Utilities\Interfaces\ISelectShapeService.cs" />
         <Compile Include="Utilities\PointImpl.cs" />
     </ItemGroup>

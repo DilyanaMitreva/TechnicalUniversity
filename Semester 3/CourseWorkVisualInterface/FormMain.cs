@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using CourseWorkEntities.Services;
@@ -20,14 +22,20 @@ namespace CourseWorkVisualInterface
 
         private Shape _selectedShape;
         private Rectangle _frame;
+
         private readonly IAreaCalculationService _areaCalculationService;
         private readonly ISelectShapeService _selectShapeService;
+        private readonly ISerializeShapeService _serializeShapeService;
+        private readonly IDeserializeShapeService _deserializeShapeService;
 
 
         public FormMain()
         {
             this._areaCalculationService = new AreaCalculationService();
             this._selectShapeService = new SelectShapeService();
+            this._serializeShapeService = new SerializeShapeService();
+            this._deserializeShapeService = new DeserializeShapeService();
+
             InitializeComponent();
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
         }
@@ -46,6 +54,22 @@ namespace CourseWorkVisualInterface
                 _frame.DrawShape(ShapeDrawService.DrawShape);
             }
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                _shapes = _deserializeShapeService.DeserializeFromJsonFile();
+            }
+            catch (FileNotFoundException exception)
+            {
+               
+            }
+        }
+
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e) =>
+            _serializeShapeService.SerializeToJsonFile(_shapes, Constant.FileLocation.FileLocationJsonSave);
 
         private void FormMain_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -522,7 +546,7 @@ namespace CourseWorkVisualInterface
         }
 
         private void MessageBoxEmptyList() =>
-            MessageBox.Show(Constant.ErrorMessages.EmptyListMessage,
+            MessageBox.Show(Constant.ExceptionMessages.EmptyListMessage,
                 Constant.Captions.ErrorCaption,
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
 

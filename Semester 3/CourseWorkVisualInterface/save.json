@@ -1,0 +1,25 @@
+[
+  {
+    "Radius": 100,
+    "Area": 31415.926535897932,
+    "Location": {
+      "X": 248,
+      "Y": 138
+    },
+    "ColorBorder": "205, 122, 83",
+    "FillColor": "100, 205, 122, 83",
+    "IsSelected": false
+  },
+  {
+    "Width": 100,
+    "Height": 100,
+    "Area": 10000.0,
+    "Location": {
+      "X": 455,
+      "Y": 293
+    },
+    "ColorBorder": "126, 88, 177",
+    "FillColor": "100, 126, 88, 177",
+    "IsSelected": false
+  }
+]

@@ -9,8 +9,7 @@ namespace CourseWorkEntities.Services
     public class SelectShapeService : ISelectShapeService
     {
         public void SelectAllShapes(List<Shape> shapes) => shapes.ForEach(s => s.IsSelected = true);
-
-
+        
         public void SelectAllShapesByType(List<Shape> shapes, Type type)
         {
             foreach (Shape shape in shapes)
