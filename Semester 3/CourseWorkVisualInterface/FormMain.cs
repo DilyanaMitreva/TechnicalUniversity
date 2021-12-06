@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Windows.Forms;
+using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Services;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
@@ -26,7 +25,8 @@ namespace CourseWorkVisualInterface
         private readonly IAreaCalculationService _areaCalculationService;
         private readonly ISelectShapeService _selectShapeService;
         private readonly ISerializeShapeService _serializeShapeService;
-        private readonly IDeserializeShapeService _deserializeShapeService;
+        private readonly IDeserializeService _deserializeService;
+        private readonly IMoveShapeService _moveShapeService;
 
 
         public FormMain()
@@ -34,7 +34,8 @@ namespace CourseWorkVisualInterface
             this._areaCalculationService = new AreaCalculationService();
             this._selectShapeService = new SelectShapeService();
             this._serializeShapeService = new SerializeShapeService();
-            this._deserializeShapeService = new DeserializeShapeService();
+            this._deserializeService = new DeserializeService();
+            this._moveShapeService = new MoveShapeService();
 
             InitializeComponent();
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
@@ -55,21 +56,40 @@ namespace CourseWorkVisualInterface
             }
         }
 
+
         private void FormMain_Load(object sender, EventArgs e)
         {
             try
             {
-                _shapes = _deserializeShapeService.DeserializeFromJsonFile();
+                _shapes = _deserializeService.DeserializeSave();
             }
             catch (FileNotFoundException exception)
             {
-               
+            }
+            catch (Exception exception)
+            {
+                GenerateMessageBox(exception.Message,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-
-        private void FormMain_FormClosing(object sender, FormClosingEventArgs e) =>
-            _serializeShapeService.SerializeToJsonFile(_shapes, Constant.FileLocation.FileLocationJsonSave);
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            try
+            {
+                _serializeShapeService.SerializeSave(_shapes);
+            }
+            catch (EmptyCollectionException exception)
+            {
+            }
+            catch (Exception exception)
+            {
+                GenerateMessageBox(exception.Message,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void FormMain_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -141,16 +161,31 @@ namespace CourseWorkVisualInterface
             Invalidate();
         }
 
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            Keys[] moveButtons = new[] { Keys.Up, Keys.Down, Keys.Right, Keys.Left };
+
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteShapes();
+            }
+
+            if (moveButtons.Contains(e.KeyCode))
+            {
+                List<Shape> selectedShapes = _shapes.Where(s => s.IsSelected).ToList();
+                _moveShapeService.Move(selectedShapes, e.KeyCode);
+                
+                Invalidate();
+            }
+        }
+
+        private Shape GetFirstSelected()
+            => _shapes.FirstOrDefault(s => s.IsSelected);
+
+
         private void UpdateShape()
         {
-            foreach (Shape shape in _shapes)
-            {
-                if (shape.IsSelected)
-                {
-                    this._selectedShape = shape;
-                    break;
-                }
-            }
+            this._selectedShape = GetFirstSelected();
 
             if (_selectedShape == null)
             {
@@ -198,7 +233,9 @@ namespace CourseWorkVisualInterface
         {
             if (_shapes.Count == 0)
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -210,7 +247,9 @@ namespace CourseWorkVisualInterface
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -223,7 +262,9 @@ namespace CourseWorkVisualInterface
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -236,7 +277,9 @@ namespace CourseWorkVisualInterface
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -255,7 +298,9 @@ namespace CourseWorkVisualInterface
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -263,27 +308,33 @@ namespace CourseWorkVisualInterface
 
             string message = String.Format(Constant.InformationMessages.AllAreaMessage, areaOfAllShapes);
 
-            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void allShapeTypesTotalAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             string message = _areaCalculationService.AllShapesAreaByType(_shapes);
 
-            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void allEquilateralTriangleAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -293,14 +344,17 @@ namespace CourseWorkVisualInterface
             string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
                 nameof(EquilateralTriangle), areaOfAllEquilateralTriangles);
 
-            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void allRectangleAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -309,14 +363,17 @@ namespace CourseWorkVisualInterface
             string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
                 nameof(Rectangle), areaOfAllRectangles);
 
-            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void allCircleAreaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -325,41 +382,50 @@ namespace CourseWorkVisualInterface
             string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
                 nameof(Circle), areaOfAllCircles);
 
-            GenerateMessageBox(message, Constant.Captions.AllAreaCaption);
+            GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void biggestAreaFromAllShapesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             double biggestAreaOfAllShapes = _areaCalculationService.BiggestAreaOfAllShapes(_shapes);
 
             string message = String.Format(Constant.InformationMessages.BiggestAreaMessage, biggestAreaOfAllShapes);
-            GenerateMessageBox(message, Constant.Captions.BiggestArea);
+            GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void biggestAreaFromTypeOfShapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             string message = _areaCalculationService.AllShapesBiggestAreaByType(_shapes);
 
-            GenerateMessageBox(message, Constant.Captions.BiggestArea);
+            GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void biggestTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -368,14 +434,17 @@ namespace CourseWorkVisualInterface
 
             string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
                 nameof(EquilateralTriangle), biggestAreaOfAllEquilateralTriangles);
-            GenerateMessageBox(message, Constant.Captions.BiggestArea);
+            GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void biggestRectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (_shapes.Count == 0)
+            if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -385,14 +454,17 @@ namespace CourseWorkVisualInterface
             string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
                 nameof(Rectangle), biggestAreaOfAllRectangles);
 
-            GenerateMessageBox(message, Constant.Captions.BiggestArea);
+            GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void biggestCircleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -402,41 +474,50 @@ namespace CourseWorkVisualInterface
             string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
                 nameof(Circle), biggestAreaOfAllCircles);
 
-            GenerateMessageBox(message, Constant.Captions.BiggestArea);
+            GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void smallestAreaFromAllShapesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             double smallestAreaOfAllShapes = _areaCalculationService.SmallestAreaOfAllShapes(_shapes);
 
             string message = String.Format(Constant.InformationMessages.SmallestAreaMessage, smallestAreaOfAllShapes);
-            GenerateMessageBox(message, Constant.Captions.SmallestArea);
+            GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void smallestAreaFromTypeOfShapeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             string message = _areaCalculationService.AllShapesSmallestAreaByType(_shapes);
 
-            GenerateMessageBox(message, Constant.Captions.SmallestArea);
+            GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void smallestTriangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -446,14 +527,17 @@ namespace CourseWorkVisualInterface
             string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
                 nameof(EquilateralTriangle), smallestAreaOfAllEquilateralTriangles);
 
-            GenerateMessageBox(message, Constant.Captions.SmallestArea);
+            GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void smallestRectangleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -463,14 +547,17 @@ namespace CourseWorkVisualInterface
             string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
                 nameof(Rectangle), smallestAreaOfAllRectangles);
 
-            GenerateMessageBox(message, Constant.Captions.SmallestArea);
+            GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void smallestCircleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -480,14 +567,17 @@ namespace CourseWorkVisualInterface
             string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
                 nameof(Circle), smallestAreaOfAllCircles);
 
-            GenerateMessageBox(message, Constant.Captions.SmallestArea);
+            GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         private void totalUnusedSpaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -496,14 +586,19 @@ namespace CourseWorkVisualInterface
 
             string message = String.Format(Constant.InformationMessages.UnusedSpaceMessage,
                 (sceneArea - areaOfAllShapes));
-            GenerateMessageBox(message, Constant.Captions.TotalUnusedSpace);
+            GenerateMessageBox(message, Constant.Captions.TotalUnusedSpace, MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e) => DeleteShapes();
+
+        private void DeleteShapes()
         {
             if (_shapes.Count(s => s.IsSelected) == 0)
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -519,11 +614,14 @@ namespace CourseWorkVisualInterface
             Invalidate();
         }
 
+
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (ValidateListNotEmpty())
             {
-                MessageBoxEmptyList();
+                GenerateMessageBox(Constant.ExceptionMessages.EmptyListMessage,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -545,13 +643,10 @@ namespace CourseWorkVisualInterface
             Invalidate();
         }
 
-        private void MessageBoxEmptyList() =>
-            MessageBox.Show(Constant.ExceptionMessages.EmptyListMessage,
-                Constant.Captions.ErrorCaption,
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-        private void GenerateMessageBox(string message, string caption)
-            => MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private static void GenerateMessageBox(string message, string caption, MessageBoxButtons messageBoxButtons,
+            MessageBoxIcon messageBoxIcon) =>
+            MessageBox.Show(message, caption, messageBoxButtons, messageBoxIcon);
 
         private bool ValidateListNotEmpty() => _shapes.Count == 0;
     }

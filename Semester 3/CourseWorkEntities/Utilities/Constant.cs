@@ -13,14 +13,11 @@ namespace CourseWorkEntities.Utilities
 
             public const string FileLocationJson =
                 @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.json";
-            
-            public const string FileLocationJsonSave =
-                @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\save.json";
 
             public const string FileLocationXml =
                 @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.xml";
         }
-        
+
         public static class ExceptionMessages
         {
             public const string RadiusMessage = "Enter radius";

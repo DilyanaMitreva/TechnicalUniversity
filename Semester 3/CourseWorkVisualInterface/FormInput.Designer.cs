@@ -122,14 +122,6 @@ namespace CourseWorkVisualInterface
             this.labelRadius.Text = "Radius";
             this.labelRadius.Visible = false;
             // 
-            // textBoxRadius
-            // 
-            this.textBoxRadius.Location = new System.Drawing.Point(8, 220);
-            this.textBoxRadius.Name = "textBoxRadius";
-            this.textBoxRadius.Size = new System.Drawing.Size(469, 22);
-            this.textBoxRadius.TabIndex = 30;
-            this.textBoxRadius.Visible = false;
-            // 
             // labelSide
             // 
             this.labelSide.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -139,14 +131,6 @@ namespace CourseWorkVisualInterface
             this.labelSide.TabIndex = 9;
             this.labelSide.Text = "Side";
             this.labelSide.Visible = false;
-            // 
-            // textBoxSide
-            // 
-            this.textBoxSide.Location = new System.Drawing.Point(8, 220);
-            this.textBoxSide.Name = "textBoxSide";
-            this.textBoxSide.Size = new System.Drawing.Size(469, 22);
-            this.textBoxSide.TabIndex = 31;
-            this.textBoxSide.Visible = false;
             // 
             // labelHeight
             // 
@@ -175,14 +159,6 @@ namespace CourseWorkVisualInterface
             this.labelWidth.TabIndex = 13;
             this.labelWidth.Text = "Width";
             this.labelWidth.Visible = false;
-            // 
-            // textBoxWidth
-            // 
-            this.textBoxWidth.Location = new System.Drawing.Point(8, 220);
-            this.textBoxWidth.Name = "textBoxWidth";
-            this.textBoxWidth.Size = new System.Drawing.Size(469, 22);
-            this.textBoxWidth.TabIndex = 32;
-            this.textBoxWidth.Visible = false;
             // 
             // buttonCancel
             // 
@@ -307,6 +283,30 @@ namespace CourseWorkVisualInterface
             this.resetToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
             this.resetToolStripMenuItem.Text = "Reset";
             this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
+            // 
+            // textBoxRadius
+            // 
+            this.textBoxRadius.Location = new System.Drawing.Point(8, 220);
+            this.textBoxRadius.Name = "textBoxRadius";
+            this.textBoxRadius.Size = new System.Drawing.Size(469, 22);
+            this.textBoxRadius.TabIndex = 30;
+            this.textBoxRadius.Visible = false;
+            // 
+            // textBoxSide
+            // 
+            this.textBoxSide.Location = new System.Drawing.Point(8, 220);
+            this.textBoxSide.Name = "textBoxSide";
+            this.textBoxSide.Size = new System.Drawing.Size(469, 22);
+            this.textBoxSide.TabIndex = 31;
+            this.textBoxSide.Visible = false;
+            // 
+            // textBoxWidth
+            // 
+            this.textBoxWidth.Location = new System.Drawing.Point(8, 220);
+            this.textBoxWidth.Name = "textBoxWidth";
+            this.textBoxWidth.Size = new System.Drawing.Size(469, 22);
+            this.textBoxWidth.TabIndex = 32;
+            this.textBoxWidth.Visible = false;
             // 
             // FormInput
             // 

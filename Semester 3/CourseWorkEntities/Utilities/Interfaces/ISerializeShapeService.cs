@@ -7,9 +7,10 @@ namespace CourseWorkEntities.Utilities.Interfaces
     {
         void SerializeToTxtFile(List<Shape> shapes);
 
-        void SerializeToJsonFile(List<Shape> shapes, string location);
+        void SerializeToJsonFile(List<Shape> shapes);
 
         void SerializeToXmlFile(List<Shape> shapes);
         
+        void SerializeSave(List<Shape> shapes);
     }
 }

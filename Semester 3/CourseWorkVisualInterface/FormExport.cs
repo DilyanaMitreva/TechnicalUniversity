@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Services;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
@@ -31,18 +32,39 @@ namespace CourseWorkVisualInterface
         {
             if (checkBoxJson.Checked)
             {
-                _serializeShapeService.SerializeToJsonFile(_shapes, Constant.FileLocation.FileLocationJson);
-                GetMessageBox();
+                try
+                {
+                    _serializeShapeService.SerializeToJsonFile(_shapes);
+                }
+                catch (EmptyCollectionException exception)
+                {
+                    CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             else if (checkBoxXml.Checked)
             {
-                _serializeShapeService.SerializeToXmlFile(_shapes);
-                GetMessageBox();
+                try
+                {
+                    _serializeShapeService.SerializeToXmlFile(_shapes);
+                }
+                catch (EmptyCollectionException exception)
+                {
+                    CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             else if (checkBoxTxt.Checked)
             {
-                _serializeShapeService.SerializeToTxtFile(_shapes);
-                GetMessageBox();
+                try
+                {
+                    _serializeShapeService.SerializeToTxtFile(_shapes);
+                }
+                catch (EmptyCollectionException exception)
+                {
+                    CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             else
             {
@@ -78,10 +100,8 @@ namespace CourseWorkVisualInterface
             checkBoxTxt.Checked = false;
         }
 
-        private void GetMessageBox()
-            => MessageBox.Show(Constant.InformationMessages.ExportReady,
-                Constant.Captions.Export,
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+        private static void CreateMessageBox(string message, string caption, MessageBoxButtons messageBoxButtons,
+            MessageBoxIcon messageBoxIcon) =>
+            MessageBox.Show(message, caption, messageBoxButtons, messageBoxIcon);
     }
 }

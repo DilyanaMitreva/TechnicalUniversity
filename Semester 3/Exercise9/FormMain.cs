@@ -5,14 +5,17 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
+using Exercise9Library;
+using Rectangle = Exercise9Library.Rectangle;
 
-namespace Exercise8
+namespace Exercise9
 {
-    public partial class FormMain : Form
+    public partial class FormMain : Form, IGraphics
     {
         private List<Shape> _shapes = new List<Shape>();
         private Point _mouseCaptureLocation;
         private Rectangle _frame;
+        private Graphics _graphics;
 
         public FormMain()
         {
@@ -24,15 +27,19 @@ namespace Exercise8
         {
             base.OnPaint(e);
 
+            _graphics = e.Graphics;
+
             foreach (Shape shape in _shapes)
             {
-                shape.Paint(e.Graphics);
+                shape.Paint(this);
             }
 
             if (_frame != null)
             {
-                _frame.Paint(e.Graphics);
+                _frame.Paint(this);
             }
+
+            _graphics = null;
         }
 
         private void FormMain_MouseDown(object sender, MouseEventArgs e)
@@ -165,7 +172,7 @@ namespace Exercise8
                     rectangle.Selected = true;
                 }
             }
-            
+
             Invalidate();
         }
 
@@ -192,6 +199,21 @@ namespace Exercise8
                 formatter.Serialize(fileStream, _shapes);
             }
         }
-        
+
+        public void DrawRectangle(Color borderColor, Color fillColor, int x, int y, int width, int height)
+        {
+            if (_graphics != null)
+            {
+                using (Brush brush = new SolidBrush(fillColor))
+                {
+                    _graphics.FillRectangle(brush, x, y, width, height);
+                }
+
+                using (Pen pen = new Pen(borderColor))
+                {
+                   _graphics.DrawRectangle(pen, x, y, width, height);
+                }
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Exercise8
+﻿namespace Exercise9
 {
     partial class FormMain
     {

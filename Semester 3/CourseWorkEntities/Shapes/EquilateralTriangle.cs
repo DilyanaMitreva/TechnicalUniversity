@@ -10,7 +10,8 @@ namespace CourseWorkEntities.Shapes
     {
         public int Side { get; set; }
 
-        private PointImpl[] Vertices { get; set; }
+        
+        private  PointImpl[] _vertices;
 
         public EquilateralTriangle() : base()
         {
@@ -20,7 +21,7 @@ namespace CourseWorkEntities.Shapes
             base(xCoordinate, yCoordinate, colorBorder, fillColor)
         {
             this.Side = side;
-            this.Vertices = GenerateVertices(new PointImpl(xCoordinate, yCoordinate), side);
+            this._vertices = GenerateVertices(side);
         }
 
 
@@ -28,22 +29,22 @@ namespace CourseWorkEntities.Shapes
 
         public override bool PointInShape(PointImpl point)
         {
-            double area = GetAreaByPoints(Vertices[0], Vertices[1], Vertices[2]);
+            double area = GetAreaByPoints(_vertices[0], _vertices[1], _vertices[2]);
 
-            double area1 = GetAreaByPoints(point, Vertices[1], Vertices[2]);
+            double area1 = GetAreaByPoints(point, _vertices[1], _vertices[2]);
 
-            double area2 = GetAreaByPoints(Vertices[0], point, Vertices[2]);
+            double area2 = GetAreaByPoints(_vertices[0], point, _vertices[2]);
 
-            double area3 = GetAreaByPoints(Vertices[0], Vertices[1], point);
+            double area3 = GetAreaByPoints(_vertices[0], _vertices[1], point);
 
             return area == area1 + area2 + area3;
         }
 
         public override bool Intersect(Rectangle rectangle) // TODO
         {
-            PointImpl top = Vertices[0];
-            PointImpl left = Vertices[1];
-            PointImpl right = Vertices[2];
+            PointImpl top = _vertices[0];
+            PointImpl left = _vertices[1];
+            PointImpl right = _vertices[2];
 
             // bool result1 = PointInShape(new PointImpl(rectangle.Location.X + rectangle.Width,
             //     rectangle.Location.Y + rectangle.Height));
@@ -74,28 +75,29 @@ namespace CourseWorkEntities.Shapes
         public Point[] GetVertices()
         {
             Point[] points = new Point[3];
+            this._vertices = GenerateVertices(Side);
 
-            points[0].X = this.Vertices[0].X;
-            points[0].Y = this.Vertices[0].Y;
+            points[0].X = this._vertices[0].X;
+            points[0].Y = this._vertices[0].Y;
 
-            points[1].X = this.Vertices[1].X;
-            points[1].Y = this.Vertices[1].Y;
+            points[1].X = this._vertices[1].X;
+            points[1].Y = this._vertices[1].Y;
 
-            points[2].X = this.Vertices[2].X;
-            points[2].Y = this.Vertices[2].Y;
+            points[2].X = this._vertices[2].X;
+            points[2].Y = this._vertices[2].Y;
 
             return points;
         }
 
 
-        private PointImpl[] GenerateVertices(PointImpl location, int side)
+        private PointImpl[] GenerateVertices(int side)
         {
             PointImpl[] points = new PointImpl[3];
 
             PointImpl middleBasePoint =
-                new PointImpl(location.X, location.Y + (int)((Math.Sqrt(3) / 2) * side));
+                new PointImpl(Location.X, Location.Y + (int)((Math.Sqrt(3) / 2) * side));
 
-            points[0] = new PointImpl(location.X, location.Y);
+            points[0] = Location;
 
             points[1] = new PointImpl(middleBasePoint.X - side / 2, middleBasePoint.Y);
 

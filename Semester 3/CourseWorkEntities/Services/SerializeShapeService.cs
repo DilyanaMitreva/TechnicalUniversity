@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Xml.Serialization;
+using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
 using CourseWorkEntities.Utilities.Interfaces;
@@ -21,7 +23,7 @@ namespace CourseWorkEntities.Services
         {
             if (shapes.Count == 0)
             {
-                return;
+                throw new EmptyCollectionException("No items in collection");
             }
 
             string text = new StringBuilder()
@@ -41,22 +43,22 @@ namespace CourseWorkEntities.Services
             }
         }
 
-        public void SerializeToJsonFile(List<Shape> shapes, string location)
+        public void SerializeToJsonFile(List<Shape> shapes)
         {
             if (shapes.Count == 0)
             {
-                return;
+                throw new EmptyCollectionException("No items in collection");
             }
 
             string json = JsonConvert.SerializeObject(shapes, Formatting.Indented);
-            File.WriteAllText(location, json);
+            File.WriteAllText(Constant.FileLocation.FileLocationJson, json);
         }
 
         public void SerializeToXmlFile(List<Shape> shapes)
         {
             if (shapes.Count == 0)
             {
-                return;
+                throw new EmptyCollectionException("No items in collection");
             }
 
             Type[] extraTypes = new Type[]
@@ -68,6 +70,21 @@ namespace CourseWorkEntities.Services
                 new FileStream(Constant.FileLocation.FileLocationXml, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 xmlSerializer.Serialize(stream, shapes);
+            }
+        }
+
+        public void SerializeSave(List<Shape> shapes)
+        {
+            if (shapes.Count == 0)
+            {
+                throw new EmptyCollectionException("No items in collection");
+            }
+
+            var formatter = new BinaryFormatter();
+
+            using (var fileStream = new FileStream("data.txt", FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                formatter.Serialize(fileStream, shapes);
             }
         }
     }

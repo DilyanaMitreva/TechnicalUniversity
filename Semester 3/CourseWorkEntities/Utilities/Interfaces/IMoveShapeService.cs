@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Forms;
 using CourseWorkEntities.Shapes;
 
 namespace CourseWorkEntities.Utilities.Interfaces
 {
-    public interface IDeserializeShapeService
+    public interface IMoveShapeService
     {
-        List<Shape> DeserializeFromJsonFile();
+        void Move(List<Shape> shapes, Keys button);
     }
 }

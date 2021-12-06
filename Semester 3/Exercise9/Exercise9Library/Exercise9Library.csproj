@@ -4,13 +4,17 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{27034EFE-699C-436E-B5E4-6ECF4BC429F4}</ProjectGuid>
+        <ProjectGuid>{2178494D-F287-4EC8-B9B5-B2CC880725DB}</ProjectGuid>
         <OutputType>Library</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>CourseWorkEntities</RootNamespace>
-        <AssemblyName>CourseWorkEntities</AssemblyName>
+        <RootNamespace>Exercise9Library</RootNamespace>
+        <AssemblyName>Exercise9Library</AssemblyName>
         <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>Certificate.snk</AssemblyOriginatorKeyFile>
+        <PublicSign>true</PublicSign>
+        <DelaySign>false</DelaySign>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,41 +36,21 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
         <Reference Include="System.Drawing" />
-        <Reference Include="System.Windows.Forms" />
+        <Reference Include="System.Drawing.Design" />
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Exceptions\EmptyCollectionException.cs" />
-        <Compile Include="Exceptions\TextBoxException.cs" />
+        <Compile Include="IGraphics.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Services\AreaCalculationService.cs" />
-        <Compile Include="Services\DeserializeService.cs" />
-        <Compile Include="Services\MoveShapeService.cs" />
-        <Compile Include="Services\SerializeShapeService.cs" />
-        <Compile Include="Services\SelectShapeService.cs" />
-        <Compile Include="Services\ShapeDrawService.cs" />
-        <Compile Include="Shapes\Circle.cs" />
-        <Compile Include="Shapes\Rectangle.cs" />
-        <Compile Include="Shapes\Shape.cs" />
-        <Compile Include="Shapes\EquilateralTriangle.cs" />
-        <Compile Include="Utilities\Constant.cs" />
-        <Compile Include="Utilities\Interfaces\IAreaCalculationService.cs" />
-        <Compile Include="Utilities\Interfaces\IDeserializeService.cs" />
-        <Compile Include="Utilities\Interfaces\IMoveShapeService.cs" />
-        <Compile Include="Utilities\Interfaces\ISerializeShapeService.cs" />
-        <Compile Include="Utilities\Interfaces\ISelectShapeService.cs" />
-        <Compile Include="Utilities\PointImpl.cs" />
+        <Compile Include="Rectangle.cs" />
+        <Compile Include="Shape.cs" />
     </ItemGroup>
     <ItemGroup>
-      <None Include="packages.config" />
+      <None Include="Certificate.snk" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
