@@ -19,6 +19,11 @@ namespace CourseWorkEntities.Services
 {
     public class SerializeShapeService : ISerializeShapeService
     {
+        public SerializeShapeService()
+        {
+            Directory.CreateDirectory(Constant.FileLocation.FilesFolderPath);
+        }
+        
         public void SerializeToTxtFile(List<Shape> shapes)
         {
             if (shapes.Count == 0)
@@ -27,7 +32,8 @@ namespace CourseWorkEntities.Services
             }
 
             string text = new StringBuilder()
-                .Append($"Shapes count: {shapes.Count}" + Constant.ShapeSeparatorTxt)
+                .AppendLine($"Shapes count: {shapes.Count}")
+                .Append(Constant.ShapeSeparatorTxt)
                 .Append(shapes.Select(s => s.AsString())
                     .Aggregate((f, s) =>
                         f + Constant.ShapeSeparatorTxt + s))

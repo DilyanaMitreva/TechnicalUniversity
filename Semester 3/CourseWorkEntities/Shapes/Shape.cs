@@ -8,7 +8,7 @@ using Newtonsoft.Json.Serialization;
 
 namespace CourseWorkEntities.Shapes
 {
-    public delegate void Draw(Shape shape);
+    public delegate void Draw(Shape shape, Graphics graphics);
 
     [Serializable]
     public abstract class Shape
@@ -41,14 +41,9 @@ namespace CourseWorkEntities.Shapes
 
         public abstract string AsString();
 
-
-        // public string AsJson();
-        //
-        // public abstract string AsXml();
-
-        public void DrawShape(Draw draw)
+        public void DrawShape(Draw draw, Graphics graphics)
         {
-            draw(this);
+            draw(this, graphics);
         }
     }
 }

@@ -10,8 +10,7 @@ namespace CourseWorkEntities.Shapes
     {
         public int Side { get; set; }
 
-        
-        private  PointImpl[] _vertices;
+        private PointImpl[] _vertices;
 
         public EquilateralTriangle() : base()
         {

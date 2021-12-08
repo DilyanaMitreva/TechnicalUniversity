@@ -1,4 +1,6 @@
-﻿using CourseWorkEntities.Shapes;
+﻿using System;
+using System.IO;
+using CourseWorkEntities.Shapes;
 
 namespace CourseWorkEntities.Utilities
 {
@@ -8,14 +10,19 @@ namespace CourseWorkEntities.Utilities
 
         public static class FileLocation
         {
-            public const string FileLocationTxt =
-                @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.txt";
+            private static readonly string DesktopLocation =
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
-            public const string FileLocationJson =
-                @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.json";
+            private static readonly string ProjectDirectory =
+                Directory.GetParent(Environment.CurrentDirectory)?.Parent?.FullName;
 
-            public const string FileLocationXml =
-                @"C:\Users\k.krachmarov\Desktop\TechicalUniversity\Semester 3\CourseWorkVisualInterface\shapes.xml";
+            public static readonly string FilesFolderPath = Path.Combine(ProjectDirectory, "Files");
+
+            public static readonly string FileLocationTxt = Path.Combine(FilesFolderPath, "shapes.txt");
+
+            public static readonly string FileLocationJson = Path.Combine(FilesFolderPath, "shapes.json");
+
+            public static readonly string FileLocationXml = Path.Combine(FilesFolderPath, "shapes.xml");
         }
 
         public static class ExceptionMessages
@@ -41,12 +48,12 @@ namespace CourseWorkEntities.Utilities
             public const string EmptyListMessage = "No items";
 
             public const string SelectTypeForExport = "Select type of export";
+
+            public const string ShapeNotSupported = "Shape not supported";
         }
 
-        public static class InformationMessages
+        public static class AreaTemplateMessages
         {
-            public const string ExportReady = "The export is ready";
-
             public const string AllAreaMessage = "The total used area is {0:N2} pixels.";
 
             public const string AllAreaOfTypeMessage =
@@ -75,8 +82,6 @@ namespace CourseWorkEntities.Utilities
             public const string BiggestArea = "Biggest area";
 
             public const string TotalUnusedSpace = "Total unused space";
-
-            public const string Export = "Export";
         }
     }
 }

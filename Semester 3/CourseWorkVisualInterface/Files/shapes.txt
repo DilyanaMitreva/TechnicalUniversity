@@ -1,0 +1,24 @@
+Shapes count: 2
+<-------------------------------------------------->
+Circle
+Location: 
+	 X coordinate: 186
+	 Y coordinate: 142
+Radius: 100
+Area: 31415.9265358979
+BorderColor: Color [A=255, R=200, G=87, B=23]
+FillColor: Color [A=100, R=200, G=87, B=23]
+Is Selected: False
+<-------------------------------------------------->
+Rectangle
+Location: 
+	 X coordinate: 183
+	 Y coordinate: 223
+Width: 100
+Height: 100
+Area: 10000
+BorderColor: Color [A=255, R=68, G=127, B=246]
+FillColor: Color [A=100, R=68, G=127, B=246]
+Is Selected: False
+<-------------------------------------------------->
+

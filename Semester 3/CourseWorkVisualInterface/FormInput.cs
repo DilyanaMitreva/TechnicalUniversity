@@ -190,6 +190,11 @@ namespace CourseWorkVisualInterface
                     DialogResult = DialogResult.OK;
                 }
             }
+            catch (TextBoxException exception)
+            {
+                CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
             catch (Exception exception)
             {
                 CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
@@ -258,8 +263,8 @@ namespace CourseWorkVisualInterface
                 int xCoordinate = ValidateTextBox(textBoxXCoordinate,
                     Constant.ExceptionMessages.XCoordinateMessage);
 
-                int yCoordinate = ValidateTextBox(textBoxXCoordinate,
-                    Constant.ExceptionMessages.XCoordinateMessage);
+                int yCoordinate = ValidateTextBox(textBoxYCoordinate,
+                    Constant.ExceptionMessages.YCoordinateMessage);
 
                 result = new EquilateralTriangle(xCoordinate, yCoordinate, side, _borderColor, _fillColor);
             }
@@ -295,7 +300,7 @@ namespace CourseWorkVisualInterface
 
         private int ValidateTextBox(TextBox textBox, string message)
         {
-            if (textBox.Text.Equals(""))
+            if (textBox.Text.Equals(String.Empty))
             {
                 throw new TextBoxException(message);
             }

@@ -1,0 +1,37 @@
+[
+  {
+    "Radius": 100,
+    "Area": 31415.926535897932,
+    "Location": {
+      "X": 186,
+      "Y": 142
+    },
+    "ColorBorder": "200, 87, 23",
+    "FillColor": "100, 200, 87, 23",
+    "IsSelected": false
+  },
+  {
+    "Width": 100,
+    "Height": 100,
+    "Area": 10000.0,
+    "Location": {
+      "X": 183,
+      "Y": 223
+    },
+    "ColorBorder": "68, 127, 246",
+    "FillColor": "100, 68, 127, 246",
+    "IsSelected": false
+  },
+  {
+    "Width": 100,
+    "Height": 100,
+    "Area": 10000.0,
+    "Location": {
+      "X": 421,
+      "Y": 167
+    },
+    "ColorBorder": "172, 196, 195",
+    "FillColor": "100, 172, 196, 195",
+    "IsSelected": false
+  }
+]

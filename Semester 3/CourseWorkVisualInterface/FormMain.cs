@@ -43,16 +43,30 @@ namespace CourseWorkVisualInterface
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            ShapeDrawService.Graphics = e.Graphics;
             base.OnPaint(e);
-            foreach (var shape in _shapes)
+            try
             {
-                shape.DrawShape(ShapeDrawService.DrawShape);
-            }
+                foreach (var shape in _shapes)
+                {
+                    shape.DrawShape(ShapeDrawService.DrawShape, e.Graphics);
+                }
 
-            if (_frame?.Location != null)
+                if (_frame?.Location != null)
+                {
+                    _frame.DrawShape(ShapeDrawService.DrawShape, e.Graphics);
+                }
+            }
+            catch (ShapeNotSupportedException exception)
             {
-                _frame.DrawShape(ShapeDrawService.DrawShape);
+                GenerateMessageBox(exception.Message,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exception)
+            {
+                GenerateMessageBox(exception.Message,
+                    Constant.Captions.ErrorCaption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -174,7 +188,7 @@ namespace CourseWorkVisualInterface
             {
                 List<Shape> selectedShapes = _shapes.Where(s => s.IsSelected).ToList();
                 _moveShapeService.Move(selectedShapes, e.KeyCode);
-                
+
                 Invalidate();
             }
         }
@@ -196,9 +210,10 @@ namespace CourseWorkVisualInterface
             this.ExecuteForm(formUpdate);
             if (formUpdate.DialogResult == DialogResult.OK)
             {
-                _shapes.Add(formUpdate.GetShape());
                 _shapes.Remove(_selectedShape);
             }
+
+            Invalidate();
         }
 
         private void AddShape(MouseEventArgs e)
@@ -217,15 +232,29 @@ namespace CourseWorkVisualInterface
 
             if (formInput.DialogResult == DialogResult.OK)
             {
-                ShapeDrawService.Graphics = this.CreateGraphics();
+                using (Graphics g = this.CreateGraphics())
+                {
+                    Shape createdShape = formInput.GetShape();
 
-                Shape createdShape = formInput.GetShape();
+                    try
+                    {
+                        createdShape.DrawShape(ShapeDrawService.DrawShape, g);
+                    }
+                    catch (ShapeNotSupportedException exception)
+                    {
+                        GenerateMessageBox(exception.Message,
+                            Constant.Captions.ErrorCaption,
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    catch (Exception exception)
+                    {
+                        GenerateMessageBox(exception.Message,
+                            Constant.Captions.ErrorCaption,
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
-                createdShape.DrawShape(ShapeDrawService.DrawShape);
-
-                this._shapes.Add(createdShape);
-
-                ShapeDrawService.Graphics.Dispose();
+                    this._shapes.Add(createdShape);
+                }
             }
         }
 
@@ -306,7 +335,7 @@ namespace CourseWorkVisualInterface
 
             double areaOfAllShapes = _areaCalculationService.AreaOfAllShapes(_shapes);
 
-            string message = String.Format(Constant.InformationMessages.AllAreaMessage, areaOfAllShapes);
+            string message = String.Format(Constant.AreaTemplateMessages.AllAreaMessage, areaOfAllShapes);
 
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -341,7 +370,7 @@ namespace CourseWorkVisualInterface
             double areaOfAllEquilateralTriangles =
                 _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.AllAreaOfTypeMessage,
                 nameof(EquilateralTriangle), areaOfAllEquilateralTriangles);
 
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
@@ -360,7 +389,7 @@ namespace CourseWorkVisualInterface
 
             double areaOfAllRectangles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
-            string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.AllAreaOfTypeMessage,
                 nameof(Rectangle), areaOfAllRectangles);
 
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
@@ -379,7 +408,7 @@ namespace CourseWorkVisualInterface
 
             double areaOfAllCircles = _areaCalculationService.AreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = String.Format(Constant.InformationMessages.AllAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.AllAreaOfTypeMessage,
                 nameof(Circle), areaOfAllCircles);
 
             GenerateMessageBox(message, Constant.Captions.AllAreaCaption, MessageBoxButtons.OK,
@@ -398,7 +427,7 @@ namespace CourseWorkVisualInterface
 
             double biggestAreaOfAllShapes = _areaCalculationService.BiggestAreaOfAllShapes(_shapes);
 
-            string message = String.Format(Constant.InformationMessages.BiggestAreaMessage, biggestAreaOfAllShapes);
+            string message = String.Format(Constant.AreaTemplateMessages.BiggestAreaMessage, biggestAreaOfAllShapes);
             GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
@@ -432,7 +461,7 @@ namespace CourseWorkVisualInterface
             double biggestAreaOfAllEquilateralTriangles =
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.BiggestAreaOfTypeMessage,
                 nameof(EquilateralTriangle), biggestAreaOfAllEquilateralTriangles);
             GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -451,7 +480,7 @@ namespace CourseWorkVisualInterface
             double biggestAreaOfAllRectangles =
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
-            string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.BiggestAreaOfTypeMessage,
                 nameof(Rectangle), biggestAreaOfAllRectangles);
 
             GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
@@ -471,7 +500,7 @@ namespace CourseWorkVisualInterface
             double biggestAreaOfAllCircles =
                 _areaCalculationService.BiggestAreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = String.Format(Constant.InformationMessages.BiggestAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.BiggestAreaOfTypeMessage,
                 nameof(Circle), biggestAreaOfAllCircles);
 
             GenerateMessageBox(message, Constant.Captions.BiggestArea, MessageBoxButtons.OK,
@@ -490,7 +519,7 @@ namespace CourseWorkVisualInterface
 
             double smallestAreaOfAllShapes = _areaCalculationService.SmallestAreaOfAllShapes(_shapes);
 
-            string message = String.Format(Constant.InformationMessages.SmallestAreaMessage, smallestAreaOfAllShapes);
+            string message = String.Format(Constant.AreaTemplateMessages.SmallestAreaMessage, smallestAreaOfAllShapes);
             GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
         }
@@ -524,7 +553,7 @@ namespace CourseWorkVisualInterface
             double smallestAreaOfAllEquilateralTriangles =
                 _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(EquilateralTriangle));
 
-            string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.SmallestAreaOfTypeMessage,
                 nameof(EquilateralTriangle), smallestAreaOfAllEquilateralTriangles);
 
             GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
@@ -544,7 +573,7 @@ namespace CourseWorkVisualInterface
             double smallestAreaOfAllRectangles =
                 _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Rectangle));
 
-            string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.SmallestAreaOfTypeMessage,
                 nameof(Rectangle), smallestAreaOfAllRectangles);
 
             GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
@@ -564,7 +593,7 @@ namespace CourseWorkVisualInterface
             double smallestAreaOfAllCircles =
                 _areaCalculationService.SmallestAreaOfAllShapesFromType(_shapes, typeof(Circle));
 
-            string message = String.Format(Constant.InformationMessages.SmallestAreaOfTypeMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.SmallestAreaOfTypeMessage,
                 nameof(Circle), smallestAreaOfAllCircles);
 
             GenerateMessageBox(message, Constant.Captions.SmallestArea, MessageBoxButtons.OK,
@@ -584,7 +613,7 @@ namespace CourseWorkVisualInterface
             double areaOfAllShapes = _areaCalculationService.AreaOfAllShapes(_shapes);
             double sceneArea = this.Height * this.Width;
 
-            string message = String.Format(Constant.InformationMessages.UnusedSpaceMessage,
+            string message = String.Format(Constant.AreaTemplateMessages.UnusedSpaceMessage,
                 (sceneArea - areaOfAllShapes));
             GenerateMessageBox(message, Constant.Captions.TotalUnusedSpace, MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

@@ -104,9 +104,9 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-      <Content Include="shapes.json" />
-      <Content Include="shapes.txt" />
-      <Content Include="shapes.xml" />
+      <Content Include="Files\shapes.json" />
+      <Content Include="Files\shapes.txt" />
+      <Content Include="Files\shapes.xml" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

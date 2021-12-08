@@ -41,6 +41,11 @@ namespace CourseWorkVisualInterface
                     CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
+                catch (Exception ex)
+                {
+                    CreateMessageBox(ex.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             else if (checkBoxXml.Checked)
             {
@@ -51,6 +56,11 @@ namespace CourseWorkVisualInterface
                 catch (EmptyCollectionException exception)
                 {
                     CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    CreateMessageBox(ex.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
@@ -65,10 +75,15 @@ namespace CourseWorkVisualInterface
                     CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
+                catch (Exception ex)
+                {
+                    CreateMessageBox(ex.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
             }
             else
             {
-                MessageBox.Show(Constant.ExceptionMessages.SelectTypeForExport, Constant.Captions.ErrorCaption,
+                CreateMessageBox(Constant.ExceptionMessages.SelectTypeForExport, Constant.Captions.ErrorCaption,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.Retry;
                 return;
