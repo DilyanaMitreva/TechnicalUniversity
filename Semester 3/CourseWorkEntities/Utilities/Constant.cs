@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using CourseWorkEntities.Shapes;
 
 namespace CourseWorkEntities.Utilities
 {
@@ -16,7 +15,7 @@ namespace CourseWorkEntities.Utilities
             private static readonly string ProjectDirectory =
                 Directory.GetParent(Environment.CurrentDirectory)?.Parent?.FullName;
 
-            public static readonly string FilesFolderPath = Path.Combine(ProjectDirectory, "Files");
+            public static readonly string FilesFolderPath = Path.Combine(ProjectDirectory, "ShapeFiles");
 
             public static readonly string FileLocationTxt = Path.Combine(FilesFolderPath, "shapes.txt");
 

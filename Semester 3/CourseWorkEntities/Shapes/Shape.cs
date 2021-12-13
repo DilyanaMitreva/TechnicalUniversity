@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using System.Runtime.Serialization;
-using System.Text;
 using CourseWorkEntities.Utilities;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace CourseWorkEntities.Shapes
 {

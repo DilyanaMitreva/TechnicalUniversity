@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using CourseWorkEntities.Shapes;
-using CourseWorkEntities.Utilities;
 using CourseWorkEntities.Utilities.Interfaces;
 
 namespace CourseWorkEntities.Services

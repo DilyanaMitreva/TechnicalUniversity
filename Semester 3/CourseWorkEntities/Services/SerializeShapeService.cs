@@ -56,6 +56,7 @@ namespace CourseWorkEntities.Services
                 throw new EmptyCollectionException("No items in collection");
             }
 
+       
             string json = JsonConvert.SerializeObject(shapes, Formatting.Indented);
             File.WriteAllText(Constant.FileLocation.FileLocationJson, json);
         }

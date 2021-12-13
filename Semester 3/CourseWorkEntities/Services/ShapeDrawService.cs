@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
