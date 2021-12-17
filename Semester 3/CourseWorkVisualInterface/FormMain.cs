@@ -177,7 +177,7 @@ namespace CourseWorkVisualInterface
 
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
-            Keys[] moveButtons = new[] { Keys.Up, Keys.Down, Keys.Right, Keys.Left };
+            Keys[] moveButtons = new Keys[] { Keys.Up, Keys.Down, Keys.Right, Keys.Left };
 
             if (e.KeyCode == Keys.Delete)
             {
@@ -232,29 +232,9 @@ namespace CourseWorkVisualInterface
 
             if (formInput.DialogResult == DialogResult.OK)
             {
-                using (Graphics g = this.CreateGraphics())
-                {
-                    Shape createdShape = formInput.GetShape();
-
-                    try
-                    {
-                        createdShape.DrawShape(ShapeDrawService.DrawShape, g);
-                    }
-                    catch (ShapeNotSupportedException exception)
-                    {
-                        GenerateMessageBox(exception.Message,
-                            Constant.Captions.ErrorCaption,
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    catch (Exception exception)
-                    {
-                        GenerateMessageBox(exception.Message,
-                            Constant.Captions.ErrorCaption,
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    this._shapes.Add(createdShape);
-                }
+                Shape createdShape = formInput.GetShape();
+                this._shapes.Add(createdShape);
+                Invalidate();
             }
         }
 
