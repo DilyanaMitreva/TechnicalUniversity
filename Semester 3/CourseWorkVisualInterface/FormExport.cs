@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using CourseWorkEntities.Constants;
 using CourseWorkEntities.Exceptions;
-using CourseWorkEntities.Services;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
 using CourseWorkEntities.Utilities.Interfaces;
+using CourseWorkVisualInterface.Services;
 
 namespace CourseWorkVisualInterface
 {
@@ -38,12 +39,12 @@ namespace CourseWorkVisualInterface
                 }
                 catch (EmptyCollectionException exception)
                 {
-                    CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                    CreateMessageBox(exception.Message, Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    CreateMessageBox(ex.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                    CreateMessageBox(ex.Message, Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
@@ -55,12 +56,12 @@ namespace CourseWorkVisualInterface
                 }
                 catch (EmptyCollectionException exception)
                 {
-                    CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                    CreateMessageBox(exception.Message, Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    CreateMessageBox(ex.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                    CreateMessageBox(ex.Message, Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
@@ -72,18 +73,18 @@ namespace CourseWorkVisualInterface
                 }
                 catch (EmptyCollectionException exception)
                 {
-                    CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                    CreateMessageBox(exception.Message, Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
                 catch (Exception ex)
                 {
-                    CreateMessageBox(ex.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                    CreateMessageBox(ex.Message, Captions.ErrorCaption, MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
             }
             else
             {
-                CreateMessageBox(Constant.ExceptionMessages.SelectTypeForExport, Constant.Captions.ErrorCaption,
+                CreateMessageBox(Messages.ExceptionMessages.SelectTypeForExport, Captions.ErrorCaption,
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.Retry;
                 return;

@@ -4,7 +4,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities.Interfaces;
 
-namespace CourseWorkEntities.Services
+namespace CourseWorkVisualInterface.Services
 {
     public class DeserializeService : IDeserializeService
     {

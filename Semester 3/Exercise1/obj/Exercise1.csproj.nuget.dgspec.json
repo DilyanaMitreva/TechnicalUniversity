@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 3\\Exercise1\\Exercise1.csproj": {}
+    "C:\\Users\\k.krachmarov\\Desktop\\TechnicalUniversity\\Semester 3\\Exercise1\\Exercise1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 3\\Exercise1\\Exercise1.csproj": {
+    "C:\\Users\\k.krachmarov\\Desktop\\TechnicalUniversity\\Semester 3\\Exercise1\\Exercise1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 3\\Exercise1\\Exercise1.csproj",
+        "projectUniqueName": "C:\\Users\\k.krachmarov\\Desktop\\TechnicalUniversity\\Semester 3\\Exercise1\\Exercise1.csproj",
         "projectName": "Exercise1",
-        "projectPath": "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 3\\Exercise1\\Exercise1.csproj",
+        "projectPath": "C:\\Users\\k.krachmarov\\Desktop\\TechnicalUniversity\\Semester 3\\Exercise1\\Exercise1.csproj",
         "packagesPath": "C:\\Users\\k.krachmarov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\k.krachmarov\\Desktop\\TechicalUniversity\\Semester 3\\Exercise1\\obj\\",
+        "outputPath": "C:\\Users\\k.krachmarov\\Desktop\\TechnicalUniversity\\Semester 3\\Exercise1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\k.krachmarov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -20,10 +20,6 @@
         "originalTargetFrameworks": [
           "net5.0"
         ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
         "frameworks": {
           "net5.0": {
             "targetAlias": "net5.0",

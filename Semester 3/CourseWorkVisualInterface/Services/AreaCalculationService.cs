@@ -4,7 +4,7 @@ using System.Linq;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities.Interfaces;
 
-namespace CourseWorkEntities.Services
+namespace CourseWorkVisualInterface.Services
 {
     public class AreaCalculationService : IAreaCalculationService
     {

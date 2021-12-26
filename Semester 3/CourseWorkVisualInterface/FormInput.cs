@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using CourseWorkEntities.Constants;
 using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
@@ -10,8 +11,8 @@ namespace CourseWorkVisualInterface
 {
     public partial class FormInput : Form
     {
-        private readonly bool _fromMenuBar;
-        private readonly bool _updateShape;
+        private readonly bool _isFromMenuBar;
+        private readonly bool _isUpdateShape;
 
         private readonly int _mouseXCoordinate;
         private readonly int _mouseYCoordinate;
@@ -37,13 +38,13 @@ namespace CourseWorkVisualInterface
         public FormInput(Shape selectedShape)
         {
             _shape = selectedShape;
-            _updateShape = true;
+            _isUpdateShape = true;
             InitializeComponent();
         }
 
-        public FormInput(bool fromMenuBar)
+        public FormInput(bool isFromMenuBar)
         {
-            _fromMenuBar = fromMenuBar;
+            _isFromMenuBar = isFromMenuBar;
             InitializeComponent();
         }
 
@@ -86,7 +87,7 @@ namespace CourseWorkVisualInterface
 
                 ShowColorElements();
 
-                if (_fromMenuBar || _updateShape)
+                if (_isFromMenuBar || _isUpdateShape)
                 {
                     ShowCoordinateElements();
                 }
@@ -97,7 +98,7 @@ namespace CourseWorkVisualInterface
 
                 ResetColorElements();
 
-                if (_fromMenuBar || _updateShape)
+                if (_isFromMenuBar || _isUpdateShape)
                 {
                     ResetCoordinateElements();
                 }
@@ -113,7 +114,7 @@ namespace CourseWorkVisualInterface
                 ShowRectangleElements();
                 ShowColorElements();
 
-                if (_fromMenuBar || _updateShape)
+                if (_isFromMenuBar || _isUpdateShape)
                 {
                     ShowCoordinateElements();
                 }
@@ -123,7 +124,7 @@ namespace CourseWorkVisualInterface
                 ResetRectangleElements();
                 ResetColorElements();
 
-                if (_fromMenuBar || _updateShape)
+                if (_isFromMenuBar || _isUpdateShape)
                 {
                     ResetCoordinateElements();
                 }
@@ -142,7 +143,7 @@ namespace CourseWorkVisualInterface
 
                 ShowColorElements();
 
-                if (_fromMenuBar || _updateShape)
+                if (_isFromMenuBar || _isUpdateShape)
                 {
                     ShowCoordinateElements();
                 }
@@ -152,7 +153,7 @@ namespace CourseWorkVisualInterface
                 ResetEquilateralTriangleElements();
                 ResetColorElements();
 
-                if (_fromMenuBar || _updateShape)
+                if (_isFromMenuBar || _isUpdateShape)
                 {
                     ResetCoordinateElements();
                 }
@@ -179,7 +180,7 @@ namespace CourseWorkVisualInterface
                 }
                 else
                 {
-                    CreateMessageBox(Constant.ExceptionMessages.ChooseShapeMessage, Constant.Captions.ErrorCaption,
+                    CreateMessageBox(Messages.ExceptionMessages.ChooseShapeMessage, Captions.ErrorCaption,
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                     DialogResult = DialogResult.Retry;
@@ -192,12 +193,12 @@ namespace CourseWorkVisualInterface
             }
             catch (TextBoxException exception)
             {
-                CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                CreateMessageBox(exception.Message, Captions.ErrorCaption, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             catch (Exception exception)
             {
-                CreateMessageBox(exception.Message, Constant.Captions.ErrorCaption, MessageBoxButtons.OK,
+                CreateMessageBox(exception.Message, Captions.ErrorCaption, MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
@@ -206,15 +207,15 @@ namespace CourseWorkVisualInterface
         {
             Shape result;
 
-            int radius = ValidateTextBox(textBoxRadius, Constant.ExceptionMessages.RadiusMessage);
+            int radius = ValidateTextBox(textBoxRadius, Messages.ExceptionMessages.RadiusMessage);
 
-            if (_fromMenuBar || _updateShape)
+            if (_isFromMenuBar || _isUpdateShape)
             {
                 int xCoordinate = ValidateTextBox(textBoxXCoordinate,
-                    Constant.ExceptionMessages.XCoordinateMessage);
+                    Messages.ExceptionMessages.XCoordinateMessage);
 
                 int yCoordinate = ValidateTextBox(textBoxXCoordinate,
-                    Constant.ExceptionMessages.XCoordinateMessage);
+                    Messages.ExceptionMessages.XCoordinateMessage);
 
                 result = new Circle(xCoordinate, yCoordinate, radius, _borderColor, _fillColor);
             }
@@ -230,16 +231,16 @@ namespace CourseWorkVisualInterface
         {
             Shape result;
 
-            int height = ValidateTextBox(textBoxHeight, Constant.ExceptionMessages.HeightMessage);
-            int width = ValidateTextBox(textBoxWidth, Constant.ExceptionMessages.WidthMessage);
+            int height = ValidateTextBox(textBoxHeight, Messages.ExceptionMessages.HeightMessage);
+            int width = ValidateTextBox(textBoxWidth, Messages.ExceptionMessages.WidthMessage);
 
-            if (_fromMenuBar || _updateShape)
+            if (_isFromMenuBar || _isUpdateShape)
             {
                 int xCoordinate = ValidateTextBox(textBoxXCoordinate,
-                    Constant.ExceptionMessages.XCoordinateMessage);
+                    Messages.ExceptionMessages.XCoordinateMessage);
 
                 int yCoordinate = ValidateTextBox(textBoxXCoordinate,
-                    Constant.ExceptionMessages.XCoordinateMessage);
+                    Messages.ExceptionMessages.XCoordinateMessage);
 
                 result = new Rectangle(xCoordinate, yCoordinate, width, height, _borderColor, _fillColor);
             }
@@ -256,15 +257,15 @@ namespace CourseWorkVisualInterface
         {
             Shape result;
 
-            int side = ValidateTextBox(textBoxSide, Constant.ExceptionMessages.SideMessage);
+            int side = ValidateTextBox(textBoxSide, Messages.ExceptionMessages.SideMessage);
 
-            if (_fromMenuBar || _updateShape)
+            if (_isFromMenuBar || _isUpdateShape)
             {
                 int xCoordinate = ValidateTextBox(textBoxXCoordinate,
-                    Constant.ExceptionMessages.XCoordinateMessage);
+                    Messages.ExceptionMessages.XCoordinateMessage);
 
                 int yCoordinate = ValidateTextBox(textBoxYCoordinate,
-                    Constant.ExceptionMessages.YCoordinateMessage);
+                    Messages.ExceptionMessages.YCoordinateMessage);
 
                 result = new EquilateralTriangle(xCoordinate, yCoordinate, side, _borderColor, _fillColor);
             }
@@ -307,12 +308,12 @@ namespace CourseWorkVisualInterface
 
             if (!int.TryParse(textBox.Text, out var result))
             {
-                throw new TextBoxException(Constant.ExceptionMessages.NumberMessage);
+                throw new TextBoxException(Messages.ExceptionMessages.NumberMessage);
             }
 
             if (result < 0)
             {
-                throw new TextBoxException(Constant.ExceptionMessages.PositiveNumberMessage);
+                throw new TextBoxException(Messages.ExceptionMessages.PositiveNumberMessage);
             }
 
             return result;
@@ -358,7 +359,7 @@ namespace CourseWorkVisualInterface
                 ResetEquilateralTriangleElements();
             }
 
-            if (_fromMenuBar || _updateShape)
+            if (_isFromMenuBar || _isUpdateShape)
             {
                 ResetCoordinateElements();
             }

@@ -20,7 +20,7 @@ namespace CourseWorkEntities.Utilities
             Y = y;
         }
 
-        public string AsString()
+        public virtual string AsString()
         {
             StringBuilder sb = new StringBuilder();
 

@@ -1,29 +1,9 @@
-﻿using System;
-using System.IO;
-
-namespace CourseWorkEntities.Utilities
+﻿namespace CourseWorkEntities.Constants
 {
-    public static class Constant
+    public class Messages
     {
-        public static readonly string ShapeSeparatorTxt = "<" + new string('-', 50) + ">" + "\n";
-
-        public static class FileLocation
-        {
-            private static readonly string DesktopLocation =
-                Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
-            private static readonly string ProjectDirectory =
-                Directory.GetParent(Environment.CurrentDirectory)?.Parent?.FullName;
-
-            public static readonly string FilesFolderPath = Path.Combine(ProjectDirectory, "ShapeFiles");
-
-            public static readonly string FileLocationTxt = Path.Combine(FilesFolderPath, "shapes.txt");
-
-            public static readonly string FileLocationJson = Path.Combine(FilesFolderPath, "shapes.json");
-
-            public static readonly string FileLocationXml = Path.Combine(FilesFolderPath, "shapes.xml");
-        }
-
+        public static readonly string SaveMessage = "Canvas is saved";
+        
         public static class ExceptionMessages
         {
             public const string RadiusMessage = "Enter radius";
@@ -68,19 +48,6 @@ namespace CourseWorkEntities.Utilities
 
             public const string UnusedSpaceMessage =
                 "The unused area of the scene is {0:N2} pixels.";
-        }
-
-        public static class Captions
-        {
-            public const string ErrorCaption = "Error";
-
-            public const string AllAreaCaption = "Total area";
-
-            public const string SmallestArea = "Smallest area";
-
-            public const string BiggestArea = "Biggest area";
-
-            public const string TotalUnusedSpace = "Total unused space";
         }
     }
 }

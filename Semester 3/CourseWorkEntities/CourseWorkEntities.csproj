@@ -32,10 +32,6 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
-        <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-          <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-          <Private>True</Private>
-        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -44,30 +40,24 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Constants\Caption.cs" />
+        <Compile Include="Constants\Constant.cs" />
+        <Compile Include="Constants\FileLocation.cs" />
+        <Compile Include="Constants\Messages.cs" />
         <Compile Include="Exceptions\EmptyCollectionException.cs" />
         <Compile Include="Exceptions\ShapeNotSupportedException.cs" />
         <Compile Include="Exceptions\TextBoxException.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Services\AreaCalculationService.cs" />
-        <Compile Include="Services\DeserializeService.cs" />
-        <Compile Include="Services\MoveShapeService.cs" />
-        <Compile Include="Services\SerializeShapeService.cs" />
-        <Compile Include="Services\SelectShapeService.cs" />
-        <Compile Include="Services\ShapeDrawService.cs" />
         <Compile Include="Shapes\Circle.cs" />
         <Compile Include="Shapes\Rectangle.cs" />
         <Compile Include="Shapes\Shape.cs" />
         <Compile Include="Shapes\EquilateralTriangle.cs" />
-        <Compile Include="Utilities\Constant.cs" />
         <Compile Include="Utilities\Interfaces\IAreaCalculationService.cs" />
         <Compile Include="Utilities\Interfaces\IDeserializeService.cs" />
         <Compile Include="Utilities\Interfaces\IMoveShapeService.cs" />
         <Compile Include="Utilities\Interfaces\ISerializeShapeService.cs" />
         <Compile Include="Utilities\Interfaces\ISelectShapeService.cs" />
         <Compile Include="Utilities\PointImpl.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Include="packages.config" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

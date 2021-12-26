@@ -1,10 +1,11 @@
 ﻿using System.Drawing;
+using CourseWorkEntities.Constants;
 using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
 using Rectangle = CourseWorkEntities.Shapes.Rectangle;
 
-namespace CourseWorkEntities.Services
+namespace CourseWorkVisualInterface.Services
 {
     public static class ShapeDrawService
     {
@@ -26,7 +27,7 @@ namespace CourseWorkEntities.Services
             }
             else
             {
-                throw new ShapeNotSupportedException(Constant.ExceptionMessages.ShapeNotSupported);
+                throw new ShapeNotSupportedException(Messages.ExceptionMessages.ShapeNotSupported);
             }
         }
 

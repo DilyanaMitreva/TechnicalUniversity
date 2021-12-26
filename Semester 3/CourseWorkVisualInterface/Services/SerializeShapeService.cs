@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Xml.Serialization;
+using CourseWorkEntities.Constants;
 using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities;
@@ -15,15 +16,15 @@ using Formatting = Newtonsoft.Json.Formatting;
 using Rectangle = CourseWorkEntities.Shapes.Rectangle;
 
 
-namespace CourseWorkEntities.Services
+namespace CourseWorkVisualInterface.Services
 {
     public class SerializeShapeService : ISerializeShapeService
     {
         public SerializeShapeService()
         {
-            Directory.CreateDirectory(Constant.FileLocation.FilesFolderPath);
+            Directory.CreateDirectory(FileLocation.FilesFolderPath);
         }
-        
+
         public void SerializeToTxtFile(List<Shape> shapes)
         {
             if (shapes.Count == 0)
@@ -41,9 +42,9 @@ namespace CourseWorkEntities.Services
                 .ToString();
 
 
-            File.WriteAllText(Constant.FileLocation.FileLocationTxt, text);
+            File.WriteAllText(FileLocation.FileLocationTxt, text);
 
-            using (StreamWriter outputFile = new StreamWriter(Constant.FileLocation.FileLocationTxt))
+            using (StreamWriter outputFile = new StreamWriter(FileLocation.FileLocationTxt))
             {
                 outputFile.Write(text);
             }
@@ -56,9 +57,9 @@ namespace CourseWorkEntities.Services
                 throw new EmptyCollectionException("No items in collection");
             }
 
-       
+
             string json = JsonConvert.SerializeObject(shapes, Formatting.Indented);
-            File.WriteAllText(Constant.FileLocation.FileLocationJson, json);
+            File.WriteAllText(FileLocation.FileLocationJson, json);
         }
 
         public void SerializeToXmlFile(List<Shape> shapes)
@@ -74,7 +75,7 @@ namespace CourseWorkEntities.Services
             XmlSerializer xmlSerializer = new XmlSerializer(shapes.GetType(), extraTypes);
 
             using (FileStream stream =
-                new FileStream(Constant.FileLocation.FileLocationXml, FileMode.OpenOrCreate, FileAccess.Write))
+                   new FileStream(FileLocation.FileLocationXml, FileMode.OpenOrCreate, FileAccess.Write))
             {
                 xmlSerializer.Serialize(stream, shapes);
             }

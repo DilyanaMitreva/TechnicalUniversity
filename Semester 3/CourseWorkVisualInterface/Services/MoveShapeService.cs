@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities.Interfaces;
 
-namespace CourseWorkEntities.Services
+namespace CourseWorkVisualInterface.Services
 {
     public class MoveShapeService : IMoveShapeService
     {

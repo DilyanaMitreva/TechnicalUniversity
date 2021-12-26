@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using CourseWorkEntities.Shapes;
 using CourseWorkEntities.Utilities.Interfaces;
 
-namespace CourseWorkEntities.Services
+namespace CourseWorkVisualInterface.Services
 {
     public class SelectShapeService : ISelectShapeService
     {
