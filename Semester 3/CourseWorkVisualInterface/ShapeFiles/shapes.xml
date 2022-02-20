@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<ArrayOfShape xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Shape xsi:type="Circle">
+    <Location>
+      <X>246</X>
+      <Y>234</Y>
+    </Location>
+    <ColorBorder />
+    <FillColor />
+    <IsSelected>false</IsSelected>
+    <Radius>100</Radius>
+  </Shape>
+  <Shape xsi:type="Rectangle">
+    <Location>
+      <X>593</X>
+      <Y>233</Y>
+    </Location>
+    <ColorBorder />
+    <FillColor />
+    <IsSelected>false</IsSelected>
+    <Width>100</Width>
+    <Height>100</Height>
+  </Shape>
+  <Shape xsi:type="EquilateralTriangle">
+    <Location>
+      <X>440</X>
+      <Y>352</Y>
+    </Location>
+    <ColorBorder />
+    <FillColor />
+    <IsSelected>true</IsSelected>
+    <Side>100</Side>
+  </Shape>
+</ArrayOfShape>

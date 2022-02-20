@@ -76,14 +76,11 @@ namespace CourseWorkEntities.Shapes
             Point[] points = new Point[3];
             this._vertices = GenerateVertices(Side);
 
-            points[0].X = this._vertices[0].X;
-            points[0].Y = this._vertices[0].Y;
-
-            points[1].X = this._vertices[1].X;
-            points[1].Y = this._vertices[1].Y;
-
-            points[2].X = this._vertices[2].X;
-            points[2].Y = this._vertices[2].Y;
+            for (int i = 0; i < points.Length; i++)
+            {
+                points[i].X = this._vertices[i].X;
+                points[i].Y = this._vertices[i].Y;
+            }
 
             return points;
         }

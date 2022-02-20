@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using CourseWorkEntities.Constants;
 using CourseWorkEntities.Exceptions;
 using CourseWorkEntities.Shapes;
-using CourseWorkEntities.Utilities;
 using CourseWorkEntities.Utilities.Interfaces;
 using CourseWorkVisualInterface.Services;
 

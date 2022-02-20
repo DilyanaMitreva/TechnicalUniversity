@@ -1,0 +1,34 @@
+Shapes count: 3
+<-------------------------------------------------->
+Circle
+Location: 
+	 X coordinate: 246
+	 Y coordinate: 234
+Radius: 100
+Area: 31415.9265358979
+BorderColor: Color [A=255, R=37, G=25, B=183]
+FillColor: Color [A=100, R=37, G=25, B=183]
+Is Selected: False
+<-------------------------------------------------->
+Rectangle
+Location: 
+	 X coordinate: 593
+	 Y coordinate: 233
+Width: 100
+Height: 100
+Area: 10000
+BorderColor: Color [A=255, R=170, G=3, B=230]
+FillColor: Color [A=100, R=170, G=3, B=230]
+Is Selected: False
+<-------------------------------------------------->
+Equilateral Triangle
+Location: 
+	 X coordinate: 440
+	 Y coordinate: 352
+Side: 100
+Area: 4330.12701892219
+BorderColor: Color [A=255, R=178, G=103, B=31]
+FillColor: Color [A=100, R=178, G=103, B=31]
+Is Selected: True
+<-------------------------------------------------->
+

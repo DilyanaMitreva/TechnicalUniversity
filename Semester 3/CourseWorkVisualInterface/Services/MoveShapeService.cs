@@ -9,12 +9,7 @@ namespace CourseWorkVisualInterface.Services
     {
         private readonly int _distance;
 
-        public MoveShapeService()
-        {
-            this._distance = 5;
-        }
-
-        public MoveShapeService(int distance)
+        public MoveShapeService(int distance = 5)
         {
             this._distance = distance;
         }

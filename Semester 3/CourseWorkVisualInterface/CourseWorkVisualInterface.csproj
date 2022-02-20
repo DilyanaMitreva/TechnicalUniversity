@@ -115,7 +115,9 @@
       </ProjectReference>
     </ItemGroup>
     <ItemGroup>
-      <Folder Include="ShapeFiles" />
+      <Content Include="ShapeFiles\shapes.json" />
+      <Content Include="ShapeFiles\shapes.txt" />
+      <Content Include="ShapeFiles\shapes.xml" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

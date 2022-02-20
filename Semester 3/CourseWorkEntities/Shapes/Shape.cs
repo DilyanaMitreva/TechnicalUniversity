@@ -37,9 +37,6 @@ namespace CourseWorkEntities.Shapes
 
         public abstract string AsString();
 
-        public void DrawShape(Draw draw, Graphics graphics)
-        {
-            draw(this, graphics);
-        }
+        public void DrawShape(Draw draw, Graphics graphics) => draw(this, graphics);
     }
 }
