@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessFile", "ProcessFile\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessSort", "ProcessSort\ProcessSort.csproj", "{B6980BB2-105D-4C8A-AE3D-331ED4ADEAC0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Threads", "Threads\Threads.csproj", "{A97AAC9A-E56F-4C0B-9F98-9331B71E209C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{B6980BB2-105D-4C8A-AE3D-331ED4ADEAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6980BB2-105D-4C8A-AE3D-331ED4ADEAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6980BB2-105D-4C8A-AE3D-331ED4ADEAC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97AAC9A-E56F-4C0B-9F98-9331B71E209C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97AAC9A-E56F-4C0B-9F98-9331B71E209C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97AAC9A-E56F-4C0B-9F98-9331B71E209C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97AAC9A-E56F-4C0B-9F98-9331B71E209C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
